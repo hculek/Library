@@ -41,15 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenreBuilder.cs" />
-    <Compile Include="BookBuilder.cs" />
-    <Compile Include="IAuthor.cs" />
-    <Compile Include="IBook.cs" />
-    <Compile Include="Book\Author.cs" />
+    <Compile Include="Genre\GenreBuilder.cs" />
+    <Compile Include="Book\BookBuilder.cs" />
+    <Compile Include="Author\IAuthor.cs" />
+    <Compile Include="Book\IBook.cs" />
+    <Compile Include="Author\Author.cs" />
     <Compile Include="Book\Book.cs" />
-    <Compile Include="Book\Genre.cs" />
-    <Compile Include="AuthorBuilder.cs" />
-    <Compile Include="IGenre.cs" />
+    <Compile Include="Genre\Genre.cs" />
+    <Compile Include="Author\AuthorBuilder.cs" />
+    <Compile Include="Genre\IGenre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
