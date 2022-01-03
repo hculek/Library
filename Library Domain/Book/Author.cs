@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Library_Persistence
 {
-    class Author
+    public class Author
     {
-        long authorID { get; set; }
-        string firstName { get; set; }
-        string middleName { get; set; }
-        string lastName { get; set; }
+        public long AuthorID { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
     }
 }

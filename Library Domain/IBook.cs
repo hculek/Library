@@ -8,8 +8,8 @@ namespace Library_Domain
 {
     public interface IBook
     {
-        void BookID();
-        void Title();
-        void TotalPages();
+        void BookID(long BookID);
+        void Title(string Title);
+        void TotalPages(int TotalPages);
     }
 }

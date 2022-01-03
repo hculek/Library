@@ -8,8 +8,8 @@ namespace Library_Persistence
 {
     public class Book
     {
-        long bookID { get; set; }
-        string title { get; set; }
-        int totalPages { get; set; }
+        public long BookID { get; set; }
+        public string Title { get; set; }
+        public int TotalPages { get; set; }
     }
 }

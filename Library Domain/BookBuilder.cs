@@ -7,55 +7,33 @@ using System.Threading.Tasks;
 
 namespace Library_Domain
 {
-    public class BookBuilder : IAuthor, IBook, IGenre
+    public class BookBuilder : IBook
     {
-        private Author author = new Author();
         private Book book = new Book();
-        private Genre genre = new Genre();
 
-        public void AuthorID()
+        public BookBuilder() 
         {
-            throw new NotImplementedException();
+            this.Reset();
         }
 
-        public void BookID()
+        public void BookID(long BookID)
         {
-            throw new NotImplementedException();
+            this.book.BookID = BookID;
         }
 
-        public void FirstName()
-        {
-            throw new NotImplementedException();
+        public void Reset() 
+        { 
+            this.book = new Book();
         }
 
-        public void GenreID()
+        public void Title(string Title)
         {
-            throw new NotImplementedException();
+            this.book.Title = Title;
         }
 
-        public void GenreName()
+        public void TotalPages(int TotalPages)
         {
-            throw new NotImplementedException();
-        }
-
-        public void LastName()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void MiddleName()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Title()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TotalPages()
-        {
-            throw new NotImplementedException();
+            this.book.TotalPages = TotalPages;
         }
     }
 }

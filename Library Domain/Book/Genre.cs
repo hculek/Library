@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Library_Persistence
 {
-    class Genre
+    public class Genre
     {
-        long genreID { get; set; }
-        string genreName { get; set; }
+        public long GenreID { get; set; }
+        public string GenreName { get; set; }
     }
 }

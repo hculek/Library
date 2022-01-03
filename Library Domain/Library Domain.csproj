@@ -41,12 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenreBuilder.cs" />
+    <Compile Include="BookBuilder.cs" />
     <Compile Include="IAuthor.cs" />
     <Compile Include="IBook.cs" />
     <Compile Include="Book\Author.cs" />
     <Compile Include="Book\Book.cs" />
     <Compile Include="Book\Genre.cs" />
-    <Compile Include="BookBuilder.cs" />
+    <Compile Include="AuthorBuilder.cs" />
     <Compile Include="IGenre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

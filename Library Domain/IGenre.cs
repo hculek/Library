@@ -8,7 +8,7 @@ namespace Library_Domain
 {
     public interface IGenre
     {
-        void GenreID();
-        void GenreName();
+        void GenreID(long GenreID);
+        void GenreName(string GenreName);
     }
 }
