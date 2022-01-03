@@ -11,5 +11,6 @@ namespace Library_Domain
         void BookID(long BookID);
         void Title(string Title);
         void TotalPages(int TotalPages);
+        //Book GetBook();
     }
 }
