@@ -16,5 +16,7 @@ namespace Library_Domain.LibraryMember
         public string Email { get; set; }
         public string Telephone { get; set; }
 
+        public DateTime MembershipStartDate { get; set; }
+
     }
 }

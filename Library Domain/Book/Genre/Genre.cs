@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library_Domain
+namespace Library_Domain.Genre
 {
     public class Genre
     {

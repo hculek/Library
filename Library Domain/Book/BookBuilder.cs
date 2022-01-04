@@ -1,11 +1,10 @@
-﻿using Library_Persistence;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library_Domain
+namespace Library_Domain.Book
 {
     public class BookBuilder : IBook
     {
@@ -16,9 +15,19 @@ namespace Library_Domain
             this.Reset();
         }
 
+        public void Author(List<Author.Author> Authors)
+        {
+            this.book.Authors = Authors;
+        }
+
         public void BookID(long BookID)
         {
             this.book.BookID = BookID;
+        }
+
+        public void Genre(List<Genre.Genre> Genres)
+        {
+            this.book.Genres = Genres;
         }
 
         public void Reset() 
