@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenericRepository.cs" />
-    <Compile Include="dbContext.cs" />
+    <Compile Include="LibraryDBContext.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

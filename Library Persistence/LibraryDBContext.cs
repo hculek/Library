@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Library_Persistence
 {
-    //class dbContext : DbContext
+    //class LibraryDBContext : DbContext
     //{
     //    public DbSet<dbQuoteDTO> dbQuoteDTO { get; set; }
 

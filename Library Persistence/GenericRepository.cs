@@ -10,16 +10,16 @@ namespace Library_Persistence
 
 
     public class GenericRepository { //obrisati taj redak
-    //public class GenericRepository<T> : IGenericRepository<T> where T : class
-    //{
-        //private EmployeeDBContext _context = null;
+                                     //public class GenericRepository<T> : IGenericRepository<T> where T : class
+                                     //{
+        //private LibraryDBContext _context = null;
         //private DbSet<T> table = null;
         //public GenericRepository()
         //{
-        //    this._context = new EmployeeDBContext();
+        //    this._context = new LibraryDBContext();
         //    table = _context.Set<T>();
         //}
-        //public GenericRepository(EmployeeDBContext _context)
+        //public GenericRepository(LibraryDBContext _context)
         //{
         //    this._context = _context;
         //    table = _context.Set<T>();
