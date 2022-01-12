@@ -1,54 +1,48 @@
-﻿using System;
+﻿using Library_Domain.dbInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Library_Persistence
 {
-    //https://stackoverflow.com/questions/1216837/c-sharp-generic-crud-operation
-
-
-    public class GenericRepository { //obrisati taj redak
-                                     //public class GenericRepository<T> : IGenericRepository<T> where T : class
-                                     //{
-        //private LibraryDBContext _context = null;
-        //private DbSet<T> table = null;
-        //public GenericRepository()
-        //{
-        //    this._context = new LibraryDBContext();
-        //    table = _context.Set<T>();
-        //}
-        //public GenericRepository(LibraryDBContext _context)
-        //{
-        //    this._context = _context;
-        //    table = _context.Set<T>();
-        //}
-        //public IEnumerable<T> GetAll()
-        //{
-        //    return table.ToList();
-        //}
-        //public T GetById(object id)
-        //{
-        //    return table.Find(id);
-        //}
-        //public void Insert(T obj)
-        //{
-        //    table.Add(obj);
-        //}
-        //public void Update(T obj)
-        //{
-        //    table.Attach(obj);
-        //    _context.Entry(obj).State = EntityState.Modified;
-        //}
-        //public void Delete(object id)
-        //{
-        //    T existing = table.Find(id);
-        //    table.Remove(existing);
-        //}
-        //public void Save()
-        //{
-        //    _context.SaveChanges();
-        //}
+    // https://codewithmukesh.com/blog/repository-pattern-in-aspnet-core/
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    {
+        protected readonly ApplicationContext _context;
+        public GenericRepository(ApplicationContext context)
+        {
+            _context = context;
+        }
+        public void Add(T entity)
+        {
+            _context.Set<T>().Add(entity);
+        }
+        public void AddRange(IEnumerable<T> entities)
+        {
+            _context.Set<T>().AddRange(entities);
+        }
+        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+        {
+            return _context.Set<T>().Where(expression);
+        }
+        public IEnumerable<T> GetAll()
+        {
+            return _context.Set<T>().ToList();
+        }
+        public T GetById(int id)
+        {
+            return _context.Set<T>().Find(id);
+        }
+        public void Remove(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
+        public void RemoveRange(IEnumerable<T> entities)
+        {
+            _context.Set<T>().RemoveRange(entities);
+        }
     }
 }

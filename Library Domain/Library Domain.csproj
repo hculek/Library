@@ -50,6 +50,7 @@
     <Compile Include="Book\Genre\Genre.cs" />
     <Compile Include="Book\Author\AuthorBuilder.cs" />
     <Compile Include="Book\Genre\IGenre.cs" />
+    <Compile Include="dbInterfaces\IGenericRepository.cs" />
     <Compile Include="LibraryMember\ILibraryMember.cs" />
     <Compile Include="LibraryMember\LibraryMember.cs" />
     <Compile Include="LibraryMember\LibraryMemberBuilder.cs" />

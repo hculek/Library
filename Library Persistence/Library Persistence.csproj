@@ -42,9 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenericRepository.cs" />
-    <Compile Include="LibraryDBContext.cs" />
-    <Compile Include="IGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library Domain\Library Domain.csproj">
+      <Project>{7e928538-38ac-40d3-b099-49f3721f84d3}</Project>
+      <Name>Library Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
