@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,9 @@ namespace Library_Persistence
 {
     public class ApplicationContext : DbContext
     {
-        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+        /*public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
-        }
+        }*/
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
