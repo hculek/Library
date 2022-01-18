@@ -9,6 +9,8 @@ using Library_Domain.dbInterfaces;
 namespace Library_Persistence
 {
     // https://codewithmukesh.com/blog/repository-pattern-in-aspnet-core/
+
+    // https://www.programmingwithwolfgang.com/repository-pattern-net-core/
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly ApplicationContext _context;
@@ -44,5 +46,12 @@ namespace Library_Persistence
         {
             _context.Set<T>().RemoveRange(entities);
         }
+
+        //public void Update(T entity)
+        //{
+        //    //throw new NotImplementedException();
+        //    var entityEntry = _context.Update(entity);
+        //    return entityEntry.Entity;
+        //}
     }
 }
