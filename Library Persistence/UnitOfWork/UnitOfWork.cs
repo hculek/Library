@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Library_Domain.dbInterfaces;
+﻿using Library_Domain.dbInterfaces;
 using Library_Persistence.Repositories;
 
 namespace Library_Persistence.UnitOfWork

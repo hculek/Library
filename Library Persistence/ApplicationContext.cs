@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Library_Domain;
+﻿using System.Data.Entity;
 using Library_Domain.Author;
 using Library_Domain.Book;
 using Library_Domain.Genre;
 using Library_Domain.LibraryMember;
-using Npgsql;
 
 namespace Library_Persistence
 {
