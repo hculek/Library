@@ -11,7 +11,7 @@ namespace Library_Domain.Book
             this.Reset();
         }
 
-        public void Author(List<Author.Author> Authors)
+        public void Author(ICollection<Author.Author> Authors)
         {
             this.book.Authors = Authors;
         }
@@ -21,7 +21,7 @@ namespace Library_Domain.Book
             this.book.BookID = BookID;
         }
 
-        public void Genre(List<Genre.Genre> Genres)
+        public void Genre(ICollection<Genre.Genre> Genres)
         {
             this.book.Genres = Genres;
         }

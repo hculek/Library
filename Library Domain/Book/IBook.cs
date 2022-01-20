@@ -7,8 +7,8 @@ namespace Library_Domain.Book
         void BookID(long BookID);
         void Title(string Title);
         void TotalPages(int TotalPages);
-        void Author(List<Library_Domain.Author.Author> Authors);
-        void Genre(List<Library_Domain.Genre.Genre> Genres);
+        void Author(ICollection<Library_Domain.Author.Author> Authors);
+        void Genre(ICollection<Library_Domain.Genre.Genre> Genres);
         //Book GetBook();
     }
 }

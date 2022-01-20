@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library Domain", "Library Domain\Library Domain.csproj", "{7E928538-38AC-40D3-B099-49F3721F84D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library Presentation", "Library Presentation\Library Presentation.csproj", "{6ECB2225-A72E-4A25-9D70-81EA01EACC07}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library Persistence", "Library Persistence\Library Persistence.csproj", "{DC055836-0463-4EEE-A0F9-C9CF84C8801B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{D239BE37-8D40-454F-B671-0A7CC4739F79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{DC055836-0463-4EEE-A0F9-C9CF84C8801B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC055836-0463-4EEE-A0F9-C9CF84C8801B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC055836-0463-4EEE-A0F9-C9CF84C8801B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D239BE37-8D40-454F-B671-0A7CC4739F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D239BE37-8D40-454F-B671-0A7CC4739F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D239BE37-8D40-454F-B671-0A7CC4739F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D239BE37-8D40-454F-B671-0A7CC4739F79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
