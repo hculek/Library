@@ -129,7 +129,7 @@
             // listView3
             // 
             this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(22, 684);
+            this.listView3.Location = new System.Drawing.Point(22, 639);
             this.listView3.Name = "listView3";
             this.listView3.Size = new System.Drawing.Size(351, 185);
             this.listView3.TabIndex = 11;
@@ -138,7 +138,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 667);
+            this.label5.Location = new System.Drawing.Point(19, 622);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 10;
@@ -147,7 +147,7 @@
             // listView4
             // 
             this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(493, 684);
+            this.listView4.Location = new System.Drawing.Point(493, 639);
             this.listView4.Name = "listView4";
             this.listView4.Size = new System.Drawing.Size(351, 185);
             this.listView4.TabIndex = 15;
@@ -156,7 +156,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(490, 667);
+            this.label6.Location = new System.Drawing.Point(490, 622);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 13);
             this.label6.TabIndex = 14;
@@ -191,7 +191,7 @@
             // 
             // AddGenreButton
             // 
-            this.AddGenreButton.Location = new System.Drawing.Point(22, 875);
+            this.AddGenreButton.Location = new System.Drawing.Point(22, 830);
             this.AddGenreButton.Name = "AddGenreButton";
             this.AddGenreButton.Size = new System.Drawing.Size(75, 23);
             this.AddGenreButton.TabIndex = 17;
@@ -209,7 +209,7 @@
             // 
             // RemoveGenreButton
             // 
-            this.RemoveGenreButton.Location = new System.Drawing.Point(493, 875);
+            this.RemoveGenreButton.Location = new System.Drawing.Point(493, 830);
             this.RemoveGenreButton.Name = "RemoveGenreButton";
             this.RemoveGenreButton.Size = new System.Drawing.Size(91, 23);
             this.RemoveGenreButton.TabIndex = 19;

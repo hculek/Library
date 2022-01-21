@@ -40,10 +40,9 @@ namespace Library_Presentation
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TabControlMainWindow = new System.Windows.Forms.TabControl();
+            this.CloseActiveTab = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -103,18 +102,21 @@ namespace Library_Presentation
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
             this.toolStripMenuItem6.Size = new System.Drawing.Size(116, 22);
             this.toolStripMenuItem6.Text = "Books";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(116, 22);
             this.toolStripMenuItem7.Text = "Authors";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
             this.toolStripMenuItem8.Size = new System.Drawing.Size(116, 22);
             this.toolStripMenuItem8.Text = "Genre";
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -130,37 +132,42 @@ namespace Library_Presentation
             this.statusStrip2.TabIndex = 1;
             this.statusStrip2.Text = "StatusStrip";
             // 
-            // tabPage1
+            // TabControlMainWindow
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(987, 486);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.TabControlMainWindow.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TabControlMainWindow.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.TabControlMainWindow.ItemSize = new System.Drawing.Size(58, 22);
+            this.TabControlMainWindow.Location = new System.Drawing.Point(12, 42);
+            this.TabControlMainWindow.Name = "TabControlMainWindow";
+            this.TabControlMainWindow.SelectedIndex = 0;
+            this.TabControlMainWindow.Size = new System.Drawing.Size(1880, 974);
+            this.TabControlMainWindow.TabIndex = 0;
             // 
-            // tabControl1
+            // CloseActiveTab
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(13, 28);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(995, 512);
-            this.tabControl1.TabIndex = 2;
+            this.CloseActiveTab.Location = new System.Drawing.Point(12, 27);
+            this.CloseActiveTab.Name = "CloseActiveTab";
+            this.CloseActiveTab.Size = new System.Drawing.Size(75, 19);
+            this.CloseActiveTab.TabIndex = 2;
+            this.CloseActiveTab.Text = "Close Tab";
+            this.CloseActiveTab.UseVisualStyleBackColor = true;
+            this.CloseActiveTab.Click += new System.EventHandler(this.CloseActiveTab_Click);
             // 
             // MainWindow
             // 
+            this.AccessibleName = "Main Window";
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.CloseActiveTab);
+            this.Controls.Add(this.TabControlMainWindow);
             this.Controls.Add(this.statusStrip2);
             this.Controls.Add(this.menuStrip2);
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Library Application";
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,7 +205,7 @@ namespace Library_Presentation
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.StatusStrip statusStrip2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl TabControlMainWindow;
+        private System.Windows.Forms.Button CloseActiveTab;
     }
 }
