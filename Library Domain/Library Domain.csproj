@@ -36,6 +36,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,10 +61,21 @@
     <Compile Include="dbInterfaces\IGenericRepository.cs" />
     <Compile Include="dbInterfaces\ILibraryMemberRepository.cs" />
     <Compile Include="dbInterfaces\IUnitOfWork.cs" />
+    <Compile Include="GenreMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GenreMenu.Designer.cs">
+      <DependentUpon>GenreMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="LibraryMember\ILibraryMember.cs" />
     <Compile Include="LibraryMember\LibraryMember.cs" />
     <Compile Include="LibraryMember\LibraryMemberBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GenreMenu.resx">
+      <DependentUpon>GenreMenu.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

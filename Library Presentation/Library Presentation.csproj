@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AuthorMenu.Designer.cs">
+      <DependentUpon>AuthorMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenreMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GenreMenu.Designer.cs">
+      <DependentUpon>GenreMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AuthorMenu.resx">
+      <DependentUpon>AuthorMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenreMenu.resx">
+      <DependentUpon>GenreMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
