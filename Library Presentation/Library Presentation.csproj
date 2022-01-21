@@ -52,6 +52,12 @@
     <Compile Include="AuthorMenu.Designer.cs">
       <DependentUpon>AuthorMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BookMenu.Designer.cs">
+      <DependentUpon>BookMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenreMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AuthorMenu.resx">
       <DependentUpon>AuthorMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookMenu.resx">
+      <DependentUpon>BookMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GenreMenu.resx">
       <DependentUpon>GenreMenu.cs</DependentUpon>
@@ -96,6 +105,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

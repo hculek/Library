@@ -31,6 +31,7 @@ namespace Library_Presentation
         {
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +39,6 @@ namespace Library_Presentation
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -54,7 +54,7 @@ namespace Library_Presentation
             this.toolStripMenuItem3});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1020, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(1904, 24);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "MenuStrip";
             // 
@@ -65,6 +65,13 @@ namespace Library_Presentation
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(80, 20);
             this.toolStripMenuItem1.Text = "Application";
+            // 
+            // exitApplicationToolStripMenuItem
+            // 
+            this.exitApplicationToolStripMenuItem.Name = "exitApplicationToolStripMenuItem";
+            this.exitApplicationToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.exitApplicationToolStripMenuItem.Text = "Exit application";
+            this.exitApplicationToolStripMenuItem.Click += new System.EventHandler(this.exitApplicationToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -94,19 +101,19 @@ namespace Library_Presentation
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(116, 22);
             this.toolStripMenuItem6.Text = "Books";
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(116, 22);
             this.toolStripMenuItem7.Text = "Authors";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(116, 22);
             this.toolStripMenuItem8.Text = "Genre";
             // 
             // toolStripMenuItem3
@@ -115,18 +122,11 @@ namespace Library_Presentation
             this.toolStripMenuItem3.Size = new System.Drawing.Size(69, 20);
             this.toolStripMenuItem3.Text = "Members";
             // 
-            // exitApplicationToolStripMenuItem
-            // 
-            this.exitApplicationToolStripMenuItem.Name = "exitApplicationToolStripMenuItem";
-            this.exitApplicationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitApplicationToolStripMenuItem.Text = "Exit application";
-            this.exitApplicationToolStripMenuItem.Click += new System.EventHandler(this.exitApplicationToolStripMenuItem_Click);
-            // 
             // statusStrip2
             // 
-            this.statusStrip2.Location = new System.Drawing.Point(0, 543);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 1019);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(1020, 22);
+            this.statusStrip2.Size = new System.Drawing.Size(1904, 22);
             this.statusStrip2.TabIndex = 1;
             this.statusStrip2.Text = "StatusStrip";
             // 
@@ -151,7 +151,7 @@ namespace Library_Presentation
             // 
             // MainWindow
             // 
-            this.ClientSize = new System.Drawing.Size(1020, 565);
+            this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip2);
             this.Controls.Add(this.menuStrip2);
