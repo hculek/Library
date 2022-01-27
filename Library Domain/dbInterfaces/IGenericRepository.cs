@@ -15,6 +15,7 @@ namespace Library_Domain.dbInterfaces
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
 
-        //void Update(T entity);
+        void Update(T entity);
+        void Save();
     }
 }

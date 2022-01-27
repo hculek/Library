@@ -1,1 +1,13 @@
 ﻿https://www.youtube.com/watch?v=mECkft9LG4k <- pozivanje formi
+
+https://codewithmukesh.com/blog/repository-pattern-in-aspnet-core/
+
+https://www.programmingwithwolfgang.com/repository-pattern-net-core/
+
+https://www.c-sharpcorner.com/article/implementing-unit-of-work-and-repository-pattern-with-dependency-injection-in-n/
+
+https://www.c-sharpcorner.com/UploadFile/3d39b4/crud-using-the-repository-pattern-in-mvc/
+
+https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
+
+https://www.thereformedprogrammer.net/is-the-repository-pattern-useful-with-entity-framework-core/
