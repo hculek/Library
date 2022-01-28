@@ -137,10 +137,10 @@ namespace Library_Presentation
             this.TabControlMainWindow.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TabControlMainWindow.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.TabControlMainWindow.ItemSize = new System.Drawing.Size(58, 22);
-            this.TabControlMainWindow.Location = new System.Drawing.Point(12, 42);
+            this.TabControlMainWindow.Location = new System.Drawing.Point(12, 52);
             this.TabControlMainWindow.Name = "TabControlMainWindow";
             this.TabControlMainWindow.SelectedIndex = 0;
-            this.TabControlMainWindow.Size = new System.Drawing.Size(1880, 974);
+            this.TabControlMainWindow.Size = new System.Drawing.Size(1880, 964);
             this.TabControlMainWindow.TabIndex = 0;
             // 
             // CloseActiveTab

@@ -1,4 +1,5 @@
 ﻿using Library_Domain.dbInterfaces;
+using Library_Domain.Genre;
 using Library_Persistence;
 using Library_Persistence.Repositories;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library_Domain.Controller
+namespace Library_Controllers
 {
     public class GenreController
     {
@@ -15,24 +16,37 @@ namespace Library_Domain.Controller
         public GenreController()
         {
             this._genreRepository = new GenreRepository(new ApplicationContext());
-
         }
 
-        public IEnumerable<Genre.Genre> GetAll() 
-        { 
-            var genres = from genre in _genreRepository.GetAll()
-                         select genre;
-            return genres;
-        }
-
-        public IEnumerable<Genre.Genre> Find(string SearchTerm)
+        public IEnumerable<Genre> GetAll() 
         {
-            var genres = from genre in _genreRepository.Find(f => f.GenreName.Equals(SearchTerm))
-                         select genre;
-            return genres;
+            try
+            {
+                var genres = from genre in _genreRepository.GetAll()
+                             select genre;
+                return genres;
+            }
+            catch (Exception)
+            {
+            }
+            return null;
         }
 
-        public void Add(Genre.Genre Genre) 
+        public IEnumerable<Genre> Find(string SearchTerm)
+        {
+            try
+            {
+                var genres = from genre in _genreRepository.Find(f => f.GenreName.Equals(SearchTerm))
+                             select genre;
+                return genres;
+            }
+            catch (Exception)
+            {
+            }
+            return null;
+        }
+
+        public void Add(Genre Genre) 
         {
             try
             {
@@ -46,7 +60,7 @@ namespace Library_Domain.Controller
 
         }
 
-        public void AddRange(IEnumerable<Genre.Genre> genres)
+        public void AddRange(IEnumerable<Genre> genres)
         {
             try
             {
@@ -61,7 +75,7 @@ namespace Library_Domain.Controller
             }
         }
 
-        public void Update(Genre.Genre Genre)
+        public void Update(Genre Genre)
         {
             try
             {
@@ -73,7 +87,7 @@ namespace Library_Domain.Controller
             }
         }
 
-        public void Remove(Genre.Genre Genre)
+        public void Remove(Genre Genre)
         {
             try
             {
@@ -85,7 +99,7 @@ namespace Library_Domain.Controller
             }
         }
 
-        public void RemoveRange(IEnumerable<Genre.Genre> genres)
+        public void RemoveRange(IEnumerable<Genre> genres)
         {
             try
             {
