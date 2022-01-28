@@ -42,7 +42,7 @@ namespace Library_Controllers
             {
                 //var authors = from author in _authorRepository.Find(f => (f.LastName.Trim() + " " + f.MiddleName.Trim() + " "+ f.LastName.Trim()).Trim().Equals(SearchTerm))
                 //          select author;
-                var authors = from author in _authorRepository.Find(f => (f.LastName + " " + f.MiddleName + " " + f.LastName).Equals(SearchTerm))
+                var authors = from author in _authorRepository.Find(f => (f.LastName + " " + f.MiddleName + " " + f.LastName).Contains(SearchTerm))
                               select author;
 
                 return authors;
