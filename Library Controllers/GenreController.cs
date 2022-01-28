@@ -1,12 +1,12 @@
-﻿using Library_Domain.dbInterfaces;
-using Library_Domain.Genre;
-using Library_Persistence;
-using Library_Persistence.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Library_Domain.dbInterfaces;
+using Library_Domain.Genre;
+using Library_Persistence;
+using Library_Persistence.Repositories;
 
 namespace Library_Controllers
 {
@@ -60,11 +60,11 @@ namespace Library_Controllers
 
         }
 
-        public void AddRange(IEnumerable<Genre> genres)
+        public void AddRange(IEnumerable<Genre> Genres)
         {
             try
             {
-                foreach (var genre in genres)
+                foreach (var genre in Genres)
                 {
                     _genreRepository.Add(genre);
                 }
@@ -99,11 +99,11 @@ namespace Library_Controllers
             }
         }
 
-        public void RemoveRange(IEnumerable<Genre> genres)
+        public void RemoveRange(IEnumerable<Genre> Genres)
         {
             try
             {
-                foreach (var genre in genres)
+                foreach (var genre in Genres)
                 {
                     _genreRepository.Remove(genre);
                 }

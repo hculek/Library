@@ -36,6 +36,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AuthorController.cs" />
     <Compile Include="GenreController.cs" />
   </ItemGroup>
   <ItemGroup>
