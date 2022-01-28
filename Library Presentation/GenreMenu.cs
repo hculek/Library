@@ -16,5 +16,10 @@ namespace Library_Presentation
         {
             InitializeComponent();
         }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

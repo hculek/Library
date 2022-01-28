@@ -109,5 +109,11 @@
   <ItemGroup>
     <Content Include="TextFile1.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library Controllers\Library Controllers.csproj">
+      <Project>{4a4e6e40-079e-4d54-bc85-8671a30b2d7a}</Project>
+      <Name>Library Controllers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
