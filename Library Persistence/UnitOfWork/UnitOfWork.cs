@@ -20,16 +20,16 @@ namespace Library_Persistence.UnitOfWork
         public UnitOfWork(ApplicationContext context)
         {
             _context = context;
-            Author = new AuthorRepository(_context);
-            Book = new BookRepository(_context);
-            Genre = new GenreRepository(_context);
-            LibraryMember = new LibraryMemberRepository(_context);
+            Authors = new AuthorRepository(_context);
+            Books = new BookRepository(_context);
+            Genres = new GenreRepository(_context);
+            LibraryMembers = new LibraryMemberRepository(_context);
         }
 
-        public IAuthorRepository Author { get; private set; }
-        public IBookRepository Book { get; private set; }
-        public IGenreRepository Genre { get; private set; }
-        public ILibraryMemberRepository LibraryMember { get; private set; }
+        public IAuthorRepository Authors { get; private set; }
+        public IBookRepository Books { get; private set; }
+        public IGenreRepository Genres { get; private set; }
+        public ILibraryMemberRepository LibraryMembers { get; private set; }
 
         public int Save()
         {
