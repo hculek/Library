@@ -28,7 +28,7 @@ namespace Library_Presentation
             {
                 //var genres = uow.Genres.GetAll();
                 //if (!(genres == null)) listBox1.DataSource = genres;
-                listBox1.DataSource = uow.Genres.GetAll();
+                listBox1.DataSource = uow.Genre.GetAll();
             }
         }
 

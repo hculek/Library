@@ -4,9 +4,9 @@ namespace Library_Domain.dbInterfaces
 {
     public interface IUnitOfWork: IDisposable
     {
-        IAuthorRepository Authors { get; }
-        IBookRepository Books { get; }
-        IGenreRepository Genres { get; }
+        IAuthorRepository Author { get; }
+        IBookRepository Book { get; }
+        IGenreRepository Genre { get; }
         int Save();
     }
 }
