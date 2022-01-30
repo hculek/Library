@@ -12,5 +12,8 @@ namespace Library_Persistence.Repositories
         //{
         //    return _context.Books.OrderByDescending(d => d.Followers).Take(count).ToList();
         //}
+
+        // metoda za ucitati sve zanrove
+        // metoda za ucitati sve autore
     }
 }

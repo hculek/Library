@@ -8,10 +8,9 @@ namespace Library_Persistence
 {
     public class ApplicationContext : DbContext
     {
-        public ApplicationContext() : base("name=LibraryDBConn") /*(@hardcoded connection string... )*/
+        public ApplicationContext() : base("name=LibraryDBConnection") /*(@hardcoded connection string... )*/
         {
         }
-
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Genre> Genres { get; set; }

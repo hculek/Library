@@ -1,6 +1,6 @@
 ﻿namespace Library_Domain.Genre
 {
-    interface IGenre
+    public interface IGenre
     {
         void GenreID(long GenreID);
         void GenreName(string GenreName);

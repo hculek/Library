@@ -8,7 +8,7 @@ namespace Library_Persistence
         //https://www.npgsql.org/ef6/index.html#basic-configuration
         public NpgSqlConfiguration()
         {
-            var name = "LibraryDBConn";
+            var name = "LibraryDBConnection";
 
             SetProviderFactory(providerInvariantName: name,
                                providerFactory: NpgsqlFactory.Instance);

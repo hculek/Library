@@ -28,7 +28,9 @@ namespace Library_Persistence
         }
         public IEnumerable<T> GetAll()
         {
-            return _context.Set<T>().ToList();
+            //return _context.Set<T>().ToList();
+
+            return _context.Set<T>().ToList() != null ? _context.Set<T>().ToList() : Enumerable.Empty<T>();
         }
         
         public T GetById(int id)

@@ -55,27 +55,16 @@
     <Compile Include="Book\Genre\Genre.cs" />
     <Compile Include="Book\Author\AuthorBuilder.cs" />
     <Compile Include="Book\Genre\IGenre.cs" />
-    <Compile Include="dbInterfaces\IGenreRepository.cs" />
-    <Compile Include="dbInterfaces\IAuthorRepository.cs" />
-    <Compile Include="dbInterfaces\IBookRepository.cs" />
-    <Compile Include="dbInterfaces\IGenericRepository.cs" />
-    <Compile Include="dbInterfaces\ILibraryMemberRepository.cs" />
-    <Compile Include="dbInterfaces\IUnitOfWork.cs" />
-    <Compile Include="GenreMenu.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GenreMenu.Designer.cs">
-      <DependentUpon>GenreMenu.cs</DependentUpon>
-    </Compile>
+    <Compile Include="IRepositories\IGenreRepository.cs" />
+    <Compile Include="IRepositories\IAuthorRepository.cs" />
+    <Compile Include="IRepositories\IBookRepository.cs" />
+    <Compile Include="IRepositories\IGenericRepository.cs" />
+    <Compile Include="IRepositories\ILibraryMemberRepository.cs" />
+    <Compile Include="IRepositories\IUnitOfWork.cs" />
     <Compile Include="LibraryMember\ILibraryMember.cs" />
     <Compile Include="LibraryMember\LibraryMember.cs" />
     <Compile Include="LibraryMember\LibraryMemberBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="GenreMenu.resx">
-      <DependentUpon>GenreMenu.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

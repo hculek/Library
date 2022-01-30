@@ -1,6 +1,4 @@
-﻿using Library_Domain.Genre;
-using Library_Controllers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,54 +7,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Library_DTO;
+using Library_Domain.Genre;
+using Library_Persistence.UnitOfWork;
 
 namespace Library_Presentation
 {
     public partial class GenreMenu : UserControl
     {
-        private GenreController _genreController = new GenreController();
-        private Genre _genre = new Genre();
         public GenreMenu()
         {
             InitializeComponent();
-            Refresh();
+            LoadGenres();
         }
 
-        private Genre Genre() 
-        { 
-            _genre.GenreName = TextBox.Text.ToString();
-            return _genre;
-        }
-
-        private void Refresh() 
+        void LoadGenres()
         {
-            TextBox.Clear();
-            listBox1.SelectedItems.Clear();
-            listBox1.DataSource = _genreController.GetAll();
+            var context = new Library_Persistence.ApplicationContext();
+            using (var uow = new UnitOfWork(context))
+            {
+                //var genres = uow.Genres.GetAll();
+                //if (!(genres == null)) listBox1.DataSource = genres;
+                listBox1.DataSource = uow.Genres.GetAll();
+            }
         }
-
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _genreController.Add(Genre());
-            Refresh();
+            //using (var uow = UnitOfWorkFactory.Create()) 
+            //{
+            //    Genre genre = new Genre();
+            //    genre.GenreName = textBox1.Text.ToString();
+            //    uow.Genres.Add(genre);
+            //}
+
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            _genreController.Update(Genre());
-            Refresh();
+
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            _genreController.Remove(Genre());
-            Refresh();
+
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            Refresh();
+
         }
     }
 }

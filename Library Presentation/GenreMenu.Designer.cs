@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.TextBox = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.AddButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
@@ -50,12 +50,12 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Genre label:";
             // 
-            // TextBox
+            // textBox2
             // 
-            this.TextBox.Location = new System.Drawing.Point(412, 158);
-            this.TextBox.Name = "TextBox";
-            this.TextBox.Size = new System.Drawing.Size(200, 20);
-            this.TextBox.TabIndex = 2;
+            this.textBox2.Location = new System.Drawing.Point(412, 158);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(200, 20);
+            this.textBox2.TabIndex = 2;
             // 
             // AddButton
             // 
@@ -153,7 +153,7 @@
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.TextBox);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Name = "GenreMenu";
             this.Size = new System.Drawing.Size(900, 900);
@@ -164,7 +164,7 @@
 
         #endregion
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TextBox;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button DeleteButton;

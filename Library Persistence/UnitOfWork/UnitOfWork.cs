@@ -6,6 +6,17 @@ namespace Library_Persistence.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationContext _context;
+
+        //public UnitOfWork()
+        //{
+        //    UnitOfWork Create()
+        //    {
+        //        ApplicationContext context = new ApplicationContext();
+        //        UnitOfWork uow = new UnitOfWork(context);
+        //        return uow;
+        //    }
+
+        //}
         public UnitOfWork(ApplicationContext context)
         {
             _context = context;

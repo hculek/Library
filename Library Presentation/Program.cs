@@ -18,5 +18,6 @@ namespace Library_Presentation
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainWindow());
         }
+
     }
 }

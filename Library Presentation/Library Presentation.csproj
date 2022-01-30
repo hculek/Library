@@ -110,13 +110,17 @@
     <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Library Controllers\Library Controllers.csproj">
-      <Project>{4a4e6e40-079e-4d54-bc85-8671a30b2d7a}</Project>
-      <Name>Library Controllers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Library Domain\Library Domain.csproj">
-      <Project>{7E928538-38AC-40D3-B099-49F3721F84D3}</Project>
+      <Project>{7e928538-38ac-40d3-b099-49f3721f84d3}</Project>
       <Name>Library Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library Persistence\Library Persistence.csproj">
+      <Project>{dc055836-0463-4eee-a0f9-c9cf84c8801b}</Project>
+      <Name>Library Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library_DTO\Library_DTO.csproj">
+      <Project>{1e01d846-af04-410f-8a2f-487d1b73707d}</Project>
+      <Name>Library_DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

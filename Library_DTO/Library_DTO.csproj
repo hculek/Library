@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A4E6E40-079E-4D54-BC85-8671A30B2D7A}</ProjectGuid>
+    <ProjectGuid>{1E01D846-AF04-410F-8A2F-487D1B73707D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Library_Controllers</RootNamespace>
-    <AssemblyName>Library Controllers</AssemblyName>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Library_DTO</RootNamespace>
+    <AssemblyName>Library_DTO</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,12 +30,20 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AuthorController.cs" />
-    <Compile Include="GenreController.cs" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GenreBuilder.cs" />
+    <Compile Include="UnitOfWorkFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library Domain\Library Domain.csproj">
