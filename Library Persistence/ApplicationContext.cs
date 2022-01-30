@@ -11,9 +11,10 @@ namespace Library_Persistence
         public ApplicationContext() : base("name=LibraryDBConnection")
         {
         }
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Author> Authors { get; set; }
-        public DbSet<Genre> Genres { get; set; }
-        public DbSet<LibraryMember> LibraryMembers { get; set; }
+
+        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
+        public virtual DbSet<LibraryMember> LibraryMembers { get; set; }
     }
 }

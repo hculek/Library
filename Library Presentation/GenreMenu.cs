@@ -22,18 +22,28 @@ namespace Library_Presentation
 
         void LoadGenres()
         {
-            var context = new Library_Persistence.ApplicationContext();
-            using (var uow = new UnitOfWork(context))
+            try
             {
-                //var genres = uow.Genres.GetAll();
-                //if (!(genres == null)) listBox1.DataSource = genres;
-                listBox1.DataSource = uow.Genres.GetAll();
+                var context = new Library_Persistence.ApplicationContext();
+                using (var uow = new UnitOfWork(context))
+                {
+                    //var genres = uow.Genres.GetAll();
+                    //if (!(genres == null)) listBox1.DataSource = genres;
+                    //listBox1.DataSource = genres;
+                    listBox1.DataSource = uow.Genres.GetAll();
+                }
+
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            //using (var uow = UnitOfWorkFactory.Create()) 
+            //using (var uow = UnitOfWorkFactory.Create())
             //{
             //    Genre genre = new Genre();
             //    genre.GenreName = textBox1.Text.ToString();
