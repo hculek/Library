@@ -27,10 +27,10 @@ namespace Library_Presentation
                 var context = new Library_Persistence.ApplicationContext();
                 using (var uow = new UnitOfWork(context))
                 {
-                    //var genres = uow.Genres.GetAll();
+                    var genres = uow.Genres.GetAll();
                     //if (!(genres == null)) listBox1.DataSource = genres;
                     //listBox1.DataSource = genres;
-                    listBox1.DataSource = uow.Genres.GetAll();
+                    //listBox1.DataSource = uow.Genres.GetAll();
                 }
 
             }
