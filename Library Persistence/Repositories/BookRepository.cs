@@ -1,8 +1,9 @@
 ﻿using Library_Domain.dbInterfaces;
+using Library_Domain.Objects.Book;
 
 namespace Library_Persistence.Repositories
 {
-    public class BookRepository  : GenericRepository<Library_Domain.Book.Book>, IBookRepository
+    public class BookRepository  : GenericRepository<Book>, IBookRepository
     {
         public BookRepository(ApplicationContext context) : base(context)
         {

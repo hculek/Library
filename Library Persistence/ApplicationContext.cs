@@ -1,14 +1,14 @@
 ﻿using System.Data.Entity;
-using Library_Domain.Author;
-using Library_Domain.Book;
-using Library_Domain.Genre;
-using Library_Domain.LibraryMember;
+using Library_Domain.Objects.Author;
+using Library_Domain.Objects.Book;
+using Library_Domain.Objects.Genre;
+using Library_Domain.Objects.LibraryMember;
 
 namespace Library_Persistence
 {
     public class ApplicationContext : DbContext
     {
-        public ApplicationContext() : base("name=LibraryDBConnection") /*(@hardcoded connection string... )*/
+        public ApplicationContext() : base("name=LibraryDBConnection")
         {
         }
         public DbSet<Book> Books { get; set; }

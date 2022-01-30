@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Library_DTO;
 using Library_Domain.Objects.Genre;
 using Library_Persistence.UnitOfWork;
 
