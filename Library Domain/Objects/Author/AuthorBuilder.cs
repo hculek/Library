@@ -1,4 +1,4 @@
-﻿namespace Library_Domain.Author
+﻿namespace Library_Domain.Objects.Author
 {
     public class AuthorBuilder : IAuthor
     {

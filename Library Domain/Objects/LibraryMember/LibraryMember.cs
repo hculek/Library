@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Library_Domain.LibraryMember
+namespace Library_Domain.Objects.LibraryMember
 {
     public class LibraryMember
     {

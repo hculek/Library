@@ -1,6 +1,7 @@
 ﻿using System;
+using Library_Domain.dbInterfaces;
 
-namespace Library_Domain.dbInterfaces
+namespace Library_Domain
 {
     public interface IUnitOfWork: IDisposable
     {

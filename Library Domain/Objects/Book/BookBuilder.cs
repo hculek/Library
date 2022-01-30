@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Library_Domain.Book
+namespace Library_Domain.Objects.Book
 {
     public class BookBuilder : IBook
     {
@@ -11,9 +11,9 @@ namespace Library_Domain.Book
             this.Reset();
         }
 
-        public void Author(ICollection<Author.Author> Authors)
+        public void Author(ICollection<Library_Domain.Objects.Author.Author> Authors)
         {
-            this.book.Authors = Authors;
+            //this.book.Authors = Authors;
         }
 
         public void BookID(long BookID)
@@ -21,9 +21,9 @@ namespace Library_Domain.Book
             this.book.BookID = BookID;
         }
 
-        public void Genre(ICollection<Genre.Genre> Genres)
+        public void Genre(ICollection<Library_Domain.Objects.Genre.Genre> Genres)
         {
-            this.book.Genres = Genres;
+            //this.book.Genres = Genres;
         }
 
         public void Reset() 

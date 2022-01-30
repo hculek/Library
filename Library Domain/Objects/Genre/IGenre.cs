@@ -1,4 +1,4 @@
-﻿namespace Library_Domain.Genre
+﻿namespace Library_Domain.Objects.Genre
 {
     public interface IGenre
     {

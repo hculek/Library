@@ -1,6 +1,7 @@
-﻿namespace Library_Domain.dbInterfaces
+﻿using Library_Domain.Objects.Book;
+namespace Library_Domain.dbInterfaces
 {
-    public interface IBookRepository : IGenericRepository<Book.Book>
+    public interface IBookRepository : IGenericRepository<Book>
     {
         //implemented IGenericRepository functions
         //adding more functions ie:

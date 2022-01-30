@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Library_Domain.Book
+namespace Library_Domain.Objects.Book
 {
     public class Book
     {
@@ -8,7 +8,7 @@ namespace Library_Domain.Book
         public string Title { get; set; }
         public int TotalPages { get; set; }
 
-        public ICollection<Library_Domain.Author.Author> Authors { get; set; }
-        public ICollection<Library_Domain.Genre.Genre> Genres { get; set; }
+        //public ICollection<Library_Domain.Author.Author> Authors { get; set; }
+        //public ICollection<Library_Domain.Genre.Genre> Genres { get; set; }
     }
 }

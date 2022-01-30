@@ -1,4 +1,4 @@
-﻿namespace Library_Domain.LibraryMember
+﻿namespace Library_Domain.Objects.LibraryMember
 {
     class LibraryMemberBuilder : ILibraryMember
     {

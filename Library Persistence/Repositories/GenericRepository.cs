@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Library_Domain;
 using Library_Domain.dbInterfaces;
 
 namespace Library_Persistence
