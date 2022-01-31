@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Library_Domain;
+using System.Data;
 using Library_Domain.dbInterfaces;
 
 namespace Library_Persistence
@@ -21,9 +21,17 @@ namespace Library_Persistence
             {
                 _context.Set<T>().Add(entity);
             }
-            catch (Exception ex)
+            catch (DBConcurrencyException)
             {
-                throw ex;
+
+                //https://stackoverflow.com/questions/29994402/is-there-a-way-to-throw-custom-exception-without-exception-class
+
+                throw new DBConcurrencyException("Database connection error. If problem persists please contact IT support.");
+            }
+
+            catch (Exception)
+            {
+                throw new Exception("Database connection error. If problem persists please contact IT support.");
             }
 
         }
