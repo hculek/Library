@@ -48,13 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Objects\Book\Book.cs" />
-    <Compile Include="Objects\Genre\GenreBuilder.cs" />
-    <Compile Include="Objects\Book\BookBuilder.cs" />
     <Compile Include="Objects\Author\IAuthor.cs" />
     <Compile Include="Objects\Book\IBook.cs" />
     <Compile Include="Objects\Author\Author.cs" />
     <Compile Include="Objects\Genre\Genre.cs" />
-    <Compile Include="Objects\Author\AuthorBuilder.cs" />
     <Compile Include="Objects\Genre\IGenre.cs" />
     <Compile Include="IRepositories\IGenreRepository.cs" />
     <Compile Include="IRepositories\IAuthorRepository.cs" />
