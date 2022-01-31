@@ -12,13 +12,19 @@ namespace Library_Persistence
 
         public ApplicationContext() : base("name=LibraryDBConnection")
         {
-            //
-            //this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<LibraryMember> LibraryMembers { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // PostgreSQL uses the public schema by default - not dbo.
+            modelBuilder.HasDefaultSchema("public");
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

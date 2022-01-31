@@ -64,19 +64,32 @@ namespace Library_Presentation
         {
             try
             {
-                using (var uow = UnitOfWorkFactory.Create())
+                //using (var uow = UnitOfWorkFactory.Create())
+                //{
+                //    _genre.GenreName(textBox1.Text.ToString());
+                //    var genre = _genre.Build();
+                //    uow.Genres.Add(genre);
+                //}
+
+                var context = new Library_Persistence.ApplicationContext();
+                using (var uow = new UnitOfWork(context))
                 {
-                    _genre.GenreName(textBox1.Text.ToString());
-                    var genre = _genre.Build();
-                    uow.Genres.Add(_genre.Build());
+                    //_genre.GenreName(textBox2.Text.ToString());
+                    //_genre.GenreName("computers");
+                    //var genre = _genre.Build();
+                    var genre = new Genre
+                    {
+                        GenreName = textBox2.Text.ToString()
+                    };
+                    uow.Genres.Add(genre);
+                    uow.Genres.Save();
+                    LoadGenres();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
-
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
