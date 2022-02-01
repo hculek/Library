@@ -18,6 +18,7 @@ namespace Library_Presentation
     {
         private GenreBuilder _genre = new GenreBuilder();
         private GenreBuilder _genreSelected = new GenreBuilder();
+        List<Genre> _listGenres;
 
 
         public GenreMenu()
@@ -34,9 +35,9 @@ namespace Library_Presentation
                 var context = new Library_Persistence.ApplicationContext();
                 using (var uow = new UnitOfWork(context))
                 {
-                    var genres = uow.Genres.GetAll();
+                    _listGenres = uow.Genres.GetAll().ToList();
+                    listBox1.DataSource = _listGenres;
                     //if (!(genres == null)) listBox1.DataSource = genres;
-                    //listBox1.DataSource = genres;
                     //listBox1.DataSource = uow.Genres.GetAll();
                 }
 
@@ -60,6 +61,15 @@ namespace Library_Presentation
             UpdateButton.Enabled = false;
         }
 
+        void Clear() 
+        {
+            listBox1.ClearSelected();
+            textBox1.Clear();
+            textBox2.Clear();
+            _genre.Reset();
+            _genreSelected.Reset();
+        }
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             try
@@ -74,15 +84,39 @@ namespace Library_Presentation
                 var context = new Library_Persistence.ApplicationContext();
                 using (var uow = new UnitOfWork(context))
                 {
-                    //_genre.GenreName(textBox2.Text.ToString());
-                    //_genre.GenreName("computers");
-                    //var genre = _genre.Build();
-                    var genre = new Genre
-                    {
-                        GenreName = textBox2.Text.ToString()
-                    };
+                    _genre.GenreName(textBox2.Text.ToString());
+                    var genre = _genre.Build();
+                    //var genre = new Genre
+                    //{
+                    //    GenreName = textBox2.Text.ToString()
+                    //};
                     uow.Genres.Add(genre);
-                    uow.Genres.Save();
+                    uow.Save();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            Clear();
+            LoadGenres();
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var context = new Library_Persistence.ApplicationContext();
+                using (var uow = new UnitOfWork(context))
+                {
+                    _genre.GenreName(textBox2.Text.ToString());
+                    var genre = _genre.Build();
+                    //var genre = new Genre
+                    //{
+                    //    GenreName = textBox2.Text.ToString()
+                    //};
+                    uow.Genres.Update(genre);
+                    uow.Save();
                     LoadGenres();
                 }
             }
@@ -90,27 +124,40 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void UpdateButton_Click(object sender, EventArgs e)
-        {
-            _genreSelected.GenreName(textBox2.Text.ToString());
-            _genreSelected.Build();
             DisableButtons();
+            Clear();
+            LoadGenres();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var context = new Library_Persistence.ApplicationContext();
+                using (var uow = new UnitOfWork(context))
+                {
+                    _genre.GenreName(textBox2.Text.ToString());
+                    var genre = _genre.Build();
+                    //var genre = new Genre
+                    //{
+                    //    GenreName = textBox2.Text.ToString()
+                    //};
+                    uow.Genres.Remove(genre);
+                    uow.Save();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             DisableButtons();
+            Clear();
+            LoadGenres();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            listBox1.ClearSelected();
-            textBox1.Clear();
-            textBox2.Clear();
-            _genre.Reset();
-            _genreSelected.Reset();
+            Clear();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -119,6 +166,41 @@ namespace Library_Presentation
             _genreSelected.GenreName(listBox1.SelectedValue.ToString());
             textBox2.Text = listBox1.SelectedValue.ToString();
             EnableButtons();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //var current = textBox1.Text;
+            //foreach (ListItem item in listBox1.Items)
+            //{
+            //    //if (item.text.ToLower().Contains(current.ToLower()))
+            //    //    item.Selected = true;
+            //    //if (item.ToString().ToLower().Contains(current.ToLower()))
+            //    //    item.Selected = true;
+
+            //}
+
+            //int index = listBox1.FindString(textBox1.Text, -1);
+            //if (index != -1)
+            //{
+            //    listBox1.SetSelected(index, true);
+            //}
+
+            if (!String.IsNullOrEmpty(textBox1.Text.ToString()))
+            {
+                var current = textBox1.Text;
+                foreach (var item in _listGenres)
+                {
+                    if (item.GenreName.ToLower().Contains(current.ToLower()))
+                    {
+                        listBox1.Items.Add(item);
+                    };
+                }
+            }
+            else
+            {
+                Clear();
+            }
         }
     }
 }
