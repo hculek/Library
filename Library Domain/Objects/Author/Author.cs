@@ -1,10 +1,15 @@
-﻿namespace Library_Domain.Objects.Author
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Library_Domain.Objects.Author
 {
+    [Table("authors")]
     public class Author
     {
-        public long AuthorID { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
+        [Key]
+        public long authorid { get; set; }
+        public string firstname { get; set; }
+        public string middlename { get; set; }
+        public string lastname { get; set; }
     }
 }

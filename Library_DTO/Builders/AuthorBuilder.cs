@@ -12,22 +12,22 @@ namespace Library_DTO.Objects.Author
 
         public void AuthorID(long AuthorID)
         {
-            this._author.AuthorID = AuthorID;
+            this._author.authorid = AuthorID;
         }
 
         public void FirstName(string FirstName)
         {
-            this._author.FirstName = FirstName;
+            this._author.firstname = FirstName;
         }
 
         public void LastName(string LastName)
         {
-            this._author.LastName = LastName;
+            this._author.lastname = LastName;
         }
 
         public void MiddleName(string MiddleName)
         {
-            this._author.MiddleName = MiddleName;
+            this._author.middlename = MiddleName;
         }
 
         public void Reset() 

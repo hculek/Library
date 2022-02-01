@@ -36,7 +36,7 @@ namespace Library_Presentation
                 using (var uow = new UnitOfWork(context))
                 {
                     _listGenres = uow.Genres.GetAll().ToList();
-                    listBox1.DataSource = _listGenres;
+                    listBox1.DataSource = _listGenres.ToList();
                     //if (!(genres == null)) listBox1.DataSource = genres;
                     //listBox1.DataSource = uow.Genres.GetAll();
                 }
@@ -63,11 +63,11 @@ namespace Library_Presentation
 
         void Clear() 
         {
+            _genre.Reset();
+            _genreSelected.Reset();
             listBox1.ClearSelected();
             textBox1.Clear();
             textBox2.Clear();
-            _genre.Reset();
-            _genreSelected.Reset();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -104,6 +104,7 @@ namespace Library_Presentation
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
+            listBox1.ClearSelected();
             try
             {
                 var context = new Library_Persistence.ApplicationContext();
@@ -117,7 +118,6 @@ namespace Library_Presentation
                     //};
                     uow.Genres.Update(genre);
                     uow.Save();
-                    LoadGenres();
                 }
             }
             catch (Exception ex)
@@ -131,6 +131,7 @@ namespace Library_Presentation
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 var context = new Library_Persistence.ApplicationContext();
@@ -162,10 +163,15 @@ namespace Library_Presentation
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _genreSelected.GenreID(listBox1.SelectedIndex);
-            _genreSelected.GenreName(listBox1.SelectedValue.ToString());
-            textBox2.Text = listBox1.SelectedValue.ToString();
-            EnableButtons();
+            if ((!(_listGenres.Count == 0))) 
+            {
+                _genreSelected.GenreID(listBox1.SelectedIndex);
+                _genreSelected.GenreName(listBox1.SelectedValue.ToString());
+                textBox2.Text = listBox1.SelectedValue.ToString();
+                EnableButtons();
+            }
+            listBox1.ClearSelected();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -192,7 +198,7 @@ namespace Library_Presentation
                 var current = textBox1.Text;
                 foreach (var item in _listGenres)
                 {
-                    if (item.GenreName.ToLower().Contains(current.ToLower()))
+                    if (item.genrename.ToLower().Contains(current.ToLower()))
                     {
                         listBox1.Items.Add(item);
                     };

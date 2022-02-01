@@ -19,7 +19,7 @@ namespace Library_DTO.Objects.Book
 
         public void BookID(long BookID)
         {
-            this._book.BookID = BookID;
+            this._book.bookid = BookID;
         }
 
         public void Genre(ICollection<Library_Domain.Objects.Genre.Genre> Genres)
@@ -34,12 +34,12 @@ namespace Library_DTO.Objects.Book
 
         public void Title(string Title)
         {
-            this._book.Title = Title;
+            this._book.title = Title;
         }
 
         public void TotalPages(int TotalPages)
         {
-            this._book.TotalPages = TotalPages;
+            this._book.totalpages = TotalPages;
         }
 
         public Library_Domain.Objects.Book.Book Build()

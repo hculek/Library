@@ -12,12 +12,12 @@ namespace Library_DTO.Objects.Genre
 
         public void GenreID(long GenreID)
         {
-            this._genre.GenreID = GenreID;
+            this._genre.genreid = GenreID;
         }
 
         public void GenreName(string GenreName)
         {
-            this._genre.GenreName = GenreName;
+            this._genre.genrename = GenreName;
         }
 
         public void Reset()
