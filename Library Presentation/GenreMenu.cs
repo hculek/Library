@@ -18,7 +18,7 @@ namespace Library_Presentation
     {
         private GenreBuilder _genre = new GenreBuilder();
         private GenreBuilder _genreSelected = new GenreBuilder();
-        List<Genre> _listGenres;
+        private List<Genre> _listGenres = new List<Genre>();
 
 
         public GenreMenu()
@@ -186,6 +186,7 @@ namespace Library_Presentation
             //    listBox1.SetSelected(index, true);
             //}
 
+            if (!(_listGenres.Count == 0))
             if (!String.IsNullOrEmpty(textBox1.Text.ToString()))
             {
                 var current = textBox1.Text;
