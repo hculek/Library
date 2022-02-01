@@ -11,32 +11,32 @@
 
         public void Adress(string Adress)
         {
-            this.member.Adress = Adress;
+            this.member.adress = Adress;
         }
 
         public void Email(string Email)
         {
-            this.member.Email = Email;
+            this.member.email = Email;
         }
 
         public void FirstName(string FirstName)
         {
-            this.member.FirstName = FirstName;
+            this.member.firstname = FirstName;
         }
 
         public void LastName(string LastName)
         {
-            this.member.LastName = LastName;
+            this.member.lastname = LastName;
         }
 
         public void LibraryMemberID(long LibraryMemberID)
         {
-            this.member.LibraryMemberID = LibraryMemberID;
+            this.member.librarymemberid = LibraryMemberID;
         }
 
         public void MiddleName(string MiddleName)
         {
-            this.member.MiddleName = MiddleName;
+            this.member.middlename = MiddleName;
         }
 
         public void Reset()
@@ -46,7 +46,7 @@
 
         public void Telephone(string Telephone)
         {
-            this.member.Telephone = Telephone;
+            this.member.telephone = Telephone;
         }
     }
 }

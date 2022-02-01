@@ -1,18 +1,22 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library_Domain.Objects.LibraryMember
 {
+    [Table("librarymembers")]
     public class LibraryMember
     {
-        public long LibraryMemberID { get; set; }
-        public string FirstName {get; set;}
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public string Adress { get; set; }
-        public string Email { get; set; }
-        public string Telephone { get; set; }
+        [Key]
+        public long librarymemberid { get; set; }
+        public string firstname {get; set;}
+        public string middlename { get; set; }
+        public string lastname { get; set; }
+        public string adress { get; set; }
+        public string email { get; set; }
+        public string telephone { get; set; }
 
-        public DateTime MembershipStartDate { get; set; }
+        public DateTime membershipstartdate { get; set; }
 
     }
 }

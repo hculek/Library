@@ -15,10 +15,10 @@ namespace Library_Persistence
             this.Configuration.LazyLoadingEnabled = false;
         }
 
-        public virtual DbSet<Book> Books { get; set; }
-        public virtual DbSet<Author> Authors { get; set; }
-        public virtual DbSet<Genre> Genres { get; set; }
-        public virtual DbSet<LibraryMember> LibraryMembers { get; set; }
+        public virtual DbSet<Book> books { get; set; }
+        public virtual DbSet<Author> authors { get; set; }
+        public virtual DbSet<Genre> genres { get; set; }
+        public virtual DbSet<LibraryMember> librarymembers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
