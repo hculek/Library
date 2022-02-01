@@ -163,14 +163,15 @@ namespace Library_Presentation
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((!(_listGenres.Count == 0))) 
+            if (listBox1.SelectedItem == null)
             {
-                _genreSelected.GenreID(listBox1.SelectedIndex);
-                _genreSelected.GenreName(listBox1.SelectedValue.ToString());
-                textBox2.Text = listBox1.SelectedValue.ToString();
-                EnableButtons();
+                listBox1.ClearSelected();
+
             }
-            listBox1.ClearSelected();
+            _genreSelected.GenreID(listBox1.SelectedIndex);
+            _genreSelected.GenreName(listBox1.SelectedValue.ToString());
+            textBox2.Text = listBox1.SelectedValue.ToString();
+            EnableButtons();
 
         }
 
