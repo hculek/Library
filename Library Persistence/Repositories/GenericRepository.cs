@@ -80,7 +80,8 @@ namespace Library_Persistence
         {
             try
             {
-                _context.Set<T>().Remove(entity);
+                //_context.Set<T>().Remove(entity);
+                _context.Entry(entity).State = System.Data.Entity.EntityState.Deleted;
             }
             catch (Exception)
             {
