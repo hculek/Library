@@ -1,5 +1,5 @@
 ﻿using Library_Domain.Objects.Genre;
-namespace Library_DTO.Objects.Genre
+namespace Library_DTO.Builders
 {
     public class GenreBuilder : IGenre
     {

@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxMiddleName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxLastName = new System.Windows.Forms.TextBox();
             this.AddButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.SearchTextBox = new System.Windows.Forms.TextBox();
+            this.TextBoxSearch = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxFirstName
             // 
-            this.textBox1.Location = new System.Drawing.Point(22, 92);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxFirstName.Location = new System.Drawing.Point(22, 92);
+            this.textBoxFirstName.Name = "textBoxFirstName";
+            this.textBoxFirstName.Size = new System.Drawing.Size(120, 20);
+            this.textBoxFirstName.TabIndex = 1;
             // 
             // label1
             // 
@@ -79,12 +79,12 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Middle Name:";
             // 
-            // textBox2
+            // textBoxMiddleName
             // 
-            this.textBox2.Location = new System.Drawing.Point(162, 92);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(120, 20);
-            this.textBox2.TabIndex = 4;
+            this.textBoxMiddleName.Location = new System.Drawing.Point(162, 92);
+            this.textBoxMiddleName.Name = "textBoxMiddleName";
+            this.textBoxMiddleName.Size = new System.Drawing.Size(120, 20);
+            this.textBoxMiddleName.TabIndex = 4;
             // 
             // label4
             // 
@@ -95,12 +95,12 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Last Name:";
             // 
-            // textBox3
+            // textBoxLastName
             // 
-            this.textBox3.Location = new System.Drawing.Point(302, 92);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(120, 20);
-            this.textBox3.TabIndex = 6;
+            this.textBoxLastName.Location = new System.Drawing.Point(302, 92);
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(120, 20);
+            this.textBoxLastName.TabIndex = 6;
             // 
             // AddButton
             // 
@@ -120,6 +120,7 @@
             this.UpdateButton.TabIndex = 9;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // DeleteButton
             // 
@@ -129,6 +130,7 @@
             this.DeleteButton.TabIndex = 10;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // ClearButton
             // 
@@ -138,6 +140,7 @@
             this.ClearButton.TabIndex = 11;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // label5
             // 
@@ -148,12 +151,13 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Search:";
             // 
-            // SearchTextBox
+            // TextBoxSearch
             // 
-            this.SearchTextBox.Location = new System.Drawing.Point(408, 22);
-            this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(120, 20);
-            this.SearchTextBox.TabIndex = 12;
+            this.TextBoxSearch.Location = new System.Drawing.Point(408, 22);
+            this.TextBoxSearch.Name = "TextBoxSearch";
+            this.TextBoxSearch.Size = new System.Drawing.Size(120, 20);
+            this.TextBoxSearch.TabIndex = 12;
+            this.TextBoxSearch.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
             // 
             // dataGridView1
             // 
@@ -162,6 +166,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(850, 420);
             this.dataGridView1.TabIndex = 15;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // AuthorMenu
             // 
@@ -169,18 +174,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.SearchTextBox);
+            this.Controls.Add(this.TextBoxSearch);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBoxLastName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxMiddleName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxFirstName);
             this.Name = "AuthorMenu";
             this.Size = new System.Drawing.Size(900, 900);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -190,19 +195,19 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxMiddleName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxLastName;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox SearchTextBox;
+        private System.Windows.Forms.TextBox TextBoxSearch;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

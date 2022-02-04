@@ -1,5 +1,5 @@
 ﻿using Library_Domain.Objects.Author;
-namespace Library_DTO.Objects.Author
+namespace Library_DTO.Builders
 {
     public class AuthorBuilder : IAuthor
     {

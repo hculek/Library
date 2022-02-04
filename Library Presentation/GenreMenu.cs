@@ -1,5 +1,5 @@
 ﻿using Library_Domain.Objects.Genre;
-using Library_DTO.Objects.Genre;
+using Library_DTO.Builders;
 using Library_Persistence.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -79,10 +79,6 @@ namespace Library_Presentation
                 {
                     _genre.GenreName(textBox2.Text.ToString());
                     var genre = _genre.Build();
-                    //var genre = new Genre
-                    //{
-                    //    GenreName = textBox2.Text.ToString()
-                    //};
                     uow.Genres.Add(genre);
                     uow.Save();
                 }
@@ -102,12 +98,8 @@ namespace Library_Presentation
                 var context = new Library_Persistence.ApplicationContext();
                 using (var uow = new UnitOfWork(context))
                 {
-                    _genre.GenreName(textBox2.Text.ToString());
-                    var genre = _genre.Build();
-                    //var genre = new Genre
-                    //{
-                    //    GenreName = textBox2.Text.ToString()
-                    //};
+                    _genreSelected.GenreName(textBox2.Text.ToString());
+                    var genre = _genreSelected.Build();
                     uow.Genres.Update(genre);
                     uow.Save();
                 }
@@ -129,12 +121,8 @@ namespace Library_Presentation
                 var context = new Library_Persistence.ApplicationContext();
                 using (var uow = new UnitOfWork(context))
                 {
-                    _genre.GenreName(textBox2.Text.ToString());
-                    var genre = _genre.Build();
-                    //var genre = new Genre
-                    //{
-                    //    GenreName = textBox2.Text.ToString()
-                    //};
+                    _genreSelected.GenreName(textBox2.Text.ToString());
+                    var genre = _genreSelected.Build();
                     uow.Genres.Remove(genre);
                     uow.Save();
                 }
@@ -151,6 +139,7 @@ namespace Library_Presentation
         private void ClearButton_Click(object sender, EventArgs e)
         {
             Clear();
+            LoadGenres();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
