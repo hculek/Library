@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Library_Domain.Objects.Genre;
-using Library_DTO;
+﻿using Library_Domain.Objects.Genre;
 using Library_DTO.Objects.Genre;
 using Library_Persistence.UnitOfWork;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Library_Presentation
 {
@@ -36,9 +31,7 @@ namespace Library_Presentation
                 using (var uow = new UnitOfWork(context))
                 {
                     _listGenres = uow.Genres.GetAll().ToList();
-                    listBox1.DataSource = _listGenres.ToList();
-                    //if (!(genres == null)) listBox1.DataSource = genres;
-                    //listBox1.DataSource = uow.Genres.GetAll();
+                    dataGridView1.DataSource = _listGenres;
                 }
 
             }
@@ -65,7 +58,7 @@ namespace Library_Presentation
         {
             _genre.Reset();
             _genreSelected.Reset();
-            listBox1.ClearSelected();
+            dataGridView1.ClearSelection();
             textBox1.Clear();
             textBox2.Clear();
         }
@@ -104,7 +97,6 @@ namespace Library_Presentation
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            listBox1.ClearSelected();
             try
             {
                 var context = new Library_Persistence.ApplicationContext();
@@ -161,53 +153,32 @@ namespace Library_Presentation
             Clear();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedItem == null)
-            {
-                listBox1.ClearSelected();
-
-            }
-            _genreSelected.GenreID(listBox1.SelectedIndex);
-            _genreSelected.GenreName(listBox1.SelectedValue.ToString());
-            textBox2.Text = listBox1.SelectedValue.ToString();
-            EnableButtons();
-
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            //var current = textBox1.Text;
-            //foreach (ListItem item in listBox1.Items)
-            //{
-            //    //if (item.text.ToLower().Contains(current.ToLower()))
-            //    //    item.Selected = true;
-            //    //if (item.ToString().ToLower().Contains(current.ToLower()))
-            //    //    item.Selected = true;
-
-            //}
-
-            //int index = listBox1.FindString(textBox1.Text, -1);
-            //if (index != -1)
-            //{
-            //    listBox1.SetSelected(index, true);
-            //}
-
-            if (!(_listGenres.Count == 0))
             if (!String.IsNullOrEmpty(textBox1.Text.ToString()))
             {
-                var current = textBox1.Text;
-                foreach (var item in _listGenres)
-                {
-                    if (item.genrename.ToLower().Contains(current.ToLower()))
-                    {
-                        listBox1.Items.Add(item);
-                    };
-                }
+                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("LIKE %'{1}'", textBox1.Text);
+
+                // (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%' OR ID LIKE '%{0}%'", searchTextBox.Text);
             }
             else
             {
                 Clear();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.SelectedRows == null)
+            {
+                dataGridView1.ClearSelection();
+            }
+            else
+            {
+                _genreSelected.GenreID(long.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                _genreSelected.GenreName(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+                textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                EnableButtons();
             }
         }
     }
