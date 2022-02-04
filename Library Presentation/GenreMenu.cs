@@ -12,7 +12,6 @@ namespace Library_Presentation
     public partial class GenreMenu : UserControl
     {
         private GenreBuilder _genre = new GenreBuilder();
-        private GenreBuilder _genreSelected = new GenreBuilder();
         private List<Genre> _listGenres = new List<Genre>();
 
 
@@ -32,6 +31,7 @@ namespace Library_Presentation
                 {
                     _listGenres = uow.Genres.GetAll().ToList();
                     dataGridView1.DataSource = _listGenres;
+                    dataGridView1.Columns["genreid"].Visible = false;
                 }
 
             }
@@ -57,10 +57,9 @@ namespace Library_Presentation
         void Clear() 
         {
             _genre.Reset();
-            _genreSelected.Reset();
             dataGridView1.ClearSelection();
-            textBox1.Clear();
-            textBox2.Clear();
+            textBoxSearch.Clear();
+            textBoxGenreLabel.Clear();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -77,7 +76,7 @@ namespace Library_Presentation
                 var context = new Library_Persistence.ApplicationContext();
                 using (var uow = new UnitOfWork(context))
                 {
-                    _genre.GenreName(textBox2.Text.ToString());
+                    _genre.GenreName(textBoxGenreLabel.Text.ToString());
                     var genre = _genre.Build();
                     uow.Genres.Add(genre);
                     uow.Save();
@@ -98,8 +97,8 @@ namespace Library_Presentation
                 var context = new Library_Persistence.ApplicationContext();
                 using (var uow = new UnitOfWork(context))
                 {
-                    _genreSelected.GenreName(textBox2.Text.ToString());
-                    var genre = _genreSelected.Build();
+                    _genre.GenreName(textBoxGenreLabel.Text.ToString());
+                    var genre = _genre.Build();
                     uow.Genres.Update(genre);
                     uow.Save();
                 }
@@ -121,8 +120,7 @@ namespace Library_Presentation
                 var context = new Library_Persistence.ApplicationContext();
                 using (var uow = new UnitOfWork(context))
                 {
-                    _genreSelected.GenreName(textBox2.Text.ToString());
-                    var genre = _genreSelected.Build();
+                    var genre = _genre.Build();
                     uow.Genres.Remove(genre);
                     uow.Save();
                 }
@@ -144,9 +142,9 @@ namespace Library_Presentation
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(textBox1.Text.ToString()))
+            if (!String.IsNullOrEmpty(textBoxSearch.Text.ToString()))
             {
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("LIKE %'{1}'", textBox1.Text);
+                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("LIKE %'{1}'", textBoxSearch.Text);
 
                 // (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%' OR ID LIKE '%{0}%'", searchTextBox.Text);
             }
@@ -158,15 +156,24 @@ namespace Library_Presentation
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //_genre.GenreID(long.Parse(dataGridView1.Rows[e.RowIndex].Cells["genreid"].Value.ToString()));
+            //_genre.GenreName(dataGridView1.Rows[e.RowIndex].Cells["genrename"].Value.ToString());
+            //textBoxGenreLabel.Text = dataGridView1.Rows[e.RowIndex].Cells["genrename"].Value.ToString();
+            //EnableButtons();
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
             if (dataGridView1.SelectedRows == null)
             {
                 dataGridView1.ClearSelection();
             }
             else
             {
-                _genreSelected.GenreID(long.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
-                _genreSelected.GenreName(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
-                textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                int a = dataGridView1.CurrentCell.RowIndex;
+                _genre.GenreID(long.Parse(dataGridView1.Rows[a].Cells["genreid"].Value.ToString()));
+                _genre.GenreName(dataGridView1.Rows[a].Cells["genrename"].Value.ToString());
+                textBoxGenreLabel.Text = dataGridView1.Rows[a].Cells["genrename"].Value.ToString();
                 EnableButtons();
             }
         }
