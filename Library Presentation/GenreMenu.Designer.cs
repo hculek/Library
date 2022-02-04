@@ -113,7 +113,7 @@
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(120, 20);
             this.textBoxSearch.TabIndex = 8;
-            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // label3
             // 

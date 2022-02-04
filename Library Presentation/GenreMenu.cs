@@ -140,17 +140,18 @@ namespace Library_Presentation
             LoadGenres();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
+            var _searchedList = _listGenres.Select(item => item);
             if (!String.IsNullOrEmpty(textBoxSearch.Text.ToString()))
             {
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("LIKE %'{1}'", textBoxSearch.Text);
-
-                // (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%' OR ID LIKE '%{0}%'", searchTextBox.Text);
+                _searchedList = _searchedList.Where(item => item.genrename.Contains(textBoxSearch.Text.ToString()));
+                dataGridView1.DataSource = _searchedList.ToList();
             }
             else
             {
                 Clear();
+                LoadGenres();
             }
         }
 
