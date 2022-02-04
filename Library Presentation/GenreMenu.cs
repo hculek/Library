@@ -1,5 +1,6 @@
 ﻿using Library_Domain.Objects.Genre;
 using Library_DTO.Builders;
+using Library_DTO.UOW;
 using Library_Persistence.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -26,8 +27,7 @@ namespace Library_Presentation
         {
             try
             {
-                var context = new Library_Persistence.ApplicationContext();
-                using (var uow = new UnitOfWork(context))
+                using (var uow = UnitOfWorkFactory.Create())
                 {
                     _listGenres = uow.Genres.GetAll().ToList();
                     dataGridView1.DataSource = _listGenres;
@@ -66,15 +66,9 @@ namespace Library_Presentation
         {
             try
             {
-                //using (var uow = UnitOfWorkFactory.Create())
-                //{
-                //    _genre.GenreName(textBox1.Text.ToString());
-                //    var genre = _genre.Build();
-                //    uow.Genres.Add(genre);
-                //}
-
-                var context = new Library_Persistence.ApplicationContext();
-                using (var uow = new UnitOfWork(context))
+                //var context = new Library_Persistence.ApplicationContext();
+                //using (var uow = new UnitOfWork(context))
+                using (var uow = UnitOfWorkFactory.Create())
                 {
                     _genre.GenreName(textBoxGenreLabel.Text.ToString());
                     var genre = _genre.Build();
@@ -94,8 +88,7 @@ namespace Library_Presentation
         {
             try
             {
-                var context = new Library_Persistence.ApplicationContext();
-                using (var uow = new UnitOfWork(context))
+                using (var uow = UnitOfWorkFactory.Create())
                 {
                     _genre.GenreName(textBoxGenreLabel.Text.ToString());
                     var genre = _genre.Build();
@@ -117,8 +110,7 @@ namespace Library_Presentation
             
             try
             {
-                var context = new Library_Persistence.ApplicationContext();
-                using (var uow = new UnitOfWork(context))
+                using (var uow = UnitOfWorkFactory.Create())
                 {
                     var genre = _genre.Build();
                     uow.Genres.Remove(genre);
