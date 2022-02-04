@@ -152,7 +152,7 @@
             // 
             this.SearchTextBox.Location = new System.Drawing.Point(408, 22);
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(203, 20);
+            this.SearchTextBox.Size = new System.Drawing.Size(120, 20);
             this.SearchTextBox.TabIndex = 12;
             // 
             // dataGridView1
