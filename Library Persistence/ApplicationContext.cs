@@ -12,7 +12,7 @@ namespace Library_Persistence
 
         public ApplicationContext() : base("name=LibraryDBConnection")
         {
-            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.LazyLoadingEnabled = true;
         }
 
         public virtual DbSet<Book> books { get; set; }
