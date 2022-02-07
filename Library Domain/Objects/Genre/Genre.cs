@@ -7,7 +7,9 @@ namespace Library_Domain.Objects.Genre
     public class Genre
     {
         [Key]
-        public long genreid { get; set; }
-        public string genrename { get; set; }
+        [Column("genre_id")]
+        public long GenreID { get; set; }
+        [Column("genre_name")]
+        public string GenreName { get; set; }
     }
 }

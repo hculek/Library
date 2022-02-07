@@ -7,9 +7,13 @@ namespace Library_Domain.Objects.Author
     public class Author
     {
         [Key]
-        public long authorid { get; set; }
-        public string firstname { get; set; }
-        public string middlename { get; set; }
-        public string lastname { get; set; }
+        [Column("author_id")]
+        public long AuthorID { get; set; }
+        [Column("first_name")]
+        public string FirstName { get; set; }
+        [Column("middle_name")]
+        public string MiddleName { get; set; }
+        [Column("last_name")]
+        public string LastName { get; set; }
     }
 }
