@@ -31,7 +31,7 @@ namespace Library_Presentation
                 {
                     _listGenres = uow.Genres.GetAll().ToList();
                     dataGridView1.DataSource = _listGenres;
-                    dataGridView1.Columns["genreid"].Visible = false;
+                    dataGridView1.Columns["GenreID"].Visible = false;
                 }
 
             }
@@ -66,8 +66,6 @@ namespace Library_Presentation
         {
             try
             {
-                //var context = new Library_Persistence.ApplicationContext();
-                //using (var uow = new UnitOfWork(context))
                 using (var uow = UnitOfWorkFactory.Create())
                 {
                     _genre.GenreName(textBoxGenreLabel.Text.ToString());
@@ -137,7 +135,7 @@ namespace Library_Presentation
             var _searchedList = _listGenres.Select(item => item);
             if (!String.IsNullOrEmpty(textBoxSearch.Text.ToString()))
             {
-                _searchedList = _searchedList.Where(item => item.genrename.Contains(textBoxSearch.Text.ToString()));
+                _searchedList = _searchedList.Where(item => item.GenreName.Contains(textBoxSearch.Text.ToString()));
                 dataGridView1.DataSource = _searchedList.ToList();
             }
             else
@@ -164,9 +162,9 @@ namespace Library_Presentation
             else
             {
                 int a = dataGridView1.CurrentCell.RowIndex;
-                _genre.GenreID(long.Parse(dataGridView1.Rows[a].Cells["genreid"].Value.ToString()));
-                _genre.GenreName(dataGridView1.Rows[a].Cells["genrename"].Value.ToString());
-                textBoxGenreLabel.Text = dataGridView1.Rows[a].Cells["genrename"].Value.ToString();
+                _genre.GenreID(long.Parse(dataGridView1.Rows[a].Cells["GenreID"].Value.ToString()));
+                _genre.GenreName(dataGridView1.Rows[a].Cells["GenreName"].Value.ToString());
+                textBoxGenreLabel.Text = dataGridView1.Rows[a].Cells["GenreName"].Value.ToString();
                 EnableButtons();
             }
         }
