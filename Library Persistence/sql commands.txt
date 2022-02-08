@@ -1,3 +1,30 @@
 ﻿CREATE TABLE genres (genre_id int NOT NULL SERIAL, genre_name text NOT NULL, PRIMARY KEY (genre_id));
 CREATE TABLE authors (author_id serial NOT NULL, first_name text NOT NULL, PRIMARY KEY (author_id));
 CREATE TABLE authors (book_id serial NOT NULL, book_title text NOT NULL, book_total_pages int NOT NULL, PRIMARY KEY (book_id));
+
+
+CREATE TABLE books_genres
+(
+    book_id int NOT NULL,
+    genre_id int NOT NULL,
+    CONSTRAINT PK_books_genres PRIMARY KEY
+    (
+        book_id,
+        genre_id
+    ),
+    FOREIGN KEY (book_id) REFERENCES books (book_id),
+    FOREIGN KEY (genre_id) REFERENCES genres (genre_id)
+)
+
+CREATE TABLE books_authors
+(
+    book_id int NOT NULL,
+    author_id int NOT NULL,
+    CONSTRAINT PK_books_authors PRIMARY KEY
+    (
+        book_id,
+        author_id
+    ),
+    FOREIGN KEY (book_id) REFERENCES books (book_id),
+    FOREIGN KEY (author_id) REFERENCES authors (author_id)
+)
