@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library_Domain.Objects.Book
 {
-    [Table("books")]
+    [Table("books", Schema = "public")]
     public class Book
     {
         [Key]
@@ -16,7 +16,9 @@ namespace Library_Domain.Objects.Book
         [Column("book_total_pages")]
         public int BookTotalPages { get; set; }
 
-        //public ICollection<Author.Author> Authors { get; set; }
-        //public ICollection<Genre.Genre> Genres { get; set; }
+        [ForeignKey("AuthorID")]
+        public ICollection<Author.Author> Authors { get; set; }
+        [ForeignKey("GenreID")]
+        public ICollection<Genre.Genre> Genres { get; set; }
     }
 }
