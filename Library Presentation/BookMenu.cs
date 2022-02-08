@@ -20,14 +20,31 @@ namespace Library_Presentation
         private List<Genre> _selectedListGenres = new List<Genre>();
         private List<Author> _listAuthors = new List<Author>();
         private List<Author> _selectedListAuthors = new List<Author>();
+        private List<Book> _listBooks = new List<Book>();
 
         public BookMenu()
         {
             InitializeComponent();
             DisableButtons();
-            LoadGenres();
-            LoadAuthors();
+            LoadBooks();
         }
+
+        private void LoadBooks()
+        {
+            try
+            {
+                using (var uow = UnitOfWorkFactory.Create())
+                {
+                    _listBooks = uow.Books.GetAll().OrderBy(a => a.BookTitle).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
 
         void LoadGenres() 
         {
@@ -39,7 +56,7 @@ namespace Library_Presentation
                 }
                 foreach (var genre in _listGenres)
                 {
-                    comboBoxGenres.Items.Add(genre.GenreName);
+                    comboBoxGenresList.Items.Add(genre.GenreName);
                 }
 
             }
@@ -49,7 +66,7 @@ namespace Library_Presentation
             }
         }
 
-        void LoadAuthors()
+        private void LoadAuthors()
         {
             try
             {
@@ -57,9 +74,11 @@ namespace Library_Presentation
                 {
                     _listAuthors = uow.Authors.GetAll().OrderBy(a => a.LastName).ToList();
                 }
-                foreach (var author in _listAuthors)
-                {
-                }
+                dataGridViewAuthorsList.DataSource = _listAuthors;
+                dataGridViewAuthorsList.Columns["AuthorID"].Visible = false;
+                dataGridViewAuthorsList.Columns["FirstName"].HeaderText = "First Name";
+                dataGridViewAuthorsList.Columns["MiddleName"].HeaderText = "Middle Name";
+                dataGridViewAuthorsList.Columns["LastName"].HeaderText = "Last Name";
             }
             catch (Exception ex)
             {
@@ -68,16 +87,43 @@ namespace Library_Presentation
 
         }
 
-        void EnableButtons()
+        private void EnableButtons()
         {
+            AddButton.Enabled = true;
             DeleteButton.Enabled = true;
             UpdateButton.Enabled = true;
+            AddAuthorButton.Enabled = true;
+            RemoveAuthorButton.Enabled = true;
+            AddGenreButton.Enabled = true;
+            RemoveGenreButton.Enabled = true;
         }
 
-        void DisableButtons()
+        private void DisableButtons()
         {
+            AddButton.Enabled = false;
             DeleteButton.Enabled = false;
             UpdateButton.Enabled = false;
+            AddAuthorButton.Enabled = false;
+            RemoveAuthorButton.Enabled = false;
+            AddGenreButton.Enabled = false;
+            RemoveGenreButton.Enabled = false;
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            LoadGenres();
+            LoadAuthors();
+            EnableButtons();
+        }
+
+        private void ClearEditingElements() 
+        {
+            dataGridViewAuthorsList.DataSource = null;
+            comboBoxGenresList.Items.Clear();
+            dataGridViewBookAuthors.DataSource = null;
+            dataGridViewBookGenres.DataSource = null;
+            textBoxBookTitle.Clear();
+            textBoxNumberPages.Clear();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -95,16 +141,23 @@ namespace Library_Presentation
 
         }
 
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            DisableButtons();
+            ClearEditingElements();
+            LoadBooks();
+        }
+
         private void ClearButton_Click(object sender, EventArgs e)
         {
-
+            ClearEditingElements();
+            LoadAuthors();
+            LoadGenres();
         }
 
         private void comboBoxGenres_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _selectedListGenres = _listGenres.Where(g => g.GenreName.Equals(comboBoxGenres.SelectedItem)).ToList();
+            _selectedListGenres = _listGenres.Where(g => g.GenreName.Equals(comboBoxGenresList.SelectedItem)).ToList();
         }
-
-
     }
 }

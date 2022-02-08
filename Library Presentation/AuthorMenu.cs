@@ -63,7 +63,6 @@ namespace Library_Presentation
         void Clear()
         {
             _author.Reset();
-            _author.Reset();
             dataGridView1.ClearSelection();
             textBoxFirstName.Clear();
             textBoxMiddleName.Clear();

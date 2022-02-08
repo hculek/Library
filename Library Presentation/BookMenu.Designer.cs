@@ -30,14 +30,12 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxBookTitle = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxNumberPages = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.listView4 = new System.Windows.Forms.ListView();
             this.label6 = new System.Windows.Forms.Label();
-            this.listView5 = new System.Windows.Forms.ListView();
             this.label7 = new System.Windows.Forms.Label();
             this.AddAuthorButton = new System.Windows.Forms.Button();
             this.AddGenreButton = new System.Windows.Forms.Button();
@@ -50,18 +48,26 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.TextBoxSearchAuthors = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBoxGenres = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.TextBoxSearchGenres = new System.Windows.Forms.TextBox();
+            this.comboBoxGenresList = new System.Windows.Forms.ComboBox();
+            this.dataGridViewAuthorsList = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewBookAuthors = new System.Windows.Forms.DataGridView();
+            this.dataGridViewBookGenres = new System.Windows.Forms.DataGridView();
+            this.EditButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuthorsList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBookAuthors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBookGenres)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 509);
+            this.label1.Location = new System.Drawing.Point(19, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
@@ -70,39 +76,39 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 76);
+            this.label2.Location = new System.Drawing.Point(19, 414);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Book title:";
             // 
-            // textBox1
+            // textBoxBookTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(22, 92);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(237, 20);
-            this.textBox1.TabIndex = 5;
+            this.textBoxBookTitle.Location = new System.Drawing.Point(22, 430);
+            this.textBoxBookTitle.Name = "textBoxBookTitle";
+            this.textBoxBookTitle.Size = new System.Drawing.Size(237, 20);
+            this.textBoxBookTitle.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(272, 76);
+            this.label3.Location = new System.Drawing.Point(272, 414);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Number of pages:";
             // 
-            // textBox2
+            // textBoxNumberPages
             // 
-            this.textBox2.Location = new System.Drawing.Point(275, 92);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(91, 20);
-            this.textBox2.TabIndex = 7;
+            this.textBoxNumberPages.Location = new System.Drawing.Point(275, 430);
+            this.textBoxNumberPages.Name = "textBoxNumberPages";
+            this.textBoxNumberPages.Size = new System.Drawing.Size(91, 20);
+            this.textBoxNumberPages.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 144);
+            this.label4.Location = new System.Drawing.Point(19, 481);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 8;
@@ -111,43 +117,25 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(438, 144);
+            this.label5.Location = new System.Drawing.Point(478, 481);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Genre list:";
             // 
-            // listView4
-            // 
-            this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(441, 265);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(350, 185);
-            this.listView4.TabIndex = 15;
-            this.listView4.UseCompatibleStateImageBehavior = false;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(438, 249);
+            this.label6.Location = new System.Drawing.Point(478, 693);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 13);
             this.label6.TabIndex = 14;
             this.label6.Text = "Book genre:";
             // 
-            // listView5
-            // 
-            this.listView5.HideSelection = false;
-            this.listView5.Location = new System.Drawing.Point(22, 314);
-            this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(350, 185);
-            this.listView5.TabIndex = 13;
-            this.listView5.UseCompatibleStateImageBehavior = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 298);
+            this.label7.Location = new System.Drawing.Point(19, 693);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 13);
             this.label7.TabIndex = 12;
@@ -155,7 +143,7 @@
             // 
             // AddAuthorButton
             // 
-            this.AddAuthorButton.Location = new System.Drawing.Point(22, 244);
+            this.AddAuthorButton.Location = new System.Drawing.Point(22, 646);
             this.AddAuthorButton.Name = "AddAuthorButton";
             this.AddAuthorButton.Size = new System.Drawing.Size(75, 23);
             this.AddAuthorButton.TabIndex = 16;
@@ -164,7 +152,7 @@
             // 
             // AddGenreButton
             // 
-            this.AddGenreButton.Location = new System.Drawing.Point(441, 195);
+            this.AddGenreButton.Location = new System.Drawing.Point(481, 531);
             this.AddGenreButton.Name = "AddGenreButton";
             this.AddGenreButton.Size = new System.Drawing.Size(75, 23);
             this.AddGenreButton.TabIndex = 17;
@@ -173,7 +161,7 @@
             // 
             // RemoveAuthorButton
             // 
-            this.RemoveAuthorButton.Location = new System.Drawing.Point(103, 244);
+            this.RemoveAuthorButton.Location = new System.Drawing.Point(103, 646);
             this.RemoveAuthorButton.Name = "RemoveAuthorButton";
             this.RemoveAuthorButton.Size = new System.Drawing.Size(91, 23);
             this.RemoveAuthorButton.TabIndex = 18;
@@ -182,7 +170,7 @@
             // 
             // RemoveGenreButton
             // 
-            this.RemoveGenreButton.Location = new System.Drawing.Point(522, 195);
+            this.RemoveGenreButton.Location = new System.Drawing.Point(562, 531);
             this.RemoveGenreButton.Name = "RemoveGenreButton";
             this.RemoveGenreButton.Size = new System.Drawing.Size(91, 23);
             this.RemoveGenreButton.TabIndex = 19;
@@ -191,7 +179,7 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(22, 22);
+            this.AddButton.Location = new System.Drawing.Point(103, 359);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 23);
             this.AddButton.TabIndex = 20;
@@ -201,7 +189,7 @@
             // 
             // UpdateButton
             // 
-            this.UpdateButton.Location = new System.Drawing.Point(103, 22);
+            this.UpdateButton.Location = new System.Drawing.Point(184, 359);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(75, 23);
             this.UpdateButton.TabIndex = 21;
@@ -211,7 +199,7 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(184, 22);
+            this.DeleteButton.Location = new System.Drawing.Point(265, 359);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteButton.TabIndex = 22;
@@ -222,7 +210,7 @@
             // ClearButton
             // 
             this.ClearButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ClearButton.Location = new System.Drawing.Point(265, 22);
+            this.ClearButton.Location = new System.Drawing.Point(427, 359);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(75, 23);
             this.ClearButton.TabIndex = 23;
@@ -232,7 +220,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(435, 24);
+            this.textBox3.Location = new System.Drawing.Point(252, 31);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(120, 20);
             this.textBox3.TabIndex = 24;
@@ -240,7 +228,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(358, 27);
+            this.label8.Location = new System.Drawing.Point(175, 34);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(76, 13);
             this.label8.TabIndex = 27;
@@ -249,62 +237,111 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(568, 27);
+            this.label9.Location = new System.Drawing.Point(161, 481);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 13);
             this.label9.TabIndex = 29;
             this.label9.Text = "Search authors:";
             // 
-            // textBox4
+            // TextBoxSearchAuthors
             // 
-            this.textBox4.Location = new System.Drawing.Point(659, 24);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(120, 20);
-            this.textBox4.TabIndex = 28;
+            this.TextBoxSearchAuthors.Location = new System.Drawing.Point(252, 478);
+            this.TextBoxSearchAuthors.Name = "TextBoxSearchAuthors";
+            this.TextBoxSearchAuthors.Size = new System.Drawing.Size(120, 20);
+            this.TextBoxSearchAuthors.TabIndex = 28;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(576, 55);
+            this.label10.Location = new System.Drawing.Point(644, 481);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(74, 13);
             this.label10.TabIndex = 31;
             this.label10.Text = "Search genre:";
             // 
-            // textBox5
+            // TextBoxSearchGenres
             // 
-            this.textBox5.Location = new System.Drawing.Point(659, 52);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(120, 20);
-            this.textBox5.TabIndex = 30;
+            this.TextBoxSearchGenres.Location = new System.Drawing.Point(727, 478);
+            this.TextBoxSearchGenres.Name = "TextBoxSearchGenres";
+            this.TextBoxSearchGenres.Size = new System.Drawing.Size(120, 20);
+            this.TextBoxSearchGenres.TabIndex = 30;
             // 
-            // comboBoxGenres
+            // comboBoxGenresList
             // 
-            this.comboBoxGenres.FormattingEnabled = true;
-            this.comboBoxGenres.Location = new System.Drawing.Point(441, 161);
-            this.comboBoxGenres.Name = "comboBoxGenres";
-            this.comboBoxGenres.Size = new System.Drawing.Size(237, 21);
-            this.comboBoxGenres.TabIndex = 33;
-            this.comboBoxGenres.SelectedIndexChanged += new System.EventHandler(this.comboBoxGenres_SelectedIndexChanged);
+            this.comboBoxGenresList.FormattingEnabled = true;
+            this.comboBoxGenresList.Location = new System.Drawing.Point(481, 504);
+            this.comboBoxGenresList.Name = "comboBoxGenresList";
+            this.comboBoxGenresList.Size = new System.Drawing.Size(237, 21);
+            this.comboBoxGenresList.TabIndex = 33;
+            this.comboBoxGenresList.SelectedIndexChanged += new System.EventHandler(this.comboBoxGenres_SelectedIndexChanged);
             // 
-            // dataGridView1
+            // dataGridViewAuthorsList
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 158);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(350, 80);
-            this.dataGridView1.TabIndex = 34;
+            this.dataGridViewAuthorsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAuthorsList.Location = new System.Drawing.Point(22, 504);
+            this.dataGridViewAuthorsList.Name = "dataGridViewAuthorsList";
+            this.dataGridViewAuthorsList.Size = new System.Drawing.Size(399, 136);
+            this.dataGridViewAuthorsList.TabIndex = 34;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(22, 57);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(350, 255);
+            this.dataGridView2.TabIndex = 35;
+            // 
+            // dataGridViewBookAuthors
+            // 
+            this.dataGridViewBookAuthors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBookAuthors.Location = new System.Drawing.Point(22, 710);
+            this.dataGridViewBookAuthors.Name = "dataGridViewBookAuthors";
+            this.dataGridViewBookAuthors.Size = new System.Drawing.Size(399, 150);
+            this.dataGridViewBookAuthors.TabIndex = 36;
+            // 
+            // dataGridViewBookGenres
+            // 
+            this.dataGridViewBookGenres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBookGenres.Location = new System.Drawing.Point(481, 710);
+            this.dataGridViewBookGenres.Name = "dataGridViewBookGenres";
+            this.dataGridViewBookGenres.Size = new System.Drawing.Size(350, 150);
+            this.dataGridViewBookGenres.TabIndex = 37;
+            // 
+            // EditButton
+            // 
+            this.EditButton.Location = new System.Drawing.Point(22, 359);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(75, 23);
+            this.EditButton.TabIndex = 38;
+            this.EditButton.Text = "Edit";
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(346, 359);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 39;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // BookMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBoxGenres);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.EditButton);
+            this.Controls.Add(this.dataGridViewBookGenres);
+            this.Controls.Add(this.dataGridViewBookAuthors);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridViewAuthorsList);
+            this.Controls.Add(this.comboBoxGenresList);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.TextBoxSearchGenres);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.TextBoxSearchAuthors);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.ClearButton);
@@ -315,20 +352,21 @@
             this.Controls.Add(this.RemoveAuthorButton);
             this.Controls.Add(this.AddGenreButton);
             this.Controls.Add(this.AddAuthorButton);
-            this.Controls.Add(this.listView4);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.listView5);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxNumberPages);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxBookTitle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "BookMenu";
-            this.Size = new System.Drawing.Size(900, 900);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Size = new System.Drawing.Size(902, 900);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuthorsList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBookAuthors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBookGenres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,14 +376,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxBookTitle;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxNumberPages;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ListView listView5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button AddAuthorButton;
         private System.Windows.Forms.Button AddGenreButton;
@@ -358,10 +394,15 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox TextBoxSearchAuthors;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBoxGenres;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox TextBoxSearchGenres;
+        private System.Windows.Forms.ComboBox comboBoxGenresList;
+        private System.Windows.Forms.DataGridView dataGridViewAuthorsList;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewBookAuthors;
+        private System.Windows.Forms.DataGridView dataGridViewBookGenres;
+        private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.Button CancelButton;
     }
 }
