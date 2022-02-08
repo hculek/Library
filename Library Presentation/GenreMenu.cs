@@ -32,6 +32,7 @@ namespace Library_Presentation
                     _listGenres = uow.Genres.GetAll().OrderBy(g => g.GenreName).ToList();
                     dataGridView1.DataSource = _listGenres;
                     dataGridView1.Columns["GenreID"].Visible = false;
+                    dataGridView1.Columns["GenreName"].HeaderText = "Genre Name";
                 }
 
             }

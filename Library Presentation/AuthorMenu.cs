@@ -35,6 +35,10 @@ namespace Library_Presentation
                 {
                     _listAuthors = uow.Authors.GetAll().OrderBy(a => a.LastName).ToList();
                     dataGridView1.DataSource = _listAuthors;
+                    dataGridView1.Columns["AuthorID"].Visible = false;
+                    dataGridView1.Columns["FirstName"].HeaderText = "First Name";
+                    dataGridView1.Columns["MiddleName"].HeaderText = "Middle Name";
+                    dataGridView1.Columns["LastName"].HeaderText = "Last Name";
                 }
             }
             catch (Exception ex)
