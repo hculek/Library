@@ -11,12 +11,12 @@ namespace Library_Domain.Objects.Book
         [Key]
         [Column("book_id")]
         public long BookID { get; set; }
-        [Column("title")]
-        public string Title { get; set; }
-        [Column("total_pages")]
-        public int TotalPages { get; set; }
+        [Column("book_title")]
+        public string BookTitle { get; set; }
+        [Column("book_total_pages")]
+        public int BookTotalPages { get; set; }
 
-        public ICollection<Author.Author> Authors { get; set; }
-        public ICollection<Genre.Genre> Genres { get; set; }
+        //public ICollection<Author.Author> Authors { get; set; }
+        //public ICollection<Genre.Genre> Genres { get; set; }
     }
 }

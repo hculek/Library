@@ -29,7 +29,7 @@ namespace Library_Presentation
             {
                 using (var uow = UnitOfWorkFactory.Create())
                 {
-                    _listGenres = uow.Genres.GetAll().ToList();
+                    _listGenres = uow.Genres.GetAll().OrderBy(g => g.GenreName).ToList();
                     dataGridView1.DataSource = _listGenres;
                     dataGridView1.Columns["GenreID"].Visible = false;
                 }

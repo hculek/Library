@@ -34,12 +34,12 @@ namespace Library_DTO.Builders
 
         public void Title(string Title)
         {
-            this._book.Title = Title;
+            this._book.BookTitle = Title;
         }
 
         public void TotalPages(int TotalPages)
         {
-            this._book.TotalPages = TotalPages;
+            this._book.BookTotalPages = TotalPages;
         }
 
         public Library_Domain.Objects.Book.Book Build()
