@@ -53,8 +53,9 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxGenres = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,7 +111,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(331, 144);
+            this.label5.Location = new System.Drawing.Point(438, 144);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 10;
@@ -119,16 +120,16 @@
             // listView4
             // 
             this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(334, 265);
+            this.listView4.Location = new System.Drawing.Point(441, 265);
             this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(351, 185);
+            this.listView4.Size = new System.Drawing.Size(350, 185);
             this.listView4.TabIndex = 15;
             this.listView4.UseCompatibleStateImageBehavior = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(331, 249);
+            this.label6.Location = new System.Drawing.Point(438, 249);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 13);
             this.label6.TabIndex = 14;
@@ -137,16 +138,16 @@
             // listView5
             // 
             this.listView5.HideSelection = false;
-            this.listView5.Location = new System.Drawing.Point(22, 265);
+            this.listView5.Location = new System.Drawing.Point(22, 314);
             this.listView5.Name = "listView5";
-            this.listView5.Size = new System.Drawing.Size(237, 185);
+            this.listView5.Size = new System.Drawing.Size(350, 185);
             this.listView5.TabIndex = 13;
             this.listView5.UseCompatibleStateImageBehavior = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 249);
+            this.label7.Location = new System.Drawing.Point(19, 298);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 13);
             this.label7.TabIndex = 12;
@@ -154,7 +155,7 @@
             // 
             // AddAuthorButton
             // 
-            this.AddAuthorButton.Location = new System.Drawing.Point(22, 195);
+            this.AddAuthorButton.Location = new System.Drawing.Point(22, 244);
             this.AddAuthorButton.Name = "AddAuthorButton";
             this.AddAuthorButton.Size = new System.Drawing.Size(75, 23);
             this.AddAuthorButton.TabIndex = 16;
@@ -163,7 +164,7 @@
             // 
             // AddGenreButton
             // 
-            this.AddGenreButton.Location = new System.Drawing.Point(435, 195);
+            this.AddGenreButton.Location = new System.Drawing.Point(441, 195);
             this.AddGenreButton.Name = "AddGenreButton";
             this.AddGenreButton.Size = new System.Drawing.Size(75, 23);
             this.AddGenreButton.TabIndex = 17;
@@ -172,7 +173,7 @@
             // 
             // RemoveAuthorButton
             // 
-            this.RemoveAuthorButton.Location = new System.Drawing.Point(103, 195);
+            this.RemoveAuthorButton.Location = new System.Drawing.Point(103, 244);
             this.RemoveAuthorButton.Name = "RemoveAuthorButton";
             this.RemoveAuthorButton.Size = new System.Drawing.Size(91, 23);
             this.RemoveAuthorButton.TabIndex = 18;
@@ -181,7 +182,7 @@
             // 
             // RemoveGenreButton
             // 
-            this.RemoveGenreButton.Location = new System.Drawing.Point(334, 195);
+            this.RemoveGenreButton.Location = new System.Drawing.Point(522, 195);
             this.RemoveGenreButton.Name = "RemoveGenreButton";
             this.RemoveGenreButton.Size = new System.Drawing.Size(91, 23);
             this.RemoveGenreButton.TabIndex = 19;
@@ -196,6 +197,7 @@
             this.AddButton.TabIndex = 20;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // UpdateButton
             // 
@@ -205,6 +207,7 @@
             this.UpdateButton.TabIndex = 21;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // DeleteButton
             // 
@@ -214,6 +217,7 @@
             this.DeleteButton.TabIndex = 22;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // ClearButton
             // 
@@ -224,6 +228,7 @@
             this.ClearButton.TabIndex = 23;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // textBox3
             // 
@@ -273,28 +278,29 @@
             this.textBox5.Size = new System.Drawing.Size(120, 20);
             this.textBox5.TabIndex = 30;
             // 
-            // comboBox1
+            // comboBoxGenres
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(22, 161);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(237, 21);
-            this.comboBox1.TabIndex = 32;
+            this.comboBoxGenres.FormattingEnabled = true;
+            this.comboBoxGenres.Location = new System.Drawing.Point(441, 161);
+            this.comboBoxGenres.Name = "comboBoxGenres";
+            this.comboBoxGenres.Size = new System.Drawing.Size(237, 21);
+            this.comboBoxGenres.TabIndex = 33;
+            this.comboBoxGenres.SelectedIndexChanged += new System.EventHandler(this.comboBoxGenres_SelectedIndexChanged);
             // 
-            // comboBox2
+            // dataGridView1
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(334, 161);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(237, 21);
-            this.comboBox2.TabIndex = 33;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(22, 158);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(350, 80);
+            this.dataGridView1.TabIndex = 34;
             // 
             // BookMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.comboBoxGenres);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label9);
@@ -322,6 +328,7 @@
             this.Controls.Add(this.label1);
             this.Name = "BookMenu";
             this.Size = new System.Drawing.Size(900, 900);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,7 +361,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxGenres;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
