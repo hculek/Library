@@ -61,8 +61,8 @@
     <Compile Include="IRepositories\IGenericRepository.cs" />
     <Compile Include="IRepositories\ILibraryMemberRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Objects\JunctionObj\bookGenre.cs" />
-    <Compile Include="Objects\JunctionObj\bookAuthor.cs" />
+    <Compile Include="Objects\JunctionObj\BookGenre.cs" />
+    <Compile Include="Objects\JunctionObj\BookAuthor.cs" />
     <Compile Include="Objects\JunctionObj\IBookAuthor.cs" />
     <Compile Include="Objects\JunctionObj\IBookGenre.cs" />
     <Compile Include="Objects\LibraryMember\ILibraryMember.cs" />

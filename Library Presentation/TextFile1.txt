@@ -16,3 +16,10 @@ https://www.thereformedprogrammer.net/is-the-repository-pattern-useful-with-enti
 
 https://dotnettutorials.net/lesson/unit-of-work-csharp-mvc/
 https://dotnettutorials.net/lesson/introduction-to-inversion-of-control/
+
+https://www.learnentityframeworkcore.com/configuration/many-to-many-relationship-configuration
+https://stackoverflow.com/questions/646838/entityframework-many-to-many-with-junction-table
+https://softwareengineering.stackexchange.com/questions/375441/repository-pattern-and-joined-queries
+https://entityframework.net/knowledge-base/42733341/how-to-use-joins-with-generic-repository-pattern---entity-framework
+
+https://social.msdn.microsoft.com/Forums/en-US/6c35f667-c656-49e2-a353-afd97419e33f/how-do-i-make-a-repository-which-can-join-multiple-tables?forum=aspmvc

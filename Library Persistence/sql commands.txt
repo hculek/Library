@@ -1,5 +1,16 @@
-﻿CREATE TABLE genres (genre_id int NOT NULL SERIAL, genre_name text NOT NULL, PRIMARY KEY (genre_id));
+﻿CREATE DATABASE library
+    //-> [ [ WITH ] [ OWNER [=] user_name ]
+           [ TEMPLATE [=] template ]
+           [ ENCODING [=] encoding ]
+           [ LC_COLLATE [=] lc_collate ]
+           [ LC_CTYPE [=] lc_ctype ]
+           [ TABLESPACE [=] tablespace ]
+           [ CONNECTION LIMIT [=] connlimit ] ] <-//
+
+CREATE TABLE genres (genre_id int NOT NULL SERIAL, genre_name text NOT NULL, PRIMARY KEY (genre_id));
+
 CREATE TABLE authors (author_id serial NOT NULL, first_name text NOT NULL, PRIMARY KEY (author_id));
+
 CREATE TABLE authors (book_id serial NOT NULL, book_title text NOT NULL, book_total_pages int NOT NULL, PRIMARY KEY (book_id));
 
 

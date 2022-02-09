@@ -15,12 +15,17 @@ namespace Library_Persistence.UnitOfWork
             Books = new BookRepository(_context);
             Genres = new GenreRepository(_context);
             LibraryMembers = new LibraryMemberRepository(_context);
+            BookAuthors = new BookAuthorRepository(_context);
+            BookGenres = new BookGenreRepository(_context);
+
         }
 
         public IAuthorRepository Authors { get; private set; }
         public IBookRepository Books { get; private set; }
         public IGenreRepository Genres { get; private set; }
         public ILibraryMemberRepository LibraryMembers { get; private set; }
+        public IBookAuthorRepository BookAuthors { get; private set; }
+        public IBookGenreRepository BookGenres { get; private set; }
 
         public int Save()
         {
