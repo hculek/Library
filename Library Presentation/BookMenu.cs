@@ -84,6 +84,34 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void LoadBookAuthors() 
+        {
+            try
+            {
+                using (var uow = UnitOfWorkFactory.Create())
+                {
+                    var bookauthors = from a in uow.Authors.GetAll()
+                                      join b in uow.Books.GetAll() on a.AuthorID equals b.BookID
+                                      select a;
+
+                    //var td = from s in cv.Entity_Product_Points
+                    //         join r in dt.PlanMasters on s.Product_ID equals r.Product_ID
+                    //         where s.Entity_ID = getEntity
+                    //         select s;
+
+                }
+                dataGridViewAuthorsList.DataSource = _listAuthors;
+                dataGridViewAuthorsList.Columns["AuthorID"].Visible = false;
+                dataGridViewAuthorsList.Columns["FirstName"].HeaderText = "First Name";
+                dataGridViewAuthorsList.Columns["MiddleName"].HeaderText = "Middle Name";
+                dataGridViewAuthorsList.Columns["LastName"].HeaderText = "Last Name";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
         }
 
