@@ -12,6 +12,7 @@ namespace Library_Domain.Objects.Genre
         [Column("genre_id")]
         public long GenreID { get; set; }
         [Column("genre_name")]
+        [Display(Name = "Genre Name")]
         public string GenreName { get; set; }
 
         //[ForeignKey("GenreID")]

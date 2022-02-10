@@ -28,3 +28,5 @@ https://social.msdn.microsoft.com/Forums/en-US/6c35f667-c656-49e2-a353-afd97419e
 https://www.codeproject.com/Articles/319366/EF-Code-First-Add-a-Foreign-Key-relationship
 https://stackoverflow.com/questions/26559067/the-property-must-be-a-valid-entity-type-and-the-property-should-have-a-non-abst
 https://stackoverflow.com/questions/31618317/extra-field-in-junction-table-with-dataannotations-in-entityframework
+
+https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application

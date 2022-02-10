@@ -13,8 +13,10 @@ namespace Library_Domain.Objects.Book
         [Column("book_id")]
         public long BookID { get; set; }
         [Column("book_title")]
+        [Display(Name = "Book Title")]
         public string BookTitle { get; set; }
         [Column("book_total_pages")]
+        [Display(Name = "Total Pages")]
         public int BookTotalPages { get; set; }
 
         //[ForeignKey("AuthorID")]
