@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Library_Domain.Objects.JunctionObj;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,8 +18,8 @@ namespace Library_Domain.Objects.Book
         public int BookTotalPages { get; set; }
 
         [ForeignKey("AuthorID")]
-        public ICollection<Author.Author> Authors { get; set; }
+        public virtual ICollection<BookAuthor> BookAuthors { get; set; }
         [ForeignKey("GenreID")]
-        public ICollection<Genre.Genre> Genres { get; set; }
+        public virtual ICollection<BookGenre> BookGenres { get; set; }
     }
 }

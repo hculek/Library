@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Library_Domain.Objects.JunctionObj;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library_Domain.Objects.Author
@@ -15,5 +17,8 @@ namespace Library_Domain.Objects.Author
         public string MiddleName { get; set; }
         [Column("last_name")]
         public string LastName { get; set; }
+
+        [ForeignKey("AuthorID")]
+        public virtual ICollection<BookAuthor> BookAuthors { get; set; }
     }
 }
