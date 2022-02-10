@@ -11,15 +11,15 @@ namespace Library_Domain.Objects.JunctionObj
         [Column("book_id")]
         public long BookID { get; set; }
         
-        [ForeignKey("BookID")]
-        public Book.Book book { get; set; }
+        //[ForeignKey("BookID")]
+        public virtual Book.Book book { get; set; }
 
 
         [ForeignKey("Genre")]
         [Column("genre_id")]
         public long GenreID { get; set; }
 
-        [ForeignKey("GenreID")]
-        public Genre.Genre genre { get; set; }
+        //[ForeignKey("GenreID")]
+        public virtual Genre.Genre genre { get; set; }
     }
 }

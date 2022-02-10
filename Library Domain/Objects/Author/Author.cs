@@ -18,7 +18,7 @@ namespace Library_Domain.Objects.Author
         [Column("last_name")]
         public string LastName { get; set; }
 
-        [ForeignKey("AuthorID")]
+        //[ForeignKey("AuthorID")]
         public virtual ICollection<BookAuthor> BookAuthors { get; set; }
     }
 }

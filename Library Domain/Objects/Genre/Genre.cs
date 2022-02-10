@@ -14,7 +14,7 @@ namespace Library_Domain.Objects.Genre
         [Column("genre_name")]
         public string GenreName { get; set; }
 
-        [ForeignKey("GenreID")]
+        //[ForeignKey("GenreID")]
         public virtual ICollection<BookGenre> BookGenres { get; set; }
     }
 }
