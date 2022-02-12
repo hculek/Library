@@ -9,7 +9,6 @@ namespace Library_Persistence
 {
     public class ApplicationContext : DbContext
     {
-
         public ApplicationContext() : base("name=LibraryDBConnection")
         {
             this.Configuration.LazyLoadingEnabled = true;
@@ -31,16 +30,18 @@ namespace Library_Persistence
             modelBuilder.Entity<Book>()
                 .HasMany(b => b.Authors)
                 .WithMany(a => a.Books)
-                .Map(m => m.ToTable("BookAuthor")
-                .MapLeftKey("BookID")
-                .MapRightKey("AuthorID"));
+                .Map(m => m.ToTable("books_authors")
+                //.MapLeftKey("BookID")
+                //.MapRightKey("AuthorID"));
+                .MapLeftKey("book_id")
+                .MapRightKey("author_id"));
 
             modelBuilder.Entity<Book>()
               .HasMany(b => b.Genres)
               .WithMany(g => g.Books)
-              .Map(m => m.ToTable("BookGenre")
-              .MapLeftKey("BookID")
-              .MapRightKey("GenreID"));
+              .Map(m => m.ToTable("books_genres")
+              .MapLeftKey("book_id")
+              .MapRightKey("genre_id"));
         }
     }
 }

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library_Domain.Objects.Genre;
 using Library_Domain.Objects.Author;
@@ -37,10 +33,13 @@ namespace Library_Presentation
         {
             try
             {
-                using (var uow = UnitOfWorkFactory.Create())
-                {
-                    _listBooks = uow.Books.GetAll().OrderBy(a => a.BookTitle).ToList();
-                }
+                var uow = UnitOfWorkFactory.Create();
+                _listBooks = uow.Books.GetAll().OrderBy(a => a.BookTitle).ToList();
+
+                //using (var uow = UnitOfWorkFactory.Create())
+                //{
+                //    _listBooks = uow.Books.GetAll().OrderBy(a => a.BookTitle).ToList();
+                //}
                 dataGridViewBooks.DataSource = _listBooks;
                 dataGridViewBooks.Columns["BookID"].Visible = false;
                 dataGridViewBooks.Columns["BookTitle"].HeaderText = "Book Title";
@@ -63,6 +62,7 @@ namespace Library_Presentation
                 {
                     _listGenres = uow.Genres.GetAll().OrderBy(g => g.GenreName).ToList();
                 }
+
                 dataGridViewGenreList.DataSource = null;
                 dataGridViewGenreList.DataSource = _listGenres;
                 dataGridViewGenreList.Columns["GenreID"].Visible = false;
@@ -134,7 +134,7 @@ namespace Library_Presentation
             RemoveAuthorButton.Enabled = input;
             AddGenreButton.Enabled = input;
             RemoveGenreButton.Enabled = input;
-            ClearButton.Enabled = input;
+            ClearButton.Enabled = input ? false : true;
         }
 
         private void ClearEditingElements()
@@ -222,6 +222,11 @@ namespace Library_Presentation
                 {
                     _selectedListAuthors.Add(selectedAuthor);
                 }
+                else
+                {
+                    MessageBox.Show("Error!" +
+                        "\nAuthor is already added.");
+                }
 
                 LoadSelectedAuthor();
             }
@@ -251,6 +256,11 @@ namespace Library_Presentation
                 if (!_selectedListGenres.Exists(g => g.GenreID == selectedGenre.GenreID))
                 {
                     _selectedListGenres.Add(selectedGenre);
+                }
+                else
+                {
+                    MessageBox.Show("Error!" +
+                        "\nGenre is already added.");
                 }
                 LoadSelectedGenres();
             }

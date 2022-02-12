@@ -18,7 +18,7 @@ namespace Library_Presentation
         public GenreMenu()
         {
             InitializeComponent();
-            DisableButtons();
+            ToggleButtons(false);
             LoadGenres();
         }
 
@@ -33,7 +33,6 @@ namespace Library_Presentation
                     dataGridView1.Columns["GenreID"].Visible = false;
                     dataGridView1.Columns["Books"].Visible = false;
                     dataGridView1.Columns["GenreName"].HeaderText = "Genre Name";
-                    dataGridView1.ClearSelection();
                 }
 
             }
@@ -44,16 +43,12 @@ namespace Library_Presentation
 
         }
 
-        void EnableButtons() 
-        {
-            DeleteButton.Enabled = true;
-            UpdateButton.Enabled = true;
-        }
 
-        void DisableButtons() 
+        void ToggleButtons(bool input) 
         {
-            DeleteButton.Enabled = false;
-            UpdateButton.Enabled = false;
+            DeleteButton.Enabled = input;
+            UpdateButton.Enabled = input;
+            ClearButton.Enabled = input ? false : true;
         }
 
         void Clear() 
@@ -68,13 +63,21 @@ namespace Library_Presentation
         {
             try
             {
-                _genre.GenreName(textBoxGenreLabel.Text.ToString());
+                _genre.GenreName(textBoxGenreLabel.Text.Trim());
                 var genre = _genre.Build();
 
-                using (var uow = UnitOfWorkFactory.Create())
+                if(_listGenres.Any(g => g.GenreName == genre.GenreName))
                 {
-                    uow.Genres.Add(genre);
-                    uow.Save();
+                    using (var uow = UnitOfWorkFactory.Create())
+                    {
+                        uow.Genres.Add(genre);
+                        uow.Save();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error!" +
+                        "\nGenre with that name exists.");
                 }
             }
             catch (Exception ex)
@@ -89,7 +92,7 @@ namespace Library_Presentation
         {
             try
             {
-                _genre.GenreName(textBoxGenreLabel.Text.ToString());
+                _genre.GenreName(textBoxGenreLabel.Text.Trim());
                 var genre = _genre.Build();
 
                 using (var uow = UnitOfWorkFactory.Create())
@@ -102,7 +105,7 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
-            DisableButtons();
+            ToggleButtons(false);
             Clear();
             LoadGenres();
         }
@@ -125,7 +128,7 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
-            DisableButtons();
+            ToggleButtons(false);
             Clear();
             LoadGenres();
         }
@@ -159,10 +162,16 @@ namespace Library_Presentation
                 _genre.GenreID(long.Parse(dataGridView1.Rows[a].Cells["GenreID"].Value.ToString()));
                 _genre.GenreName(dataGridView1.Rows[a].Cells["GenreName"].Value.ToString());
                 textBoxGenreLabel.Text = dataGridView1.Rows[a].Cells["GenreName"].Value.ToString();
-                EnableButtons();
+                ToggleButtons(true);
             }
             LoadGenres();
 
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Clear();
+            ToggleButtons(false);
         }
     }
 }

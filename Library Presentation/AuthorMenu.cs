@@ -50,6 +50,7 @@ namespace Library_Presentation
         {
             DeleteButton.Enabled = input;
             UpdateButton.Enabled = input;
+            ClearButton.Enabled = input ? false : true;
         }
 
         void Clear()
@@ -66,22 +67,34 @@ namespace Library_Presentation
         {
             try
             {
-                _author.FirstName(textBoxFirstName.Text);
-                _author.MiddleName(textBoxMiddleName.Text);
-                _author.LastName(textBoxLastName.Text);
+                _author.FirstName(textBoxFirstName.Text.Trim());
+                _author.MiddleName(textBoxMiddleName.Text.Trim());
+                _author.LastName(textBoxLastName.Text.Trim());
                 var author = _author.Build();
 
-                using (var uow = UnitOfWorkFactory.Create())
+                if  (!(
+                    _listAuthors.Exists(a => a.FirstName == author.FirstName) 
+                    && _listAuthors.Exists(a => a.MiddleName == author.MiddleName) 
+                    && _listAuthors.Exists(a => a.LastName == author.LastName)))
                 {
-                    uow.Authors.Add(author);
-                    uow.Save();
+                    using (var uow = UnitOfWorkFactory.Create())
+                    {
+                        uow.Authors.Add(author);
+                        uow.Save();
+                    }
+                    Clear();
                 }
+                else
+                {
+                    MessageBox.Show("Error!" +
+                        "\n Author with that name exists.");
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            Clear();
             LoadAuthors();
         }
 
@@ -89,9 +102,9 @@ namespace Library_Presentation
         {
             try
             {
-                _author.FirstName(textBoxFirstName.Text);
-                _author.MiddleName(textBoxMiddleName.Text);
-                _author.LastName(textBoxLastName.Text);
+                _author.FirstName(textBoxFirstName.Text.Trim());
+                _author.MiddleName(textBoxMiddleName.Text.Trim());
+                _author.LastName(textBoxLastName.Text.Trim());
                 var author = _author.Build();
 
                 using (var uow = UnitOfWorkFactory.Create())
@@ -114,9 +127,9 @@ namespace Library_Presentation
         {
             try
             {
-                _author.FirstName(textBoxFirstName.Text);
-                _author.MiddleName(textBoxMiddleName.Text);
-                _author.LastName(textBoxLastName.Text);
+                _author.FirstName(textBoxFirstName.Text.Trim());
+                _author.MiddleName(textBoxMiddleName.Text.Trim());
+                _author.LastName(textBoxLastName.Text.Trim());
 
                 using (var uow = UnitOfWorkFactory.Create())
                 {
