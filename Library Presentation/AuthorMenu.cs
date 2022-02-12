@@ -3,12 +3,8 @@ using Library_DTO.UOW;
 using Library_Domain.Objects.Author;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Library_Presentation
@@ -22,7 +18,7 @@ namespace Library_Presentation
         public AuthorMenu()
         {
             InitializeComponent();
-            DisableButtons();
+            ToggleButtons(false);
             LoadAuthors();
         }
 
@@ -48,16 +44,10 @@ namespace Library_Presentation
 
         }
 
-        void EnableButtons()
+        void ToggleButtons(bool input)
         {
-            DeleteButton.Enabled = true;
-            UpdateButton.Enabled = true;
-        }
-
-        void DisableButtons()
-        {
-            DeleteButton.Enabled = false;
-            UpdateButton.Enabled = false;
+            DeleteButton.Enabled = input;
+            UpdateButton.Enabled = input;
         }
 
         void Clear()
@@ -74,12 +64,13 @@ namespace Library_Presentation
         {
             try
             {
+                _author.FirstName(textBoxFirstName.Text);
+                _author.MiddleName(textBoxMiddleName.Text);
+                _author.LastName(textBoxLastName.Text);
+                var author = _author.Build();
+
                 using (var uow = UnitOfWorkFactory.Create())
                 {
-                    _author.FirstName(textBoxFirstName.Text);
-                    _author.MiddleName(textBoxMiddleName.Text);
-                    _author.LastName(textBoxLastName.Text);
-                    var author = _author.Build();
                     uow.Authors.Add(author);
                     uow.Save();
                 }
@@ -96,12 +87,13 @@ namespace Library_Presentation
         {
             try
             {
+                _author.FirstName(textBoxFirstName.Text);
+                _author.MiddleName(textBoxMiddleName.Text);
+                _author.LastName(textBoxLastName.Text);
+                var author = _author.Build();
+
                 using (var uow = UnitOfWorkFactory.Create())
                 {
-                    _author.FirstName(textBoxFirstName.Text);
-                    _author.MiddleName(textBoxMiddleName.Text);
-                    _author.LastName(textBoxLastName.Text);
-                    var author = _author.Build();
                     uow.Authors.Update(author);
                     uow.Save();
                 }
@@ -110,7 +102,7 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
-            DisableButtons();
+            ToggleButtons(false);
             Clear();
             LoadAuthors();
 
@@ -120,11 +112,12 @@ namespace Library_Presentation
         {
             try
             {
+                _author.FirstName(textBoxFirstName.Text);
+                _author.MiddleName(textBoxMiddleName.Text);
+                _author.LastName(textBoxLastName.Text);
+
                 using (var uow = UnitOfWorkFactory.Create())
                 {
-                    _author.FirstName(textBoxFirstName.Text);
-                    _author.MiddleName(textBoxMiddleName.Text);
-                    _author.LastName(textBoxLastName.Text);
                     var author = _author.Build();
                     uow.Authors.Remove(author);
                     uow.Save();
@@ -134,7 +127,7 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
-            DisableButtons();
+            ToggleButtons(false);
             Clear();
             LoadAuthors();
 
@@ -175,11 +168,7 @@ namespace Library_Presentation
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows == null)
-            {
-                dataGridView1.ClearSelection();
-            }
-            else
+            if (dataGridView1.Rows.Count > 0)
             {
                 int a = dataGridView1.CurrentCell.RowIndex;
                 _author.AuthorID(long.Parse(dataGridView1.Rows[a].Cells["AuthorID"].Value.ToString()));
@@ -189,8 +178,9 @@ namespace Library_Presentation
                 textBoxFirstName.Text = dataGridView1.Rows[a].Cells["FirstName"].Value.ToString();
                 textBoxMiddleName.Text = dataGridView1.Rows[a].Cells["MiddleName"].Value.ToString();
                 textBoxLastName.Text = dataGridView1.Rows[a].Cells["LastName"].Value.ToString();
-                EnableButtons();
+                ToggleButtons(true);
             }
+            dataGridView1.ClearSelection();
         }
     }
 }
