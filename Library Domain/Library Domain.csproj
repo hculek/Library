@@ -47,8 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRepositories\IBookGenreRepository.cs" />
-    <Compile Include="IRepositories\IBookAuthorRepository.cs" />
     <Compile Include="Objects\Book\Book.cs" />
     <Compile Include="Objects\Author\IAuthor.cs" />
     <Compile Include="Objects\Book\IBook.cs" />
@@ -61,10 +59,6 @@
     <Compile Include="IRepositories\IGenericRepository.cs" />
     <Compile Include="IRepositories\ILibraryMemberRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Objects\JunctionObj\BookGenre.cs" />
-    <Compile Include="Objects\JunctionObj\BookAuthor.cs" />
-    <Compile Include="Objects\JunctionObj\IBookAuthor.cs" />
-    <Compile Include="Objects\JunctionObj\IBookGenre.cs" />
     <Compile Include="Objects\LibraryMember\ILibraryMember.cs" />
     <Compile Include="Objects\LibraryMember\LibraryMember.cs" />
     <Compile Include="Objects\LibraryMember\LibraryMemberBuilder.cs" />

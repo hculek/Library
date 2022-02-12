@@ -101,8 +101,6 @@
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="NpgSqlConfiguration.cs" />
-    <Compile Include="Repositories\BookGenreRepository.cs" />
-    <Compile Include="Repositories\BookAuthorRepository.cs" />
     <Compile Include="Repositories\GenreRepository.cs" />
     <Compile Include="Repositories\AuthorRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />

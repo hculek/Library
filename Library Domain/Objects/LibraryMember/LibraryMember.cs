@@ -8,6 +8,7 @@ namespace Library_Domain.Objects.LibraryMember
     public class LibraryMember
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long librarymemberid { get; set; }
         public string firstname {get; set;}
         public string middlename { get; set; }
