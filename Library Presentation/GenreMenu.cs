@@ -1,7 +1,6 @@
 ﻿using Library_Domain.Objects.Genre;
 using Library_DTO.Builders;
 using Library_DTO.UOW;
-using Library_Persistence.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -32,6 +31,7 @@ namespace Library_Presentation
                     _listGenres = uow.Genres.GetAll().OrderBy(g => g.GenreName).ToList();
                     dataGridView1.DataSource = _listGenres;
                     dataGridView1.Columns["GenreID"].Visible = false;
+                    dataGridView1.Columns["Books"].Visible = false;
                     dataGridView1.Columns["GenreName"].HeaderText = "Genre Name";
                 }
 

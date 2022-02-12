@@ -14,7 +14,7 @@ namespace Library_DTO.Builders
 
         public void Author(ICollection<Library_Domain.Objects.Author.Author> Authors)
         {
-            //this.book.Authors = Authors;
+            this._book.Authors = Authors;
         }
 
         public void BookID(long BookID)
@@ -24,7 +24,7 @@ namespace Library_DTO.Builders
 
         public void Genre(ICollection<Library_Domain.Objects.Genre.Genre> Genres)
         {
-            //this.book.Genres = Genres;
+            this._book.Genres = Genres;
         }
 
         public void Reset() 
