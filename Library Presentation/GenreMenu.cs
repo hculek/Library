@@ -67,10 +67,11 @@ namespace Library_Presentation
         {
             try
             {
+                _genre.GenreName(textBoxGenreLabel.Text.ToString());
+                var genre = _genre.Build();
+
                 using (var uow = UnitOfWorkFactory.Create())
                 {
-                    _genre.GenreName(textBoxGenreLabel.Text.ToString());
-                    var genre = _genre.Build();
                     uow.Genres.Add(genre);
                     uow.Save();
                 }
@@ -87,10 +88,11 @@ namespace Library_Presentation
         {
             try
             {
+                _genre.GenreName(textBoxGenreLabel.Text.ToString());
+                var genre = _genre.Build();
+
                 using (var uow = UnitOfWorkFactory.Create())
                 {
-                    _genre.GenreName(textBoxGenreLabel.Text.ToString());
-                    var genre = _genre.Build();
                     uow.Genres.Update(genre);
                     uow.Save();
                 }
@@ -109,9 +111,11 @@ namespace Library_Presentation
             
             try
             {
+                var genre = _genre.Build();
+
                 using (var uow = UnitOfWorkFactory.Create())
                 {
-                    var genre = _genre.Build();
+
                     uow.Genres.Remove(genre);
                     uow.Save();
                 }
@@ -156,11 +160,7 @@ namespace Library_Presentation
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows == null)
-            {
-                dataGridView1.ClearSelection();
-            }
-            else
+            if (dataGridView1.Rows.Count > 0)
             {
                 int a = dataGridView1.CurrentCell.RowIndex;
                 _genre.GenreID(long.Parse(dataGridView1.Rows[a].Cells["GenreID"].Value.ToString()));
@@ -168,6 +168,7 @@ namespace Library_Presentation
                 textBoxGenreLabel.Text = dataGridView1.Rows[a].Cells["GenreName"].Value.ToString();
                 EnableButtons();
             }
+            dataGridView1.ClearSelection();
         }
     }
 }
