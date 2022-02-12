@@ -210,17 +210,19 @@ namespace Library_Presentation
         {
             if (dataGridViewAuthorsList.SelectedRows.Count>0)
             {
-                var a = dataGridViewAuthorsList.SelectedRows[0].Index;
-                _author.AuthorID(long.Parse(dataGridViewAuthorsList.Rows[a].Cells["AuthorID"].Value.ToString()));
-                _author.FirstName(dataGridViewAuthorsList.Rows[a].Cells["FirstName"].Value.ToString());
-                _author.MiddleName(dataGridViewAuthorsList.Rows[a].Cells["MiddleName"].Value.ToString());
-                _author.LastName(dataGridViewAuthorsList.Rows[a].Cells["LastName"].Value.ToString());
+                var i = dataGridViewAuthorsList.SelectedRows[0].Index;
+                _author.AuthorID(long.Parse(dataGridViewAuthorsList.Rows[i].Cells["AuthorID"].Value.ToString()));
+                _author.FirstName(dataGridViewAuthorsList.Rows[i].Cells["FirstName"].Value.ToString());
+                _author.MiddleName(dataGridViewAuthorsList.Rows[i].Cells["MiddleName"].Value.ToString());
+                _author.LastName(dataGridViewAuthorsList.Rows[i].Cells["LastName"].Value.ToString());
 
                 var selectedAuthor = _author.Build();
-                if (!(_selectedListAuthors.Contains(selectedAuthor)))
+
+                if (!_selectedListAuthors.Exists(a => a.AuthorID == selectedAuthor.AuthorID))
                 {
                     _selectedListAuthors.Add(selectedAuthor);
                 }
+
                 LoadSelectedAuthor();
             }
             dataGridViewAuthorsList.ClearSelection();
@@ -235,19 +237,18 @@ namespace Library_Presentation
                 LoadSelectedAuthor();
             }
             dataGridViewAuthorsList.ClearSelection();
-
         }
 
         private void AddGenreButton_Click(object sender, EventArgs e)
         {
             if (dataGridViewGenreList.SelectedRows.Count > 0)
             {
-                int a = dataGridViewGenreList.SelectedRows[0].Index;
-                _genre.GenreID(long.Parse(dataGridViewGenreList.Rows[a].Cells["GenreID"].Value.ToString()));
-                _genre.GenreName(dataGridViewGenreList.Rows[a].Cells["GenreName"].Value.ToString());
+                int i = dataGridViewGenreList.SelectedRows[0].Index;
+                _genre.GenreID(long.Parse(dataGridViewGenreList.Rows[i].Cells["GenreID"].Value.ToString()));
+                _genre.GenreName(dataGridViewGenreList.Rows[i].Cells["GenreName"].Value.ToString());
                 var selectedGenre = _genre.Build();
 
-                if (!_selectedListGenres.Contains(selectedGenre))
+                if (!_selectedListGenres.Exists(g => g.GenreID == selectedGenre.GenreID))
                 {
                     _selectedListGenres.Add(selectedGenre);
                 }
