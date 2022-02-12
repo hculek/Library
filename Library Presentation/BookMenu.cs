@@ -66,6 +66,7 @@ namespace Library_Presentation
                 dataGridViewGenreList.DataSource = null;
                 dataGridViewGenreList.DataSource = _listGenres;
                 dataGridViewGenreList.Columns["GenreID"].Visible = false;
+                dataGridViewGenreList.Columns["Books"].Visible = false;
                 dataGridViewGenreList.Columns["GenreName"].HeaderText = "Genre";
                 dataGridViewGenreList.ClearSelection();
             }
@@ -73,6 +74,16 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void LoadSelectedGenres()
+        {
+            dataGridViewBookGenres.DataSource = null;
+            dataGridViewBookGenres.DataSource = _selectedListGenres;
+            dataGridViewBookGenres.Columns["GenreID"].Visible = false;
+            dataGridViewBookGenres.Columns["Books"].Visible = false;
+            dataGridViewBookGenres.Columns["GenreName"].HeaderText = "Genre";
+            dataGridViewBookGenres.ClearSelection();
         }
 
         private void LoadAuthors()
@@ -86,6 +97,7 @@ namespace Library_Presentation
                 dataGridViewAuthorsList.DataSource = null;
                 dataGridViewAuthorsList.DataSource = _listAuthors;
                 dataGridViewAuthorsList.Columns["AuthorID"].Visible = false;
+                dataGridViewAuthorsList.Columns["Books"].Visible = false;
                 dataGridViewAuthorsList.Columns["FirstName"].HeaderText = "First Name";
                 dataGridViewAuthorsList.Columns["MiddleName"].HeaderText = "Middle Name";
                 dataGridViewAuthorsList.Columns["LastName"].HeaderText = "Last Name";
@@ -101,13 +113,15 @@ namespace Library_Presentation
         {
             dataGridViewBookAuthors.DataSource = null;
             dataGridViewBookAuthors.DataSource = _selectedListAuthors;
+            dataGridViewBookAuthors.Columns["AuthorID"].Visible = false;
+            dataGridViewBookAuthors.Columns["Books"].Visible = false;
+            dataGridViewBookAuthors.Columns["FirstName"].HeaderText = "First Name";
+            dataGridViewBookAuthors.Columns["MiddleName"].HeaderText = "Middle Name";
+            dataGridViewBookAuthors.Columns["LastName"].HeaderText = "Last Name";
+            dataGridViewBookAuthors.ClearSelection();
         }
 
-        private void LoadSelectedGenres()
-        {
-            dataGridViewBookGenres.DataSource = null;
-            dataGridViewBookGenres.DataSource = _selectedListGenres;
-        }
+
 
         private void ToggleButtons(bool input)
         {
