@@ -33,6 +33,7 @@ namespace Library_Presentation
                     dataGridView1.Columns["GenreID"].Visible = false;
                     dataGridView1.Columns["Books"].Visible = false;
                     dataGridView1.Columns["GenreName"].HeaderText = "Genre Name";
+                    dataGridView1.ClearSelection();
                 }
 
             }
@@ -150,25 +151,18 @@ namespace Library_Presentation
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //_genre.GenreID(long.Parse(dataGridView1.Rows[e.RowIndex].Cells["genreid"].Value.ToString()));
-            //_genre.GenreName(dataGridView1.Rows[e.RowIndex].Cells["genrename"].Value.ToString());
-            //textBoxGenreLabel.Text = dataGridView1.Rows[e.RowIndex].Cells["genrename"].Value.ToString();
-            //EnableButtons();
-        }
-
         private void EditButton_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count > 0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                int a = dataGridView1.CurrentCell.RowIndex;
+                int a = dataGridView1.SelectedRows[0].Index;
                 _genre.GenreID(long.Parse(dataGridView1.Rows[a].Cells["GenreID"].Value.ToString()));
                 _genre.GenreName(dataGridView1.Rows[a].Cells["GenreName"].Value.ToString());
                 textBoxGenreLabel.Text = dataGridView1.Rows[a].Cells["GenreName"].Value.ToString();
                 EnableButtons();
             }
-            dataGridView1.ClearSelection();
+            LoadGenres();
+
         }
     }
 }

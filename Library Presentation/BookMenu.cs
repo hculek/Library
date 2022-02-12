@@ -19,6 +19,7 @@ namespace Library_Presentation
     {
         private BookBuilder _book = new BookBuilder();
         private AuthorBuilder _author = new AuthorBuilder();
+        private GenreBuilder _genre = new GenreBuilder();
         private List<Book> _listBooks = new List<Book>();
         private List<Genre> _listGenres = new List<Genre>();
         private List<Genre> _selectedListGenres = new List<Genre>();
@@ -44,6 +45,7 @@ namespace Library_Presentation
                 dataGridViewBooks.Columns["BookID"].Visible = false;
                 dataGridViewBooks.Columns["BookTitle"].HeaderText = "Book Title";
                 dataGridViewBooks.Columns["BookTotalPages"].HeaderText = "Total Pages";
+                dataGridViewBooks.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -53,7 +55,7 @@ namespace Library_Presentation
         }
 
 
-        void LoadGenres() 
+        void LoadGenres()
         {
             try
             {
@@ -65,6 +67,7 @@ namespace Library_Presentation
                 dataGridViewGenreList.DataSource = _listGenres;
                 dataGridViewGenreList.Columns["GenreID"].Visible = false;
                 dataGridViewGenreList.Columns["GenreName"].HeaderText = "Genre";
+                dataGridViewGenreList.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -86,6 +89,7 @@ namespace Library_Presentation
                 dataGridViewAuthorsList.Columns["FirstName"].HeaderText = "First Name";
                 dataGridViewAuthorsList.Columns["MiddleName"].HeaderText = "Middle Name";
                 dataGridViewAuthorsList.Columns["LastName"].HeaderText = "Last Name";
+                dataGridViewAuthorsList.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -93,7 +97,7 @@ namespace Library_Presentation
             }
         }
 
-        private void LoadSelectedAuthor() 
+        private void LoadSelectedAuthor()
         {
             dataGridViewBookAuthors.DataSource = null;
             dataGridViewBookAuthors.DataSource = _selectedListAuthors;
@@ -105,7 +109,7 @@ namespace Library_Presentation
             dataGridViewBookGenres.DataSource = _selectedListGenres;
         }
 
-        private void ToggleButtons(bool input) 
+        private void ToggleButtons(bool input)
         {
             AddButton.Enabled = input;
             AddButton.Enabled = input;
@@ -129,7 +133,7 @@ namespace Library_Presentation
             textBoxNumberPages.Clear();
         }
 
-        private void LoadEditingElements() 
+        private void LoadEditingElements()
         {
             LoadAuthors();
             LoadGenres();
@@ -190,9 +194,9 @@ namespace Library_Presentation
 
         private void AddAuthorButton_Click(object sender, EventArgs e)
         {
-            if (dataGridViewAuthorsList.Rows.Count > 0)
+            if (dataGridViewAuthorsList.SelectedRows.Count>0)
             {
-                int a = dataGridViewAuthorsList.CurrentCell.RowIndex;
+                var a = dataGridViewAuthorsList.SelectedRows[0].Index;
                 _author.AuthorID(long.Parse(dataGridViewAuthorsList.Rows[a].Cells["AuthorID"].Value.ToString()));
                 _author.FirstName(dataGridViewAuthorsList.Rows[a].Cells["FirstName"].Value.ToString());
                 _author.MiddleName(dataGridViewAuthorsList.Rows[a].Cells["MiddleName"].Value.ToString());
@@ -206,15 +210,13 @@ namespace Library_Presentation
                 LoadSelectedAuthor();
             }
             dataGridViewAuthorsList.ClearSelection();
-
-
         }
 
         private void RemoveAuthorButton_Click(object sender, EventArgs e)
         {
-            if (dataGridViewBookAuthors.Rows.Count > 0)
+            if (dataGridViewBookAuthors.SelectedRows.Count > 0)
             {
-                var a = dataGridViewBookAuthors.CurrentCell.RowIndex;
+                var a = dataGridViewBookAuthors.SelectedRows[0].Index;
                 _selectedListAuthors.RemoveAt(a);
                 LoadSelectedAuthor();
             }
@@ -224,11 +226,33 @@ namespace Library_Presentation
 
         private void AddGenreButton_Click(object sender, EventArgs e)
         {
+            if (dataGridViewGenreList.SelectedRows.Count > 0)
+            {
+                int a = dataGridViewGenreList.SelectedRows[0].Index;
+                _genre.GenreID(long.Parse(dataGridViewGenreList.Rows[a].Cells["GenreID"].Value.ToString()));
+                _genre.GenreName(dataGridViewGenreList.Rows[a].Cells["GenreName"].Value.ToString());
+                var selectedGenre = _genre.Build();
+
+                if (!_selectedListGenres.Contains(selectedGenre))
+                {
+                    _selectedListGenres.Add(selectedGenre);
+                }
+                LoadSelectedGenres();
+            }
         }
 
         private void RemoveGenreButton_Click(object sender, EventArgs e)
         {
+            if (dataGridViewBookGenres.SelectedRows.Count > 0)
+            {
+                var a = dataGridViewBookGenres.SelectedRows[0].Index;
+                _selectedListGenres.RemoveAt(a);
+                LoadSelectedGenres();
+            }
+            dataGridViewGenreList.ClearSelection();
 
         }
+
+
     }
 }

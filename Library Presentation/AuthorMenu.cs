@@ -35,6 +35,7 @@ namespace Library_Presentation
                     dataGridView1.Columns["FirstName"].HeaderText = "First Name";
                     dataGridView1.Columns["MiddleName"].HeaderText = "Middle Name";
                     dataGridView1.Columns["LastName"].HeaderText = "Last Name";
+                    dataGridView1.ClearSelection();
                 }
             }
             catch (Exception ex)
@@ -168,9 +169,9 @@ namespace Library_Presentation
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count > 0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                int a = dataGridView1.CurrentCell.RowIndex;
+                int a = dataGridView1.SelectedRows[0].Index;
                 _author.AuthorID(long.Parse(dataGridView1.Rows[a].Cells["AuthorID"].Value.ToString()));
                 _author.FirstName(dataGridView1.Rows[a].Cells["FirstName"].Value.ToString());
                 _author.MiddleName(dataGridView1.Rows[a].Cells["MiddleName"].Value.ToString());
@@ -180,7 +181,7 @@ namespace Library_Presentation
                 textBoxLastName.Text = dataGridView1.Rows[a].Cells["LastName"].Value.ToString();
                 ToggleButtons(true);
             }
-            dataGridView1.ClearSelection();
+            LoadAuthors();
         }
     }
 }
