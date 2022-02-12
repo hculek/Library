@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Data;
 using Library_Domain.dbInterfaces;
+using System.Data.Entity;
 
 namespace Library_Persistence
 {
@@ -58,7 +59,7 @@ namespace Library_Persistence
                 throw ex;
             }
         }
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> Get()
         {
             try
             {
@@ -71,7 +72,36 @@ namespace Library_Persistence
             }
 
         }
-        
+
+        public virtual IEnumerable<T> GetAll(params Expression<Func<T, object>>[] navigationProperties)
+        {
+            try
+            {
+                List<T> list;
+                using (var context = new ApplicationContext())
+                {
+                    IQueryable<T> dbQuery = context.Set<T>();
+
+                    //Apply eager loading
+                    foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
+                        dbQuery = dbQuery.Include<T, object>(navigationProperty);
+
+                    list = dbQuery
+                        .AsNoTracking()
+                        .ToList<T>();
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
+
+
         public T GetById(int id)
         {
             return _context.Set<T>().Find(id);

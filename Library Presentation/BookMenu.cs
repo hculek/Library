@@ -34,7 +34,8 @@ namespace Library_Presentation
             try
             {
                 var uow = UnitOfWorkFactory.Create();
-                _listBooks = uow.Books.GetAll().OrderBy(a => a.BookTitle).ToList();
+                _listBooks = uow.Books.GetAll(a=>a.Authors, a=>a.Genres).OrderBy(a => a.BookTitle).ToList();
+
 
                 //using (var uow = UnitOfWorkFactory.Create())
                 //{
@@ -60,7 +61,7 @@ namespace Library_Presentation
             {
                 using (var uow = UnitOfWorkFactory.Create())
                 {
-                    _listGenres = uow.Genres.GetAll().OrderBy(g => g.GenreName).ToList();
+                    _listGenres = uow.Genres.Get().OrderBy(g => g.GenreName).ToList();
                 }
 
                 dataGridViewGenreList.DataSource = null;
@@ -92,7 +93,7 @@ namespace Library_Presentation
             {
                 using (var uow = UnitOfWorkFactory.Create())
                 {
-                    _listAuthors = uow.Authors.GetAll().OrderBy(a => a.LastName).ToList();
+                    _listAuthors = uow.Authors.Get().OrderBy(a => a.LastName).ToList();
                 }
                 dataGridViewAuthorsList.DataSource = null;
                 dataGridViewAuthorsList.DataSource = _listAuthors;

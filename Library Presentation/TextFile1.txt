@@ -31,3 +31,12 @@ https://stackoverflow.com/questions/31618317/extra-field-in-junction-table-with-
 
 https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
 https://practiceaspnet.wordpress.com/2015/10/22/code-first-many-to-many-mm-relationships-using-conventions-and-data-annotations/
+
+
+
+
+
+
+
+
+https://blog.magnusmontin.net/2013/05/30/generic-dal-using-entity-framework/comment-page-1/
