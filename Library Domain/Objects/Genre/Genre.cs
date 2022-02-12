@@ -7,6 +7,8 @@ namespace Library_Domain.Objects.Genre
     [Table("genres")]
     public class Genre
     {
+        //https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("genre_id")]
         public long GenreID { get; set; }
