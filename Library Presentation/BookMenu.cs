@@ -33,19 +33,23 @@ namespace Library_Presentation
         {
             try
             {
-                var uow = UnitOfWorkFactory.Create();
-                _listBooks = uow.Books.GetAll(a=>a.Authors, a=>a.Genres).OrderBy(a => a.BookTitle).ToList();
-
-
                 //using (var uow = UnitOfWorkFactory.Create())
                 //{
                 //    _listBooks = uow.Books.GetAll().OrderBy(a => a.BookTitle).ToList();
                 //}
+
+                var uow = UnitOfWorkFactory.Create();
+                _listBooks = uow.Books.Get().OrderBy(a => a.BookTitle).ToList();
+                
+
                 dataGridViewBooks.DataSource = _listBooks;
                 dataGridViewBooks.Columns["BookID"].Visible = false;
                 dataGridViewBooks.Columns["BookTitle"].HeaderText = "Book Title";
                 dataGridViewBooks.Columns["BookTotalPages"].HeaderText = "Total Pages";
                 dataGridViewBooks.ClearSelection();
+
+
+                //https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-bind-objects-to-windows-forms-datagridview-controls?view=netframeworkdesktop-4.8
             }
             catch (Exception ex)
             {

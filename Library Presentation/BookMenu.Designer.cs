@@ -286,9 +286,14 @@
             // 
             // dataGridViewBooks
             // 
+            this.dataGridViewBooks.AllowUserToAddRows = false;
+            this.dataGridViewBooks.AllowUserToDeleteRows = false;
             this.dataGridViewBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBooks.Location = new System.Drawing.Point(22, 57);
+            this.dataGridViewBooks.MultiSelect = false;
             this.dataGridViewBooks.Name = "dataGridViewBooks";
+            this.dataGridViewBooks.ReadOnly = true;
+            this.dataGridViewBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewBooks.Size = new System.Drawing.Size(671, 255);
             this.dataGridViewBooks.TabIndex = 35;
             // 
