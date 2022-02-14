@@ -1,9 +1,9 @@
-﻿using Library_Domain.Objects.Author;
+﻿using Library_Domain.Objects;
 namespace Library_DTO.Builders
 {
     public class AuthorBuilder : IAuthor
     {
-        private Library_Domain.Objects.Author.Author _author = new Library_Domain.Objects.Author.Author();
+        private Author _author = new Author();
 
         public AuthorBuilder() 
         {
@@ -32,12 +32,12 @@ namespace Library_DTO.Builders
 
         public void Reset() 
         { 
-            this._author = new Library_Domain.Objects.Author.Author();
+            this._author = new Author();
         }
 
-        public Library_Domain.Objects.Author.Author Build()
+        public Author Build()
         {
-            Library_Domain.Objects.Author.Author result = this._author;
+            Author result = this._author;
             this.Reset();
             return result;
         }

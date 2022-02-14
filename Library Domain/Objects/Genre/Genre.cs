@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Library_Domain.Objects.Genre
+namespace Library_Domain.Objects
 {
     [Table("genres")]
     public class Genre
@@ -11,7 +11,7 @@ namespace Library_Domain.Objects.Genre
 
         public Genre() 
         {
-            this.Books = new HashSet<Book.Book>();
+            this.Books = new HashSet<Book>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -25,6 +25,7 @@ namespace Library_Domain.Objects.Genre
         //https://docs.microsoft.com/en-gb/ef/ef6/querying/related-data?redirectedfrom=MSDN
         //public virtual ICollection<Book.Book> Books { get; set; } baca error
 
-        public ICollection<Book.Book> Books { get; set; }
+        [ForeignKey("Book.Book")]
+        public ICollection<Book> Books { get; set; }
     }
 }

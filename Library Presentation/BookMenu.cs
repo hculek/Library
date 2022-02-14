@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using Library_Domain.Objects.Genre;
-using Library_Domain.Objects.Author;
-using Library_Domain.Objects.Book;
-using Library_DTO.UOW;
+using Library_Domain.Objects;
 using Library_DTO.Builders;
+using Library_DTO.UOW;
 
 namespace Library_Presentation
 {

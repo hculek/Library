@@ -1,7 +1,5 @@
 ﻿using System.Data.Entity;
-using Library_Domain.Objects.Author;
-using Library_Domain.Objects.Book;
-using Library_Domain.Objects.Genre;
+using Library_Domain.Objects;
 using Library_Domain.Objects.LibraryMember;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -27,16 +25,14 @@ namespace Library_Persistence
 
 
             // fluent API for book
-            modelBuilder.Entity<Book>()
+            modelBuilder.Entity<Book>().ToTable("books")
                 .HasMany(b => b.Authors)
                 .WithMany(a => a.Books)
                 .Map(m => m.ToTable("books_authors")
-                //.MapLeftKey("BookID")
-                //.MapRightKey("AuthorID"));
                 .MapLeftKey("book_id")
                 .MapRightKey("author_id"));
 
-            modelBuilder.Entity<Book>()
+            modelBuilder.Entity<Book>().ToTable("books")
               .HasMany(b => b.Genres)
               .WithMany(g => g.Books)
               .Map(m => m.ToTable("books_genres")

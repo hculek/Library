@@ -1,9 +1,9 @@
-﻿using Library_Domain.Objects.Genre;
+﻿using Library_Domain.Objects;
 namespace Library_DTO.Builders
 {
     public class GenreBuilder : IGenre
     {
-        private Library_Domain.Objects.Genre.Genre _genre = new Library_Domain.Objects.Genre.Genre();
+        private Genre _genre = new Genre();
 
         public GenreBuilder() 
         {
@@ -22,12 +22,12 @@ namespace Library_DTO.Builders
 
         public void Reset()
         {
-            this._genre = new Library_Domain.Objects.Genre.Genre();
+            this._genre = new Genre();
         }
 
-        public Library_Domain.Objects.Genre.Genre Build() 
+        public Genre Build() 
         {
-            Library_Domain.Objects.Genre.Genre result = this._genre;
+            Genre result = this._genre;
             this.Reset();
             return result;
         }

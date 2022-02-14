@@ -1,4 +1,4 @@
-﻿using Library_Domain.Objects.Book;
+﻿using Library_Domain.Objects;
 namespace Library_Domain.dbInterfaces
 {
     public interface IBookRepository : IGenericRepository<Book>

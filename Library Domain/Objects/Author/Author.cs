@@ -2,14 +2,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Library_Domain.Objects.Author
+namespace Library_Domain.Objects
 {
     [Table("authors")]
     public class Author
     {
         public Author()
         {
-            this.Books = new HashSet<Book.Book>();
+            this.Books = new HashSet<Book>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -26,6 +26,7 @@ namespace Library_Domain.Objects.Author
         [Column("last_name"), Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        public ICollection<Book.Book> Books{ get; set; }
+        [ForeignKey("Book.Book")]
+        public ICollection<Book> Books{ get; set; }
     }
 }

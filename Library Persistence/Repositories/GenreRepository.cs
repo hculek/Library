@@ -1,5 +1,5 @@
 ﻿using Library_Domain.dbInterfaces;
-using Library_Domain.Objects.Genre;
+using Library_Domain.Objects;
 
 namespace Library_Persistence.Repositories
 {

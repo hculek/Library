@@ -1,4 +1,4 @@
-﻿namespace Library_Domain.Objects.Author
+﻿namespace Library_Domain.Objects
 {
     public interface IAuthor
     {

@@ -1,18 +1,18 @@
-﻿using Library_Domain.Objects.Book;
+﻿using Library_Domain.Objects;
 using System.Collections.Generic;
 
 namespace Library_DTO.Builders
 {
     public class BookBuilder : IBook
     {
-        private Library_Domain.Objects.Book.Book _book = new Library_Domain.Objects.Book.Book();
+        private Book _book = new Book();
 
         public BookBuilder() 
         {
             this.Reset();
         }
 
-        public void Author(ICollection<Library_Domain.Objects.Author.Author> Authors)
+        public void Author(ICollection<Author> Authors)
         {
             this._book.Authors = Authors;
         }
@@ -22,14 +22,14 @@ namespace Library_DTO.Builders
             this._book.BookID = BookID;
         }
 
-        public void Genre(ICollection<Library_Domain.Objects.Genre.Genre> Genres)
+        public void Genre(ICollection<Genre> Genres)
         {
             this._book.Genres = Genres;
         }
 
         public void Reset() 
         { 
-            this._book = new Library_Domain.Objects.Book.Book();
+            this._book = new Book();
         }
 
         public void Title(string Title)
@@ -42,9 +42,9 @@ namespace Library_DTO.Builders
             this._book.BookTotalPages = TotalPages;
         }
 
-        public Library_Domain.Objects.Book.Book Build()
+        public Book Build()
         {
-            Library_Domain.Objects.Book.Book result = this._book;
+            Book result = this._book;
             this.Reset();
             return result;
         }

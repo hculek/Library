@@ -3,15 +3,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace Library_Domain.Objects.Book
+namespace Library_Domain.Objects
 {
     [Table("books")]
     public class Book
     {
         public Book() 
         { 
-            this.Authors = new HashSet<Author.Author>();
-            this.Genres = new HashSet<Genre.Genre>();
+            this.Authors = new HashSet<Author>();
+            this.Genres = new HashSet<Genre>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,8 +24,10 @@ namespace Library_Domain.Objects.Book
         [Column("book_total_pages"), Display(Name = "Total Pages")]
         public int BookTotalPages { get; set; }
 
-        public virtual ICollection<Author.Author> Authors { get; set; }
+        [ForeignKey("Author.Author")]
+        public virtual ICollection<Author> Authors { get; set; }
 
-        public virtual ICollection<Genre.Genre> Genres { get; set; }
+        [ForeignKey("Genre.Genre")]
+        public virtual ICollection<Genre> Genres { get; set; }
     }
 }
