@@ -16,7 +16,7 @@ namespace Library_Persistence
         {
             _context = context;
         }
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace Library_Persistence
             }
 
         }
-        public void AddRange(IEnumerable<T> entities)
+        public virtual void AddRange(IEnumerable<T> entities)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace Library_Persistence
 
             }
         }
-        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+        public virtual IEnumerable<T> Find(Expression<Func<T, bool>> expression)
         {
             //return _context.Set<T>().Where(expression);
             try
@@ -59,7 +59,7 @@ namespace Library_Persistence
                 throw ex;
             }
         }
-        public IEnumerable<T> Get()
+        public virtual IEnumerable<T> Get()
         {
             try
             {

@@ -173,9 +173,6 @@ namespace Library_Presentation
                     using (var uow = UnitOfWorkFactory.Create())
                     {
                         uow.Books.Add(book);
-
-                        // hendlanje duplih unosa! https://docs.microsoft.com/en-us/archive/msdn-magazine/2013/april/data-points-why-does-entity-framework-reinsert-existing-objects-into-my-database
-
                         uow.Save();
                     }
                 }
