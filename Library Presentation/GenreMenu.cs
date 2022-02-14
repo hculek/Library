@@ -66,7 +66,7 @@ namespace Library_Presentation
                 _genre.GenreName(textBoxGenreLabel.Text.Trim());
                 var genre = _genre.Build();
 
-                if(_listGenres.Any(g => g.GenreName == genre.GenreName))
+                if(!_listGenres.Any(g => g.GenreName == genre.GenreName))
                 {
                     using (var uow = UnitOfWorkFactory.Create())
                     {
