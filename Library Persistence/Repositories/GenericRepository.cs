@@ -25,8 +25,6 @@ namespace Library_Persistence
             catch (DBConcurrencyException)
             {
 
-                //https://stackoverflow.com/questions/29994402/is-there-a-way-to-throw-custom-exception-without-exception-class
-
                 throw new DBConcurrencyException("Database connection error. If problem persists please contact IT support.");
             }
 

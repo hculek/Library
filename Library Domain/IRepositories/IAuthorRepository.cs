@@ -7,6 +7,5 @@ namespace Library_Domain.dbInterfaces
 {
     public interface IAuthorRepository : IGenericRepository<Author>
     {
-        IEnumerable<Author> FindAuthor(Expression<Func<Author, bool>> expression);
     }
 }
