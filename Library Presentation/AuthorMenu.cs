@@ -158,16 +158,17 @@ namespace Library_Presentation
         {
             if (!String.IsNullOrEmpty(TextBoxSearch.Text.ToString()))
             {
-                //(dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("first_name LIKE %'{1}'%", TextBoxSearch.Text);
+                var searchAuthors = 
+                    _listAuthors.Where(a => a.FirstName.ToLower().Contains(TextBoxSearch.Text.ToLower()) 
+                || a.MiddleName.ToLower().Contains(TextBoxSearch.Text.ToLower())
+                || a.LastName.ToLower().Contains(TextBoxSearch.Text.ToLower()));
 
-                //(dataGridView1.DataSource as DataTable).DefaultView.RowFilter = string.Format("first_name LIKE '%{0}%' OR middle_name LIKE '%{0}%' OR last_name LIKE '%{0}%'", TextBoxSearch.Text);
-                DataView dv = (dataGridView1.DataSource as DataTable).DefaultView;
-                dv.RowFilter = string.Format("FirstName LIKE '%{0}%' OR MiddleName LIKE '%{0}%' OR LastName LIKE '%{0}%'", TextBoxSearch.Text);
-                dataGridView1.DataSource = dv.ToTable();
+                dataGridView1.DataSource = searchAuthors.ToList();
             }
             else
             {
                 Clear();
+                LoadAuthors();
             }
 
         }

@@ -141,11 +141,14 @@ namespace Library_Presentation
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            var _searchedList = _listGenres.Select(item => item);
             if (!String.IsNullOrEmpty(textBoxSearch.Text.ToString()))
             {
-                _searchedList = _searchedList.Where(item => item.GenreName.Contains(textBoxSearch.Text.ToString()));
-                dataGridView1.DataSource = _searchedList.ToList();
+                //_searchedList = _searchedList.Where(item => item.GenreName.ToLower().Contains(textBoxSearch.Text.ToLower().ToString()));
+
+                var result = from genre in _listGenres
+                             where genre.GenreName.ToLower().Contains(textBoxSearch.Text.ToLower())
+                             select genre;
+                dataGridView1.DataSource = result.ToList();
             }
             else
             {
