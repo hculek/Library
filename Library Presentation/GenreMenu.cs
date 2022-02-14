@@ -164,8 +164,6 @@ namespace Library_Presentation
                 textBoxGenreLabel.Text = dataGridView1.Rows[a].Cells["GenreName"].Value.ToString();
                 ToggleButtons(true);
             }
-            LoadGenres();
-
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
