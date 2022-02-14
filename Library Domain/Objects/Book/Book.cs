@@ -24,10 +24,10 @@ namespace Library_Domain.Objects
         [Column("book_total_pages"), Display(Name = "Total Pages")]
         public int BookTotalPages { get; set; }
 
-        [ForeignKey("Author.Author")]
-        public virtual ICollection<Author> Authors { get; set; }
+        [ForeignKey("Author")]
+        public ICollection<Author> Authors { get; set; }
 
-        [ForeignKey("Genre.Genre")]
-        public virtual ICollection<Genre> Genres { get; set; }
+        [ForeignKey("Genre")]
+        public ICollection<Genre> Genres { get; set; }
     }
 }

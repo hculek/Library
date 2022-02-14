@@ -26,7 +26,7 @@ namespace Library_Domain.Objects
         [Column("last_name"), Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [ForeignKey("Book.Book")]
+        [ForeignKey("Book")]
         public ICollection<Book> Books{ get; set; }
     }
 }

@@ -31,14 +31,10 @@ namespace Library_Presentation
         {
             try
             {
-                //using (var uow = UnitOfWorkFactory.Create())
-                //{
-                //    _listBooks = uow.Books.GetAll().OrderBy(a => a.BookTitle).ToList();
-                //}
-
-                var uow = UnitOfWorkFactory.Create();
-                _listBooks = uow.Books.Get().OrderBy(a => a.BookTitle).ToList();
-                
+                using (var uowBooks = UnitOfWorkFactory.Create())
+                {
+                    _listBooks = uowBooks.Books.Get().OrderBy(a => a.BookTitle).ToList();
+                }
 
                 dataGridViewBooks.DataSource = _listBooks;
                 dataGridViewBooks.Columns["BookID"].Visible = false;
@@ -61,9 +57,9 @@ namespace Library_Presentation
         {
             try
             {
-                using (var uow = UnitOfWorkFactory.Create())
+                using (var uowGenres = UnitOfWorkFactory.Create())
                 {
-                    _listGenres = uow.Genres.Get().OrderBy(g => g.GenreName).ToList();
+                    _listGenres = uowGenres.Genres.Get().OrderBy(g => g.GenreName).ToList();
                 }
 
                 dataGridViewGenreList.DataSource = null;
@@ -93,9 +89,9 @@ namespace Library_Presentation
         {
             try
             {
-                using (var uow = UnitOfWorkFactory.Create())
+                using (var uowAuthors = UnitOfWorkFactory.Create())
                 {
-                    _listAuthors = uow.Authors.Get().OrderBy(a => a.LastName).ToList();
+                    _listAuthors = uowAuthors.Authors.Get().OrderBy(a => a.LastName).ToList();
                 }
                 dataGridViewAuthorsList.DataSource = null;
                 dataGridViewAuthorsList.DataSource = _listAuthors;
@@ -166,17 +162,29 @@ namespace Library_Presentation
         {
             try
             {
-                _book.Title(textBoxBookTitle.Text.ToString());
-                _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
-                _book.Author(_selectedListAuthors);
-                _book.Genre(_selectedListGenres);
-                var book = _book.Build();
-
-                using (var uow = UnitOfWorkFactory.Create())
+                if (!(String.IsNullOrEmpty(textBoxBookTitle.Text.ToString())) && !(String.IsNullOrEmpty(textBoxNumberPages.Text.ToString())))
                 {
-                    uow.Books.Add(book);
-                    uow.Save();
+                    _book.Title(textBoxBookTitle.Text.ToString());
+                    _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
+                    _book.Author(_selectedListAuthors);
+                    _book.Genre(_selectedListGenres);
+                    var book = _book.Build();
+
+                    using (var uow = UnitOfWorkFactory.Create())
+                    {
+                        uow.Books.Add(book);
+
+                        // hendlanje duplih unosa! https://docs.microsoft.com/en-us/archive/msdn-magazine/2013/april/data-points-why-does-entity-framework-reinsert-existing-objects-into-my-database
+
+                        uow.Save();
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Please add missing book title or total page number.");
+                }
+
+
             }
             catch (Exception ex)
             {
