@@ -7,6 +7,11 @@ namespace Library_Domain.Objects.Author
     [Table("authors")]
     public class Author
     {
+        public Author()
+        {
+            this.Books = new HashSet<Book.Book>();
+        }
+
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("author_id")]
 
