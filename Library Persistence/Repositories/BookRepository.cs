@@ -11,10 +11,9 @@ namespace Library_Persistence.Repositories
     public class BookRepository : GenericRepository<Book>, IBookRepository
     {
         //protected readonly ApplicationContext _context;
-
         public BookRepository(ApplicationContext context) : base(context)
         {
-            //_context = context;
+           // _context = context;
         }
         //public override void Add(Book entity) 
         //{
