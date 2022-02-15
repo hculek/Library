@@ -169,6 +169,7 @@ namespace Library_Presentation
                     _book.Author(_selectedListAuthors);
                     _book.Genre(_selectedListGenres);
                     var book = _book.Build();
+                    
 
                     using (var uow = UnitOfWorkFactory.Create())
                     {
