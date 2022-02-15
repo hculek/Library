@@ -15,28 +15,28 @@ namespace Library_Persistence.Repositories
         {
            // _context = context;
         }
-        //public override void Add(Book entity) 
-        //{
-        //    try
-        //    {
-        //        _context.Set<Book>().Add(entity);
-        //        //_context.Set<Author>().Attach();
-        //        _context.Entry(entity.Authors).State = EntityState.Unchanged;
-        //        _context.Entry(entity.Genres).State = EntityState.Unchanged;
+        public virtual void Add(Book entity)
+        {
+            try
+            {
+                _context.Set<Book>().Add(entity);
+                _context.Entry(entity.Authors).State = EntityState.Unchanged;
+                _context.Entry(entity.Genres).State = EntityState.Unchanged;
 
-        //        //https://docs.microsoft.com/en-us/archive/msdn-magazine/2013/april/data-points-why-does-entity-framework-reinsert-existing-objects-into-my-database
-        //    }
-        //    catch (DBConcurrencyException)
-        //    {
-        //        throw new DBConcurrencyException("Database connection error. If problem persists please contact IT support.");
-        //    }
+                //https://docs.microsoft.com/en-us/archive/msdn-magazine/2013/april/data-points-why-does-entity-framework-reinsert-existing-objects-into-my-database
+            }
+            catch (DBConcurrencyException)
+            {
+                throw new DBConcurrencyException("Database connection error. If problem persists please contact IT support.");
+            }
 
-        //    catch (Exception)
-        //    {
-        //        throw new Exception("Database connection error. If problem persists please contact IT support.");
-        //    }
+            catch (Exception ex)
+            {
+                //throw new Exception("Database connection error. If problem persists please contact IT support.");
+                throw ex;
+            }
 
-        //}
+        }
 
 
 

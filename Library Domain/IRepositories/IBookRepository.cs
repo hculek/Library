@@ -6,5 +6,8 @@ namespace Library_Domain.dbInterfaces
         //implemented IGenericRepository functions
         //adding more functions ie:
         //IEnumerable<Book> GetPopularBooks(int count);
+
+        void Add(Book entity);
+
     }
 }
