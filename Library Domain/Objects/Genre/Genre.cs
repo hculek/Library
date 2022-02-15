@@ -25,7 +25,6 @@ namespace Library_Domain.Objects
         //https://docs.microsoft.com/en-gb/ef/ef6/querying/related-data?redirectedfrom=MSDN
         //public virtual ICollection<Book.Book> Books { get; set; } baca error
 
-        [ForeignKey("Book")]
-        public ICollection<Book> Books { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
     }
 }
