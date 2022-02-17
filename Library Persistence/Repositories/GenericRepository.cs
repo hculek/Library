@@ -87,6 +87,8 @@ namespace Library_Persistence
                     list = dbQuery
                         .AsNoTracking()
                         .ToList<T>();
+
+                    //list = dbQuery.ToList<T>();
                 }
                 return list;
             }
