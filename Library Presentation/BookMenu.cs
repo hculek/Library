@@ -19,6 +19,7 @@ namespace Library_Presentation
         private List<Genre> _selectedListGenres = new List<Genre>();
         private List<Author> _listAuthors = new List<Author>();
         private List<Author> _selectedListAuthors = new List<Author>();
+        
 
         public BookMenu()
         {
@@ -161,17 +162,44 @@ namespace Library_Presentation
             PrepareToEditBook(FindBook());
             ToggleButtons(true);
             LoadEditingElements();
-            ToggleButtons(true);
         }
 
-        private Book CreateBook() 
+
+        private Book FindBook()
         {
+            Book book = new Book();
+            if (dataGridViewBooks.SelectedRows.Count > 0)
+            {
+                int a = dataGridViewBooks.SelectedRows[0].Index;
+                var bookID = long.Parse(dataGridViewBooks.Rows[a].Cells["BookID"].Value.ToString());
+                book = _listBooks.Find(b => b.BookID.Equals(bookID));
+            }
+            return book;
+        }
+
+        private void PrepareToEditBook(Book book)
+        {
+            if (!(book.BookTitle == null))
+            {
+                _selectedListAuthors = book.Authors.ToList();
+                dataGridViewBookAuthors.DataSource = _selectedListAuthors;
+                _selectedListGenres = book.Genres.ToList();
+                dataGridViewBookGenres.DataSource = _selectedListGenres;
+                textBoxBookTitle.Text = book.BookTitle.ToString();
+                textBoxNumberPages.Text = book.BookTotalPages.ToString();
+            }
+        }
+
+        private Book CreateNewBook() 
+        {
+            
+            
             _book.Title(textBoxBookTitle.Text.ToString());
             _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
             _book.Author(_selectedListAuthors);
             _book.Genre(_selectedListGenres);
-            var book = _book.Build();
-            return book;
+            var abook = _book.Build();
+            return abook;
         }
 
 
@@ -181,7 +209,7 @@ namespace Library_Presentation
             {
                 if (!String.IsNullOrEmpty(textBoxBookTitle.Text.ToString()) && !String.IsNullOrEmpty(textBoxNumberPages.Text.ToString()))
                 {
-                    var book = CreateBook();
+                    var book = CreateNewBook();
                     
                     using (var uow = UnitOfWorkFactory.Create())
                     {
@@ -218,12 +246,66 @@ namespace Library_Presentation
                 MessageBox.Show(ex.ToString());
             }
 
+            ToggleButtons(false);
             LoadBooks();
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                PrepareToEditBook(FindBook());
+
+                if (!String.IsNullOrEmpty(textBoxBookTitle.Text.ToString()) && !String.IsNullOrEmpty(textBoxNumberPages.Text.ToString()))
+                {
+                    var bookCreated = CreateNewBook();
+                    using (var uow = UnitOfWorkFactory.Create())
+                    {
+
+                        var book = uow.Books.GetById(int.Parse(bookCreated.BookID.ToString()));
+   
+                        List<Author> authors = new List<Author>();
+                        foreach (var bookAuthor in bookCreated.Authors)
+                        {
+                            var author = uow.Authors.GetById(int.Parse(bookAuthor.AuthorID.ToString()));
+                            book.Authors.Add(author);
+                        }
+
+                        List<Genre> genres = new List<Genre>();
+                        foreach (var bookGenre in bookCreated.Genres)
+                        {
+                            var genre = uow.Genres.GetById(int.Parse(bookGenre.GenreID.ToString()));
+                            book.Genres.Add(genre);
+                        }
+
+                        uow.Books.Update(book);
+                        foreach (var author in book.Authors)
+                        {
+                            uow.Authors.Update(author);
+                        }
+
+                        foreach (var genre in book.Genres)
+                        {
+                            uow.Genres.Update(genre);
+                        }
+
+
+                        uow.Save();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please add missing book title or total page number.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            ToggleButtons(false);
+            LoadBooks();
+
 
         }
 
@@ -318,29 +400,5 @@ namespace Library_Presentation
 
         }
 
-        private Book FindBook() 
-        {
-            Book book = new Book();
-            if (dataGridViewBooks.SelectedRows.Count > 0) 
-            {
-                int a = dataGridViewBooks.SelectedRows[0].Index;
-                var bookID = long.Parse(dataGridViewBooks.Rows[a].Cells["BookID"].Value.ToString());
-                book = _listBooks.Find(b => b.BookID.Equals(bookID));
-            }
-            return book;
-        }
-
-        private void PrepareToEditBook(Book book) 
-        {
-            if (!(book.BookTitle == null))
-            {
-                _selectedListAuthors = book.Authors.ToList();
-                dataGridViewBookAuthors.DataSource = _selectedListAuthors;
-                _selectedListGenres = book.Genres.ToList();
-                dataGridViewBookGenres.DataSource = _selectedListGenres;
-                textBoxBookTitle.Text = book.BookTitle.ToString();
-                textBoxNumberPages.Text = book.BookTotalPages.ToString();
-            }
-        }
     }
 }
