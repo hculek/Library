@@ -48,9 +48,9 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.TextBoxSearchAuthors = new System.Windows.Forms.TextBox();
+            this.textBoxSearchAuthors = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.TextBoxSearchGenres = new System.Windows.Forms.TextBox();
+            this.textBoxSearchGenres = new System.Windows.Forms.TextBox();
             this.dataGridViewAuthorsList = new System.Windows.Forms.DataGridView();
             this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
             this.dataGridViewBookAuthors = new System.Windows.Forms.DataGridView();
@@ -248,12 +248,12 @@
             this.label9.TabIndex = 29;
             this.label9.Text = "Search authors:";
             // 
-            // TextBoxSearchAuthors
+            // textBoxSearchAuthors
             // 
-            this.TextBoxSearchAuthors.Location = new System.Drawing.Point(252, 478);
-            this.TextBoxSearchAuthors.Name = "TextBoxSearchAuthors";
-            this.TextBoxSearchAuthors.Size = new System.Drawing.Size(120, 20);
-            this.TextBoxSearchAuthors.TabIndex = 28;
+            this.textBoxSearchAuthors.Location = new System.Drawing.Point(252, 478);
+            this.textBoxSearchAuthors.Name = "textBoxSearchAuthors";
+            this.textBoxSearchAuthors.Size = new System.Drawing.Size(120, 20);
+            this.textBoxSearchAuthors.TabIndex = 28;
             // 
             // label10
             // 
@@ -264,12 +264,12 @@
             this.label10.TabIndex = 31;
             this.label10.Text = "Search genre:";
             // 
-            // TextBoxSearchGenres
+            // textBoxSearchGenres
             // 
-            this.TextBoxSearchGenres.Location = new System.Drawing.Point(711, 478);
-            this.TextBoxSearchGenres.Name = "TextBoxSearchGenres";
-            this.TextBoxSearchGenres.Size = new System.Drawing.Size(120, 20);
-            this.TextBoxSearchGenres.TabIndex = 30;
+            this.textBoxSearchGenres.Location = new System.Drawing.Point(711, 478);
+            this.textBoxSearchGenres.Name = "textBoxSearchGenres";
+            this.textBoxSearchGenres.Size = new System.Drawing.Size(120, 20);
+            this.textBoxSearchGenres.TabIndex = 30;
             // 
             // dataGridViewAuthorsList
             // 
@@ -365,9 +365,9 @@
             this.Controls.Add(this.dataGridViewBooks);
             this.Controls.Add(this.dataGridViewAuthorsList);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.TextBoxSearchGenres);
+            this.Controls.Add(this.textBoxSearchGenres);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.TextBoxSearchAuthors);
+            this.Controls.Add(this.textBoxSearchAuthors);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.ClearButton);
@@ -421,9 +421,9 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox TextBoxSearchAuthors;
+        private System.Windows.Forms.TextBox textBoxSearchAuthors;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox TextBoxSearchGenres;
+        private System.Windows.Forms.TextBox textBoxSearchGenres;
         private System.Windows.Forms.DataGridView dataGridViewAuthorsList;
         private System.Windows.Forms.DataGridView dataGridViewBooks;
         private System.Windows.Forms.DataGridView dataGridViewBookAuthors;
