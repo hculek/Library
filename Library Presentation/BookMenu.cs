@@ -145,9 +145,9 @@ namespace Library_Presentation
             textBoxBookTitle.Clear();
             textBoxNumberPages.Clear();
             dataGridViewBookAuthors.DataSource = null;
-            _selectedListAuthors = null;
+            _selectedListAuthors.Clear();
             dataGridViewBookGenres.DataSource = null;
-            _selectedListGenres = null;
+            _selectedListGenres.Clear();
         }
 
         private void LoadEditingElements()
@@ -179,23 +179,26 @@ namespace Library_Presentation
         {
             try
             {
-                if (!(String.IsNullOrEmpty(textBoxBookTitle.Text.ToString())) && !(String.IsNullOrEmpty(textBoxNumberPages.Text.ToString())))
+                if (!String.IsNullOrEmpty(textBoxBookTitle.Text.ToString()) && !String.IsNullOrEmpty(textBoxNumberPages.Text.ToString()))
                 {
                     var book = CreateBook();
                     
                     using (var uow = UnitOfWorkFactory.Create())
                     {
                         List<Author> authors = new List<Author>();
-                        foreach (var author in book.Authors)
+                        foreach (var bookAuthor in book.Authors)
                         {
-                            authors = uow.Authors.Find(a => a.AuthorID.Equals(author.AuthorID)).ToList();
+                            var author = uow.Authors.GetById(int.Parse(bookAuthor.AuthorID.ToString()));
+                            authors.Add(author);
                         }
 
                         List<Genre> genres = new List<Genre>();
-                        foreach (var genre in book.Genres)
+                        foreach (var bookGenre in book.Genres)
                         {
-                            genres = uow.Genres.Find(a => a.GenreID.Equals(genre.GenreID)).ToList();
+                            var genre = uow.Genres.GetById(int.Parse(bookGenre.GenreID.ToString()));
+                            genres.Add(genre);
                         }
+
                         book.Authors = authors;
                         book.Genres = genres;
 
@@ -220,87 +223,14 @@ namespace Library_Presentation
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!(String.IsNullOrEmpty(textBoxBookTitle.Text.ToString())) && !(String.IsNullOrEmpty(textBoxNumberPages.Text.ToString())))
-                {
-                    var book = CreateBook();
-
-
-                    using (var uow = UnitOfWorkFactory.Create())
-                    {
-                        List<Author> authors = new List<Author>();
-                        foreach (var author in book.Authors)
-                        {
-                            authors = uow.Authors.Find(a => a.AuthorID.Equals(author.AuthorID)).ToList();
-                        }
-
-                        List<Genre> genres = new List<Genre>();
-                        foreach (var genre in book.Genres)
-                        {
-                            genres = uow.Genres.Find(a => a.GenreID.Equals(genre.GenreID)).ToList();
-                        }
-                        book.Authors = authors;
-                        book.Genres = genres;
-
-                        uow.Books.Update(book);
-                        uow.Save();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Error. Please try again.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            LoadBooks();
+            
 
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (!(String.IsNullOrEmpty(textBoxBookTitle.Text.ToString())) && !(String.IsNullOrEmpty(textBoxNumberPages.Text.ToString())))
-                {
-                    var book = CreateBook();
+           
 
-
-                    using (var uow = UnitOfWorkFactory.Create())
-                    {
-                        List<Author> authors = new List<Author>();
-                        foreach (var author in book.Authors)
-                        {
-                            authors = uow.Authors.Find(a => a.AuthorID.Equals(author.AuthorID)).ToList();
-                        }
-
-                        List<Genre> genres = new List<Genre>();
-                        foreach (var genre in book.Genres)
-                        {
-                            genres = uow.Genres.Find(a => a.GenreID.Equals(genre.GenreID)).ToList();
-                        }
-                        book.Authors = authors;
-                        book.Genres = genres;
-
-                        uow.Books.Remove(book);
-                        uow.Save();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Error. Please try again.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-            LoadBooks();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -328,7 +258,7 @@ namespace Library_Presentation
 
                 var selectedAuthor = _author.Build();
 
-                if (!_selectedListAuthors.Exists(a => a.AuthorID == selectedAuthor.AuthorID))
+                if (!_selectedListAuthors.Exists(a => a.AuthorID.Equals(selectedAuthor.AuthorID)))
                 {
                     _selectedListAuthors.Add(selectedAuthor);
                 }
@@ -363,7 +293,7 @@ namespace Library_Presentation
                 _genre.GenreName(dataGridViewGenreList.Rows[i].Cells["GenreName"].Value.ToString());
                 var selectedGenre = _genre.Build();
 
-                if (!_selectedListGenres.Exists(g => g.GenreID == selectedGenre.GenreID))
+                if (!_selectedListGenres.Exists(g => g.GenreID.Equals(selectedGenre.GenreID)))
                 {
                     _selectedListGenres.Add(selectedGenre);
                 }
