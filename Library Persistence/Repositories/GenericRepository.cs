@@ -78,6 +78,9 @@ namespace Library_Persistence
                 List<T> list;
                 using (var context = new ApplicationContext())
                 {
+                    //fix or "when an object is returned with a notracking merge option, load can only be called whn the entitycollection or entityreference does not contain object"
+                    context.Configuration.ProxyCreationEnabled = false;
+
                     IQueryable<T> dbQuery = context.Set<T>();
 
                     //Apply eager loading
@@ -87,8 +90,6 @@ namespace Library_Persistence
                     list = dbQuery
                         .AsNoTracking()
                         .ToList<T>();
-
-                    //list = dbQuery.ToList<T>();
                 }
                 return list;
             }
