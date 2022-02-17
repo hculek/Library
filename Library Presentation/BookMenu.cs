@@ -46,7 +46,6 @@ namespace Library_Presentation
                 dataGridViewBooks.Columns["BookTotalPages"].HeaderText = "Total Pages";
                 dataGridViewBooks.ClearSelection();
 
-
                 //https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-bind-objects-to-windows-forms-datagridview-controls?view=netframeworkdesktop-4.8
             }
             catch (Exception ex)
@@ -142,10 +141,13 @@ namespace Library_Presentation
 
         private void ClearEditingElements()
         {
-            dataGridViewBookAuthors.DataSource = null;
-            dataGridViewBookGenres.DataSource = null;
+            dataGridViewBooks.ClearSelection();
             textBoxBookTitle.Clear();
             textBoxNumberPages.Clear();
+            dataGridViewBookAuthors.DataSource = null;
+            _selectedListAuthors = null;
+            dataGridViewBookGenres.DataSource = null;
+            _selectedListGenres = null;
         }
 
         private void LoadEditingElements()
@@ -311,7 +313,7 @@ namespace Library_Presentation
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ClearEditingElements();
-            LoadEditingElements();
+            //LoadEditingElements();
         }
 
         private void AddAuthorButton_Click(object sender, EventArgs e)
