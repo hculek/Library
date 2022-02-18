@@ -128,16 +128,16 @@ namespace Library_Presentation
 
         private void ToggleButtons(bool input)
         {
-            AddButton.Enabled = input;
-            AddButton.Enabled = input;
-            DeleteButton.Enabled = input;
-            UpdateButton.Enabled = input;
-            CancelButton.Enabled = input;
+            buttonAdd.Enabled = input;
+            buttonAdd.Enabled = input;
+            buttonDelete.Enabled = input;
+            buttonUpdate.Enabled = input;
+            buttonCancel.Enabled = input;
             AddAuthorButton.Enabled = input;
             RemoveAuthorButton.Enabled = input;
             AddGenreButton.Enabled = input;
             RemoveGenreButton.Enabled = input;
-            ClearButton.Enabled = input ? false : true;
+            buttonClear.Enabled = input ? false : true;
         }
 
         private void ClearEditingElements()
@@ -157,11 +157,28 @@ namespace Library_Presentation
             LoadGenres();
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            ToggleButtons(true);
+            LoadEditingElements();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
         {
             PrepareToEditBook(FindBook());
             ToggleButtons(true);
             LoadEditingElements();
+
+        }
+
+        private Book CreateNewBook()
+        {
+            _book.Title(textBoxBookTitle.Text.ToString());
+            _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
+            _book.Author(_selectedListAuthors);
+            _book.Genre(_selectedListGenres);
+            var book = _book.Build();
+            return book;
         }
 
 
@@ -190,18 +207,9 @@ namespace Library_Presentation
             }
         }
 
-        private Book CreateNewBook() 
-        {
-            _book.Title(textBoxBookTitle.Text.ToString());
-            _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
-            _book.Author(_selectedListAuthors);
-            _book.Genre(_selectedListGenres);
-            var book = _book.Build();
-            return book;
-        }
-
         private Book EditExistingBook(long bookID)
         {
+            _book.Reset();
             _book.BookID(bookID);
             _book.Title(textBoxBookTitle.Text.ToString());
             _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
@@ -212,7 +220,7 @@ namespace Library_Presentation
         }
 
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             try
             {
@@ -259,7 +267,7 @@ namespace Library_Presentation
             LoadBooks();
         }
 
-        private void UpdateButton_Click(object sender, EventArgs e)
+        private void buttonUpdate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -310,7 +318,7 @@ namespace Library_Presentation
 
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
             try
             {
@@ -361,20 +369,20 @@ namespace Library_Presentation
 
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, EventArgs e)
         {
             ToggleButtons(false);
             ClearEditingElements();
             LoadBooks();
         }
 
-        private void ClearButton_Click(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
             ClearEditingElements();
             //LoadEditingElements();
         }
 
-        private void AddAuthorButton_Click(object sender, EventArgs e)
+        private void buttonAddAuthor_Click(object sender, EventArgs e)
         {
             if (dataGridViewAuthorsList.SelectedRows.Count>0)
             {
@@ -401,7 +409,7 @@ namespace Library_Presentation
             dataGridViewAuthorsList.ClearSelection();
         }
 
-        private void RemoveAuthorButton_Click(object sender, EventArgs e)
+        private void buttonRemoveAuthor_Click(object sender, EventArgs e)
         {
             if (dataGridViewBookAuthors.SelectedRows.Count > 0)
             {
@@ -412,7 +420,7 @@ namespace Library_Presentation
             dataGridViewAuthorsList.ClearSelection();
         }
 
-        private void AddGenreButton_Click(object sender, EventArgs e)
+        private void buttonAddGenre_Click(object sender, EventArgs e)
         {
             if (dataGridViewGenreList.SelectedRows.Count > 0)
             {
@@ -434,7 +442,7 @@ namespace Library_Presentation
             }
         }
 
-        private void RemoveGenreButton_Click(object sender, EventArgs e)
+        private void buttonRemoveGenre_Click(object sender, EventArgs e)
         {
             if (dataGridViewBookGenres.SelectedRows.Count > 0)
             {
@@ -445,6 +453,7 @@ namespace Library_Presentation
             dataGridViewGenreList.ClearSelection();
 
         }
+
 
     }
 }

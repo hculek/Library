@@ -41,10 +41,10 @@
             this.AddGenreButton = new System.Windows.Forms.Button();
             this.RemoveAuthorButton = new System.Windows.Forms.Button();
             this.RemoveGenreButton = new System.Windows.Forms.Button();
-            this.AddButton = new System.Windows.Forms.Button();
-            this.UpdateButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
-            this.ClearButton = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -55,9 +55,10 @@
             this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
             this.dataGridViewBookAuthors = new System.Windows.Forms.DataGridView();
             this.dataGridViewBookGenres = new System.Windows.Forms.DataGridView();
-            this.EditButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.dataGridViewGenreList = new System.Windows.Forms.DataGridView();
+            this.buttonCreate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuthorsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBookAuthors)).BeginInit();
@@ -150,7 +151,7 @@
             this.AddAuthorButton.TabIndex = 16;
             this.AddAuthorButton.Text = "Add Author";
             this.AddAuthorButton.UseVisualStyleBackColor = true;
-            this.AddAuthorButton.Click += new System.EventHandler(this.AddAuthorButton_Click);
+            this.AddAuthorButton.Click += new System.EventHandler(this.buttonAddAuthor_Click);
             // 
             // AddGenreButton
             // 
@@ -160,7 +161,7 @@
             this.AddGenreButton.TabIndex = 17;
             this.AddGenreButton.Text = "Add Genre";
             this.AddGenreButton.UseVisualStyleBackColor = true;
-            this.AddGenreButton.Click += new System.EventHandler(this.AddGenreButton_Click);
+            this.AddGenreButton.Click += new System.EventHandler(this.buttonAddGenre_Click);
             // 
             // RemoveAuthorButton
             // 
@@ -170,7 +171,7 @@
             this.RemoveAuthorButton.TabIndex = 18;
             this.RemoveAuthorButton.Text = "Remove Author";
             this.RemoveAuthorButton.UseVisualStyleBackColor = true;
-            this.RemoveAuthorButton.Click += new System.EventHandler(this.RemoveAuthorButton_Click);
+            this.RemoveAuthorButton.Click += new System.EventHandler(this.buttonRemoveAuthor_Click);
             // 
             // RemoveGenreButton
             // 
@@ -180,48 +181,48 @@
             this.RemoveGenreButton.TabIndex = 19;
             this.RemoveGenreButton.Text = "Remove Genre";
             this.RemoveGenreButton.UseVisualStyleBackColor = true;
-            this.RemoveGenreButton.Click += new System.EventHandler(this.RemoveGenreButton_Click);
+            this.RemoveGenreButton.Click += new System.EventHandler(this.buttonRemoveGenre_Click);
             // 
-            // AddButton
+            // buttonAdd
             // 
-            this.AddButton.Location = new System.Drawing.Point(103, 359);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(75, 23);
-            this.AddButton.TabIndex = 20;
-            this.AddButton.Text = "Add";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            this.buttonAdd.Location = new System.Drawing.Point(184, 359);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.TabIndex = 20;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // UpdateButton
+            // buttonUpdate
             // 
-            this.UpdateButton.Location = new System.Drawing.Point(184, 359);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(75, 23);
-            this.UpdateButton.TabIndex = 21;
-            this.UpdateButton.Text = "Update";
-            this.UpdateButton.UseVisualStyleBackColor = true;
-            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            this.buttonUpdate.Location = new System.Drawing.Point(265, 359);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdate.TabIndex = 21;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
-            // DeleteButton
+            // buttonDelete
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(265, 359);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteButton.TabIndex = 22;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            this.buttonDelete.Location = new System.Drawing.Point(346, 359);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 22;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // ClearButton
+            // buttonClear
             // 
-            this.ClearButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ClearButton.Location = new System.Drawing.Point(427, 359);
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(75, 23);
-            this.ClearButton.TabIndex = 23;
-            this.ClearButton.Text = "Clear";
-            this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            this.buttonClear.Cursor = System.Windows.Forms.Cursors.Default;
+            this.buttonClear.Location = new System.Drawing.Point(508, 359);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 23;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // textBox3
             // 
@@ -321,25 +322,25 @@
             this.dataGridViewBookGenres.Size = new System.Drawing.Size(350, 150);
             this.dataGridViewBookGenres.TabIndex = 37;
             // 
-            // EditButton
+            // buttonEdit
             // 
-            this.EditButton.Location = new System.Drawing.Point(22, 359);
-            this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(75, 23);
-            this.EditButton.TabIndex = 38;
-            this.EditButton.Text = "Edit";
-            this.EditButton.UseVisualStyleBackColor = true;
-            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            this.buttonEdit.Location = new System.Drawing.Point(103, 359);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonEdit.TabIndex = 38;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // CancelButton
+            // buttonCancel
             // 
-            this.CancelButton.Location = new System.Drawing.Point(346, 359);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 39;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.buttonCancel.Location = new System.Drawing.Point(427, 359);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 39;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // dataGridViewGenreList
             // 
@@ -353,13 +354,24 @@
             this.dataGridViewGenreList.Size = new System.Drawing.Size(350, 136);
             this.dataGridViewGenreList.TabIndex = 40;
             // 
+            // buttonCreate
+            // 
+            this.buttonCreate.Location = new System.Drawing.Point(22, 359);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreate.TabIndex = 41;
+            this.buttonCreate.Text = "Create";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            // 
             // BookMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.dataGridViewGenreList);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.EditButton);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.dataGridViewBookGenres);
             this.Controls.Add(this.dataGridViewBookAuthors);
             this.Controls.Add(this.dataGridViewBooks);
@@ -370,10 +382,10 @@
             this.Controls.Add(this.textBoxSearchAuthors);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.ClearButton);
-            this.Controls.Add(this.DeleteButton);
-            this.Controls.Add(this.UpdateButton);
-            this.Controls.Add(this.AddButton);
+            this.Controls.Add(this.buttonClear);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonUpdate);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.RemoveGenreButton);
             this.Controls.Add(this.RemoveAuthorButton);
             this.Controls.Add(this.AddGenreButton);
@@ -414,10 +426,10 @@
         private System.Windows.Forms.Button AddGenreButton;
         private System.Windows.Forms.Button RemoveAuthorButton;
         private System.Windows.Forms.Button RemoveGenreButton;
-        private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button UpdateButton;
-        private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -428,8 +440,9 @@
         private System.Windows.Forms.DataGridView dataGridViewBooks;
         private System.Windows.Forms.DataGridView dataGridViewBookAuthors;
         private System.Windows.Forms.DataGridView dataGridViewBookGenres;
-        private System.Windows.Forms.Button EditButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.DataGridView dataGridViewGenreList;
+        private System.Windows.Forms.Button buttonCreate;
     }
 }
