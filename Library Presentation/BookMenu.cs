@@ -24,7 +24,8 @@ namespace Library_Presentation
         public BookMenu()
         {
             InitializeComponent();
-            ToggleButtons(false);
+            ToggleCreateButtons(false);
+            ToggleEditControls(false);
             LoadBooks();
         }
 
@@ -124,12 +125,28 @@ namespace Library_Presentation
             dataGridViewBookAuthors.ClearSelection();
         }
 
+        private void ToggleCreateEditButtons(bool input) 
+        {
+            buttonCreate.Enabled = input;
+            buttonEdit.Enabled = input;
+        }
 
-
-        private void ToggleButtons(bool input)
+        private void ToggleCreateButtons(bool input)
         {
             buttonAdd.Enabled = input;
-            buttonAdd.Enabled = input;
+            buttonCancel.Enabled = input;
+            AddAuthorButton.Enabled = input;
+            RemoveAuthorButton.Enabled = input;
+            AddGenreButton.Enabled = input;
+            RemoveGenreButton.Enabled = input;
+            //buttonClear.Enabled = input ? false : true;
+
+            ToggleCreateEditButtons(input ? false : true);
+            LoadEditingElements(input);
+        }
+
+        private void ToggleEditControls(bool input)
+        {
             buttonDelete.Enabled = input;
             buttonUpdate.Enabled = input;
             buttonCancel.Enabled = input;
@@ -138,6 +155,9 @@ namespace Library_Presentation
             AddGenreButton.Enabled = input;
             RemoveGenreButton.Enabled = input;
             buttonClear.Enabled = input ? false : true;
+
+            ToggleCreateEditButtons(input ? false : true);
+            LoadEditingElements(input);
         }
 
         private void Cleanup() 
@@ -158,23 +178,30 @@ namespace Library_Presentation
             _selectedListGenres.Clear();
         }
 
-        private void LoadEditingElements()
+        private void LoadEditingElements(bool input)
         {
-            LoadAuthors();
-            LoadGenres();
+            if (input == true)
+            {
+                LoadAuthors();
+                LoadGenres();
+            }
+            else
+            {
+                Cleanup();
+            }
+
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            ToggleButtons(true);
-            LoadEditingElements();
+            ToggleCreateButtons(true);
+            LoadEditingElements(true);
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             PrepareToEditBook(FindBook());
-            ToggleButtons(true);
-            LoadEditingElements();
+            ToggleEditControls(true);
 
         }
 
@@ -203,9 +230,9 @@ namespace Library_Presentation
 
         private void PrepareToEditBook(Book book)
         {
-            if (!(book.BookTitle == null))
+            if (book.BookID.HasValue)
             {
-                _book.BookID(book.BookID);
+                _book.BookID((book.BookID.Value));
                 textBoxBookTitle.Text = book.BookTitle.ToString();
                 _book.Title(book.BookTitle.ToString());
                 textBoxNumberPages.Text = book.BookTotalPages.ToString();
@@ -245,14 +272,14 @@ namespace Library_Presentation
                         List<Author> authors = new List<Author>();
                         foreach (var bookAuthor in book.Authors)
                         {
-                            var author = uow.Authors.GetById(int.Parse(bookAuthor.AuthorID.ToString()));
+                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
                             authors.Add(author);
                         }
 
                         List<Genre> genres = new List<Genre>();
                         foreach (var bookGenre in book.Genres)
                         {
-                            var genre = uow.Genres.GetById(int.Parse(bookGenre.GenreID.ToString()));
+                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
                             genres.Add(genre);
                         }
 
@@ -274,7 +301,7 @@ namespace Library_Presentation
                 MessageBox.Show(ex.ToString());
             }
             Cleanup();
-            ToggleButtons(false);
+            ToggleEditControls(false);
             LoadBooks();
         }
 
@@ -285,7 +312,8 @@ namespace Library_Presentation
                 //load edited book from GUI
                 var editedBook = EditExistingBook();
 
-                if (!String.IsNullOrEmpty(editedBook.BookID.ToString()))
+                //if (!String.IsNullOrEmpty(editedBook.BookID.ToString()))
+                if (editedBook.BookID.HasValue)
                 {
 
                     //load book from context using edited book ID
@@ -293,14 +321,14 @@ namespace Library_Presentation
                     //save with same context
                     using (var uow = UnitOfWorkFactory.Create())
                     {
-                        var book = uow.Books.GetById(int.Parse(editedBook.BookID.ToString()));
+                        var book = uow.Books.GetById((int)editedBook.BookID);
                         book.BookTitle = editedBook.BookTitle;
                         book.BookTotalPages = editedBook.BookTotalPages;
 
                         List<Author> authors = new List<Author>();
                         foreach (var bookAuthor in editedBook.Authors)
                         {
-                            var author = uow.Authors.GetById(int.Parse(bookAuthor.AuthorID.ToString()));
+                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
 
                             book.Authors.Add(author);
                         }
@@ -308,7 +336,7 @@ namespace Library_Presentation
                         List<Genre> genres = new List<Genre>();
                         foreach (var bookGenre in editedBook.Genres)
                         {
-                            var genre = uow.Genres.GetById(int.Parse(bookGenre.GenreID.ToString()));
+                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
                             
                             book.Genres.Add(genre);
                         }
@@ -328,7 +356,7 @@ namespace Library_Presentation
                 MessageBox.Show(ex.ToString());
             }
             Cleanup();
-            ToggleButtons(false);
+            ToggleEditControls(false);
             LoadBooks();
 
 
@@ -340,18 +368,18 @@ namespace Library_Presentation
             {
                 var fb = FindBook();
 
-                if (!String.IsNullOrEmpty(fb.BookID.ToString()))
+                if (fb.BookID.HasValue)
                 {
 
                     using (var uow = UnitOfWorkFactory.Create())
                     {
 
-                        var book = uow.Books.GetById(int.Parse(fb.BookID.ToString()));
+                        var book = uow.Books.GetById((int)fb.BookID);
 
                         List<Author> authors = new List<Author>();
                         foreach (var bookAuthor in fb.Authors)
                         {
-                            var author = uow.Authors.GetById(int.Parse(bookAuthor.AuthorID.ToString()));
+                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
 
                             book.Authors.Add(author);
                         }
@@ -359,7 +387,7 @@ namespace Library_Presentation
                         List<Genre> genres = new List<Genre>();
                         foreach (var bookGenre in fb.Genres)
                         {
-                            var genre = uow.Genres.GetById(int.Parse(bookGenre.GenreID.ToString()));
+                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
 
                             book.Genres.Add(genre);
                         }
@@ -379,7 +407,7 @@ namespace Library_Presentation
                 MessageBox.Show(ex.ToString());
             }
             Cleanup();
-            ToggleButtons(false);
+            ToggleEditControls(false);
             LoadBooks();
 
 
@@ -389,7 +417,7 @@ namespace Library_Presentation
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Cleanup();
-            ToggleButtons(false);
+            ToggleEditControls(false);
             LoadBooks();
         }
 
