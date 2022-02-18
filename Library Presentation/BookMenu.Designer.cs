@@ -255,6 +255,7 @@
             this.textBoxSearchAuthors.Name = "textBoxSearchAuthors";
             this.textBoxSearchAuthors.Size = new System.Drawing.Size(120, 20);
             this.textBoxSearchAuthors.TabIndex = 28;
+            this.textBoxSearchAuthors.TextChanged += new System.EventHandler(this.textBoxSearchAuthors_TextChanged);
             // 
             // label10
             // 
@@ -271,6 +272,7 @@
             this.textBoxSearchGenres.Name = "textBoxSearchGenres";
             this.textBoxSearchGenres.Size = new System.Drawing.Size(120, 20);
             this.textBoxSearchGenres.TabIndex = 30;
+            this.textBoxSearchGenres.TextChanged += new System.EventHandler(this.textBoxSearchGenres_TextChanged);
             // 
             // dataGridViewAuthorsList
             // 

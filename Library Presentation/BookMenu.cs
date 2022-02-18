@@ -140,6 +140,13 @@ namespace Library_Presentation
             buttonClear.Enabled = input ? false : true;
         }
 
+        private void Cleanup() 
+        {
+            dataGridViewAuthorsList.DataSource = null;
+            dataGridViewGenreList.DataSource = null;
+            ClearEditingElements();
+        }
+
         private void ClearEditingElements()
         {
             dataGridViewBooks.ClearSelection();
@@ -261,13 +268,12 @@ namespace Library_Presentation
                     MessageBox.Show("Please add missing book title or total page number.");
                 }
 
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
+            Cleanup();
             ToggleButtons(false);
             LoadBooks();
         }
@@ -321,6 +327,7 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
+            Cleanup();
             ToggleButtons(false);
             LoadBooks();
 
@@ -371,6 +378,7 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
+            Cleanup();
             ToggleButtons(false);
             LoadBooks();
 
@@ -380,8 +388,8 @@ namespace Library_Presentation
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            Cleanup();
             ToggleButtons(false);
-            ClearEditingElements();
             LoadBooks();
         }
 
@@ -460,6 +468,43 @@ namespace Library_Presentation
                 LoadSelectedGenres();
             }
             dataGridViewGenreList.ClearSelection();
+
+        }
+
+        private void textBoxSearchAuthors_TextChanged(object sender, EventArgs e)
+        {
+
+            if (!String.IsNullOrEmpty(textBoxSearchAuthors.Text.ToString()))
+            {
+                var searchAuthors =
+                    _listAuthors.Where(a => a.FirstName.ToLower().Contains(textBoxSearchAuthors.Text.ToLower())
+                || a.MiddleName.ToLower().Contains(textBoxSearchAuthors.Text.ToLower())
+                || a.LastName.ToLower().Contains(textBoxSearchAuthors.Text.ToLower()));
+
+                dataGridViewAuthorsList.DataSource = searchAuthors.ToList();
+
+            }
+            else
+            {
+                dataGridViewAuthorsList.DataSource = _listAuthors;
+            }
+
+        }
+
+        private void textBoxSearchGenres_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(textBoxSearchGenres.Text.ToString()))
+            {
+
+                var result = from genre in _listGenres
+                             where genre.GenreName.ToLower().Contains(textBoxSearchGenres.Text.ToLower())
+                             select genre;
+                dataGridViewGenreList.DataSource = result.ToList();
+            }
+            else
+            {
+                dataGridViewGenreList.DataSource = _listGenres;
+            }
 
         }
     }
