@@ -16,7 +16,7 @@ namespace Library_Domain.Objects
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("book_id")]
-        public long BookID { get; set; }
+        public long? BookID { get; set; }
 
         [Column("book_title"), Display(Name = "Book Title")]
         public string BookTitle { get; set; }
