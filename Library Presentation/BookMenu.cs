@@ -200,7 +200,9 @@ namespace Library_Presentation
             {
                 _book.BookID(book.BookID);
                 textBoxBookTitle.Text = book.BookTitle.ToString();
+                _book.Title(book.BookTitle.ToString());
                 textBoxNumberPages.Text = book.BookTotalPages.ToString();
+                _book.TotalPages(int.Parse(book.BookTotalPages.ToString()));
                 _selectedListAuthors = book.Authors.ToList();
                 dataGridViewBookAuthors.DataSource = _selectedListAuthors;
                 _selectedListGenres = book.Genres.ToList();
@@ -270,10 +272,11 @@ namespace Library_Presentation
         {
             try
             {
-                var findBook= FindBook();
                 var editedBook = EditExistingBook();
 
-                if (!String.IsNullOrEmpty(findBook.BookID.ToString()))
+                MessageBox.Show(String.Format("{0} {1} {2}", editedBook.BookID, editedBook.BookTitle, editedBook.BookTotalPages));
+
+                if (!String.IsNullOrEmpty(editedBook.BookID.ToString()))
                 {
                     using (var uow = UnitOfWorkFactory.Create())
                     {
