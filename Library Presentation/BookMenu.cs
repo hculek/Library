@@ -274,15 +274,13 @@ namespace Library_Presentation
             {
                 var editedBook = EditExistingBook();
 
-                MessageBox.Show(String.Format("{0} {1} {2}", editedBook.BookID, editedBook.BookTitle, editedBook.BookTotalPages));
-
                 if (!String.IsNullOrEmpty(editedBook.BookID.ToString()))
                 {
                     using (var uow = UnitOfWorkFactory.Create())
                     {
                         var book = uow.Books.GetById(int.Parse(editedBook.BookID.ToString()));
-                        book.Authors.Clear();
-                        book.Genres.Clear();
+                        book.BookTitle = editedBook.BookTitle;
+                        book.BookTotalPages = editedBook.BookTotalPages;
 
                         List<Author> authors = new List<Author>();
                         foreach (var bookAuthor in editedBook.Authors)
@@ -299,6 +297,9 @@ namespace Library_Presentation
                             
                             book.Genres.Add(genre);
                         }
+
+
+                        MessageBox.Show(String.Format("{0} {1} {2}", book.BookID, book.BookTitle, book.BookTotalPages));
 
                         uow.Books.Update(book);
                         uow.Save();
