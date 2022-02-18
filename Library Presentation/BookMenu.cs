@@ -227,8 +227,12 @@ namespace Library_Presentation
             {
                 if (!String.IsNullOrEmpty(textBoxBookTitle.Text.ToString()) && !String.IsNullOrEmpty(textBoxNumberPages.Text.ToString()))
                 {
+                    // create new book from GUI
                     var book = CreateNewBook();
                     
+
+                    // add authors and genres to new book using context
+                    // save new book using same context
                     using (var uow = UnitOfWorkFactory.Create())
                     {
                         List<Author> authors = new List<Author>();
@@ -272,10 +276,15 @@ namespace Library_Presentation
         {
             try
             {
+                //load edited book from GUI
                 var editedBook = EditExistingBook();
 
                 if (!String.IsNullOrEmpty(editedBook.BookID.ToString()))
                 {
+
+                    //load book from context
+                    //insert book details from edited book
+                    //save with same context
                     using (var uow = UnitOfWorkFactory.Create())
                     {
                         var book = uow.Books.GetById(int.Parse(editedBook.BookID.ToString()));
@@ -297,9 +306,6 @@ namespace Library_Presentation
                             
                             book.Genres.Add(genre);
                         }
-
-
-                        MessageBox.Show(String.Format("{0} {1} {2}", book.BookID, book.BookTitle, book.BookTotalPages));
 
                         uow.Books.Update(book);
                         uow.Save();
@@ -456,7 +462,5 @@ namespace Library_Presentation
             dataGridViewGenreList.ClearSelection();
 
         }
-
-
     }
 }
