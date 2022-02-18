@@ -198,6 +198,7 @@ namespace Library_Presentation
         {
             if (!(book.BookTitle == null))
             {
+                _book.BookID(book.BookID);
                 textBoxBookTitle.Text = book.BookTitle.ToString();
                 textBoxNumberPages.Text = book.BookTotalPages.ToString();
                 _selectedListAuthors = book.Authors.ToList();
@@ -207,10 +208,8 @@ namespace Library_Presentation
             }
         }
 
-        private Book EditExistingBook(long bookID)
-        {
-            _book.Reset();
-            _book.BookID(bookID);
+        private Book EditExistingBook()
+        {            
             _book.Title(textBoxBookTitle.Text.ToString());
             _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
             _book.Author(_selectedListAuthors);
@@ -272,7 +271,7 @@ namespace Library_Presentation
             try
             {
                 var findBook= FindBook();
-                var editedBook = EditExistingBook(findBook.BookID);
+                var editedBook = EditExistingBook();
 
                 if (!String.IsNullOrEmpty(findBook.BookID.ToString()))
                 {
