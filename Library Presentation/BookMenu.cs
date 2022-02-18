@@ -282,7 +282,7 @@ namespace Library_Presentation
                 if (!String.IsNullOrEmpty(editedBook.BookID.ToString()))
                 {
 
-                    //load book from context
+                    //load book from context using edited book ID
                     //insert book details from edited book
                     //save with same context
                     using (var uow = UnitOfWorkFactory.Create())
