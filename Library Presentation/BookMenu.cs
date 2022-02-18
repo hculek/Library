@@ -181,25 +181,34 @@ namespace Library_Presentation
         {
             if (!(book.BookTitle == null))
             {
+                textBoxBookTitle.Text = book.BookTitle.ToString();
+                textBoxNumberPages.Text = book.BookTotalPages.ToString();
                 _selectedListAuthors = book.Authors.ToList();
                 dataGridViewBookAuthors.DataSource = _selectedListAuthors;
                 _selectedListGenres = book.Genres.ToList();
                 dataGridViewBookGenres.DataSource = _selectedListGenres;
-                textBoxBookTitle.Text = book.BookTitle.ToString();
-                textBoxNumberPages.Text = book.BookTotalPages.ToString();
             }
         }
 
         private Book CreateNewBook() 
         {
-            
-            
             _book.Title(textBoxBookTitle.Text.ToString());
             _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
             _book.Author(_selectedListAuthors);
             _book.Genre(_selectedListGenres);
-            var abook = _book.Build();
-            return abook;
+            var book = _book.Build();
+            return book;
+        }
+
+        private Book EditExistingBook(long bookID)
+        {
+            _book.BookID(bookID);
+            _book.Title(textBoxBookTitle.Text.ToString());
+            _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
+            _book.Author(_selectedListAuthors);
+            _book.Genre(_selectedListGenres);
+            var book = _book.Build();
+            return book;
         }
 
 
@@ -254,42 +263,34 @@ namespace Library_Presentation
         {
             try
             {
-                PrepareToEditBook(FindBook());
+                var findBook= FindBook();
+                var editedBook = EditExistingBook(findBook.BookID);
 
-                if (!String.IsNullOrEmpty(textBoxBookTitle.Text.ToString()) && !String.IsNullOrEmpty(textBoxNumberPages.Text.ToString()))
+                if (!String.IsNullOrEmpty(findBook.BookID.ToString()))
                 {
-                    var bookCreated = CreateNewBook();
                     using (var uow = UnitOfWorkFactory.Create())
                     {
+                        var book = uow.Books.GetById(int.Parse(editedBook.BookID.ToString()));
+                        book.Authors.Clear();
+                        book.Genres.Clear();
 
-                        var book = uow.Books.GetById(int.Parse(bookCreated.BookID.ToString()));
-   
                         List<Author> authors = new List<Author>();
-                        foreach (var bookAuthor in bookCreated.Authors)
+                        foreach (var bookAuthor in editedBook.Authors)
                         {
                             var author = uow.Authors.GetById(int.Parse(bookAuthor.AuthorID.ToString()));
+
                             book.Authors.Add(author);
                         }
 
                         List<Genre> genres = new List<Genre>();
-                        foreach (var bookGenre in bookCreated.Genres)
+                        foreach (var bookGenre in editedBook.Genres)
                         {
                             var genre = uow.Genres.GetById(int.Parse(bookGenre.GenreID.ToString()));
+                            
                             book.Genres.Add(genre);
                         }
 
                         uow.Books.Update(book);
-                        foreach (var author in book.Authors)
-                        {
-                            uow.Authors.Update(author);
-                        }
-
-                        foreach (var genre in book.Genres)
-                        {
-                            uow.Genres.Update(genre);
-                        }
-
-
                         uow.Save();
                     }
                 }
@@ -311,7 +312,52 @@ namespace Library_Presentation
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                var fb = FindBook();
+
+                if (!String.IsNullOrEmpty(fb.BookID.ToString()))
+                {
+
+                    using (var uow = UnitOfWorkFactory.Create())
+                    {
+
+                        var book = uow.Books.GetById(int.Parse(fb.BookID.ToString()));
+
+                        List<Author> authors = new List<Author>();
+                        foreach (var bookAuthor in fb.Authors)
+                        {
+                            var author = uow.Authors.GetById(int.Parse(bookAuthor.AuthorID.ToString()));
+
+                            book.Authors.Add(author);
+                        }
+
+                        List<Genre> genres = new List<Genre>();
+                        foreach (var bookGenre in fb.Genres)
+                        {
+                            var genre = uow.Genres.GetById(int.Parse(bookGenre.GenreID.ToString()));
+
+                            book.Genres.Add(genre);
+                        }
+
+                        uow.Books.Remove(book);
+                        uow.Save();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please add missing book title or total page number.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            ToggleButtons(false);
+            LoadBooks();
+
+
 
         }
 
