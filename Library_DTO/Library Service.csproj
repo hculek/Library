@@ -46,6 +46,7 @@
     <Compile Include="Builders\BookBuilder.cs" />
     <Compile Include="Builders\GenreBuilder.cs" />
     <Compile Include="dbAccess\Authors.cs" />
+    <Compile Include="dbAccess\Books.cs" />
     <Compile Include="dbAccess\Genres.cs" />
     <Compile Include="UnitOfWorkFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
