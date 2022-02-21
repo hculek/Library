@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Library_Domain.Objects;
 using Library_Service.Builders;
 using Library_Service.dbAccess;
+using Library_Service.UOW;
 
 namespace Library_Presentation
 {
@@ -267,36 +268,11 @@ namespace Library_Presentation
             {
                 if (!String.IsNullOrEmpty(textBoxBookTitle.Text.ToString()) && !String.IsNullOrEmpty(textBoxNumberPages.Text.ToString()))
                 {
-                    // create new book from GUI
+
                     var book = CreateNewBook();
 
                     Books.Add(book);
 
-
-                    // add authors and genres to new book using context
-                    // save new book using same context
-                    //using (var uow = UnitOfWorkFactory.Create())
-                    //{
-                    //    List<Author> authors = new List<Author>();
-                    //    foreach (var bookAuthor in book.Authors)
-                    //    {
-                    //        var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
-                    //        authors.Add(author);
-                    //    }
-
-                    //    List<Genre> genres = new List<Genre>();
-                    //    foreach (var bookGenre in book.Genres)
-                    //    {
-                    //        var genre = uow.Genres.GetById((int)bookGenre.GenreID);
-                    //        genres.Add(genre);
-                    //    }
-
-                    //    book.Authors = authors;
-                    //    book.Genres = genres;
-
-                    //    uow.Books.Add(book);
-                    //    uow.Save();
-                    //}
                 }
                 else
                 {
@@ -317,48 +293,9 @@ namespace Library_Presentation
         {
             try
             {
-                //load edited book from GUI
                 var book = EditExistingBook();
 
-                //if (!String.IsNullOrEmpty(editedBook.BookID.ToString()))
-                if (book.BookID.HasValue)
-                {
-
-                    Books.Add(book);
-
-                    ////load book from context using edited book ID
-                    ////insert book details from edited book
-                    ////save with same context
-                    //using (var uow = UnitOfWorkFactory.Create())
-                    //{
-                    //    var book = uow.Books.GetById((int)editedBook.BookID);
-                    //    book.BookTitle = editedBook.BookTitle;
-                    //    book.BookTotalPages = editedBook.BookTotalPages;
-
-                    //    List<Author> authors = new List<Author>();
-                    //    foreach (var bookAuthor in editedBook.Authors)
-                    //    {
-                    //        var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
-
-                    //        book.Authors.Add(author);
-                    //    }
-
-                    //    List<Genre> genres = new List<Genre>();
-                    //    foreach (var bookGenre in editedBook.Genres)
-                    //    {
-                    //        var genre = uow.Genres.GetById((int)bookGenre.GenreID);
-
-                    //        book.Genres.Add(genre);
-                    //    }
-
-                    //    uow.Books.Update(book);
-                    //    uow.Save();
-                    //}
-                }
-                else
-                {
-                    MessageBox.Show("Please add missing book title or total page number.");
-                }
+                Books.Update(book);
 
             }
             catch (Exception ex)

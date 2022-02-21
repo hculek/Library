@@ -16,7 +16,7 @@ namespace Library_Service.dbAccess
             {
                 using (var uow = UnitOfWorkFactory.Create())
                 {
-                    var list = uow.Books.Get().OrderBy(g => g.BookTitle).ToList();
+                    var list = uow.Books.GetAll(b => b.Authors, b => b.Genres).OrderBy(b => b.BookTitle).ToList();
                     return list;
                 }
 
@@ -31,35 +31,27 @@ namespace Library_Service.dbAccess
         {
             try
             {
-
-                if (!CheckExistingBook(book) == true)
+                using (var uow = UnitOfWorkFactory.Create())
                 {
-                    using (var uow = UnitOfWorkFactory.Create())
+                    List<Author> authors = new List<Author>();
+                    foreach (var bookAuthor in book.Authors)
                     {
-                        List<Author> authors = new List<Author>();
-                        foreach (var bookAuthor in book.Authors)
-                        {
-                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
-                            authors.Add(author);
-                        }
-
-                        List<Genre> genres = new List<Genre>();
-                        foreach (var bookGenre in book.Genres)
-                        {
-                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
-                            genres.Add(genre);
-                        }
-
-                        book.Authors = authors;
-                        book.Genres = genres;
-
-                        uow.Books.Add(book);
-                        uow.Save();
+                        var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
+                        authors.Add(author);
                     }
-                }
-                else
-                {
-                    throw new Exception("Error. Record already exists.");
+
+                    List<Genre> genres = new List<Genre>();
+                    foreach (var bookGenre in book.Genres)
+                    {
+                        var genre = uow.Genres.GetById((int)bookGenre.GenreID);
+                        genres.Add(genre);
+                    }
+
+                    book.Authors = authors;
+                    book.Genres = genres;
+
+                    uow.Books.Add(book);
+                    uow.Save();
                 }
 
             }
@@ -81,27 +73,27 @@ namespace Library_Service.dbAccess
                     //save with same context
                     using (var uow = UnitOfWorkFactory.Create())
                     {
-                        var reloadBook = uow.Books.GetById((int)book.BookID);
-                        reloadBook.BookTitle = book.BookTitle;
-                        reloadBook.BookTotalPages = book.BookTotalPages;
+                        var updatedBook = uow.Books.GetById((int)book.BookID);
+                        updatedBook.BookTitle = book.BookTitle;
+                        updatedBook.BookTotalPages = book.BookTotalPages;
 
                         List<Author> authors = new List<Author>();
-                        foreach (var author in book.Authors)
+                        foreach (var bookAuthor in book.Authors)
                         {
-                            var reloadAuthor = uow.Authors.GetById((int)author.AuthorID);
+                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
 
-                            book.Authors.Add(reloadAuthor);
+                            updatedBook.Authors.Add(author);
                         }
 
                         List<Genre> genres = new List<Genre>();
-                        foreach (var genre in book.Genres)
+                        foreach (var bookGenre in book.Genres)
                         {
-                            var reloadGenre = uow.Genres.GetById((int)genre.GenreID);
+                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
 
-                            book.Genres.Add(reloadGenre);
+                            updatedBook.Genres.Add(genre);
                         }
 
-                        uow.Books.Update(reloadBook);
+                        uow.Books.Update(updatedBook);
                         uow.Save();
                     }
                 }
