@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Library_Domain.Objects;
 using Library_Service.UOW;
 
-namespace Library_DTO.dbAccess
+namespace Library_Service.dbAccess
 {
     public class Genres
     {
@@ -36,7 +34,11 @@ namespace Library_DTO.dbAccess
             try
             {
 
-                if (!CheckExisting(genre) == true)
+                //settle different, check string in class
+                if (String.IsNullOrWhiteSpace(genre.GenreName))
+
+
+                if (!CheckExistingName(genre) == true)
                 {
                     using (var uow = UnitOfWorkFactory.Create())
                     {
@@ -46,7 +48,7 @@ namespace Library_DTO.dbAccess
                 }
                 else
                 {
-                    throw new Exception("Record already exists.");
+                    throw new Exception("Error. Record already exists.");
                 }
 
             }
@@ -60,14 +62,20 @@ namespace Library_DTO.dbAccess
         {
             try
             {
-                if (CheckExisting(genre) == true) 
+                if (CheckExistingID(genre) == true)
                 {
                     using (var uow = UnitOfWorkFactory.Create())
                     {
                         uow.Genres.Update(genre);
                         uow.Save();
                     }
+
                 }
+                else
+                {
+                    throw new Exception("Error. Record does not exist.");
+                }
+
 
             }
             catch (Exception ex)
@@ -80,15 +88,19 @@ namespace Library_DTO.dbAccess
         {
             try
             {
-                if (CheckExisting(genre) == true)
+                if (CheckExistingID(genre) == true)
                 {
                     using (var uow = UnitOfWorkFactory.Create())
                     {
                         uow.Genres.Remove(genre);
                         uow.Save();
                     }
-
                 }
+                else
+                {
+                    throw new Exception("Error. Record does not exist.");
+                }
+
             }
             catch (Exception ex)
             {
@@ -97,10 +109,17 @@ namespace Library_DTO.dbAccess
         }
 
 
-        private static bool CheckExisting(Genre genre) 
+        private static bool CheckExistingName(Genre genre) 
         {
             var list = Load();
             return list.Any(g => g.GenreName == genre.GenreName) ? true : false;
         }
+
+        private static bool CheckExistingID(Genre genre)
+        {
+            var list = Load();
+            return list.Any(g => g.GenreID == genre.GenreID) ? true : false;
+        }
+
     }
 }
