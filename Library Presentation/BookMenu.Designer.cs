@@ -291,13 +291,17 @@
             // 
             this.dataGridViewBooks.AllowUserToAddRows = false;
             this.dataGridViewBooks.AllowUserToDeleteRows = false;
+            this.dataGridViewBooks.AllowUserToResizeColumns = false;
+            this.dataGridViewBooks.AllowUserToResizeRows = false;
+            this.dataGridViewBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBooks.Location = new System.Drawing.Point(22, 57);
             this.dataGridViewBooks.MultiSelect = false;
             this.dataGridViewBooks.Name = "dataGridViewBooks";
             this.dataGridViewBooks.ReadOnly = true;
+            this.dataGridViewBooks.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBooks.Size = new System.Drawing.Size(671, 255);
+            this.dataGridViewBooks.Size = new System.Drawing.Size(809, 255);
             this.dataGridViewBooks.TabIndex = 35;
             // 
             // dataGridViewBookAuthors

@@ -48,6 +48,7 @@ namespace Library_Presentation
                 dataGridViewBooks.Columns["BookID"].Visible = false;
                 dataGridViewBooks.Columns["BookTitle"].HeaderText = "Book Title";
                 dataGridViewBooks.Columns["BookTotalPages"].HeaderText = "Total Pages";
+            
                 dataGridViewBooks.ClearSelection();
 
                 //https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-bind-objects-to-windows-forms-datagridview-controls?view=netframeworkdesktop-4.8
