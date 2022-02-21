@@ -1,6 +1,7 @@
 ﻿using Library_Domain.Objects;
-using Library_DTO.Builders;
-using Library_DTO.UOW;
+using Library_Service.Builders;
+using Library_Service.UOW;
+using Library_DTO.dbAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,14 +27,18 @@ namespace Library_Presentation
         {
             try
             {
-                using (var uow = UnitOfWorkFactory.Create())
-                {
-                    _listGenres = uow.Genres.Get().OrderBy(g => g.GenreName).ToList();
-                    dataGridView1.DataSource = _listGenres;
-                    dataGridView1.Columns["GenreID"].Visible = false;
-                    dataGridView1.Columns["Books"].Visible = false;
-                    dataGridView1.Columns["GenreName"].HeaderText = "Genre Name";
-                }
+                //using (var uow = UnitOfWorkFactory.Create())
+                //{
+                //    _listGenres = uow.Genres.Get().OrderBy(g => g.GenreName).ToList();
+
+                //}
+
+                _listGenres = Genres.Load();
+
+                dataGridView1.DataSource = _listGenres;
+                dataGridView1.Columns["GenreID"].Visible = false;
+                dataGridView1.Columns["Books"].Visible = false;
+                dataGridView1.Columns["GenreName"].HeaderText = "Genre Name";
 
             }
             catch (Exception ex)
@@ -66,19 +71,21 @@ namespace Library_Presentation
                 _genre.GenreName(textBoxGenreLabel.Text.Trim());
                 var genre = _genre.Build();
 
-                if(!_listGenres.Any(g => g.GenreName == genre.GenreName))
-                {
-                    using (var uow = UnitOfWorkFactory.Create())
-                    {
-                        uow.Genres.Add(genre);
-                        uow.Save();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Error!" +
-                        "\nGenre with that name exists.");
-                }
+                Genres.Add(genre);
+
+                //if(!_listGenres.Any(g => g.GenreName == genre.GenreName))
+                //{
+                //    using (var uow = UnitOfWorkFactory.Create())
+                //    {
+                //        uow.Genres.Add(genre);
+                //        uow.Save();
+                //    }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Error!" +
+                //        "\nGenre with that name exists.");
+                //}
             }
             catch (Exception ex)
             {
@@ -95,11 +102,13 @@ namespace Library_Presentation
                 _genre.GenreName(textBoxGenreLabel.Text.Trim());
                 var genre = _genre.Build();
 
-                using (var uow = UnitOfWorkFactory.Create())
-                {
-                    uow.Genres.Update(genre);
-                    uow.Save();
-                }
+                Genres.Update(genre);
+
+                //using (var uow = UnitOfWorkFactory.Create())
+                //{
+                //    uow.Genres.Update(genre);
+                //    uow.Save();
+                //}
             }
             catch (Exception ex)
             {
@@ -117,12 +126,14 @@ namespace Library_Presentation
             {
                 var genre = _genre.Build();
 
-                using (var uow = UnitOfWorkFactory.Create())
-                {
+                Genres.Remove(genre);
 
-                    uow.Genres.Remove(genre);
-                    uow.Save();
-                }
+                //using (var uow = UnitOfWorkFactory.Create())
+                //{
+
+                //    uow.Genres.Remove(genre);
+                //    uow.Save();
+                //}
             }
             catch (Exception ex)
             {

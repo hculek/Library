@@ -1,7 +1,8 @@
 ﻿using Library_Domain.Objects;
 using System.Collections.Generic;
 
-namespace Library_DTO.Builders
+
+namespace Library_Service.Builders
 {
     public class BookBuilder : IBook
     {

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library Presentation", "Lib
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library Persistence", "Library Persistence\Library Persistence.csproj", "{DC055836-0463-4EEE-A0F9-C9CF84C8801B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library DTO", "Library_DTO\Library DTO.csproj", "{1E01D846-AF04-410F-8A2F-487D1B73707D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library Service", "Library_DTO\Library Service.csproj", "{1E01D846-AF04-410F-8A2F-487D1B73707D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

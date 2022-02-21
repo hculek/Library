@@ -2,7 +2,7 @@
 using Library_Persistence;
 using Library_Persistence.UnitOfWork;
 
-namespace Library_DTO.UOW
+namespace Library_Service.UOW
 {
     public class UnitOfWorkFactory
     {

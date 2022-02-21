@@ -118,9 +118,9 @@
       <Project>{dc055836-0463-4eee-a0f9-c9cf84c8801b}</Project>
       <Name>Library Persistence</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Library_DTO\Library DTO.csproj">
+    <ProjectReference Include="..\Library_DTO\Library Service.csproj">
       <Project>{1e01d846-af04-410f-8a2f-487d1b73707d}</Project>
-      <Name>Library DTO</Name>
+      <Name>Library Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

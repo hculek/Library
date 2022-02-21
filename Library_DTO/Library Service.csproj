@@ -45,6 +45,7 @@
     <Compile Include="Builders\AuthorBuilder.cs" />
     <Compile Include="Builders\BookBuilder.cs" />
     <Compile Include="Builders\GenreBuilder.cs" />
+    <Compile Include="dbAccess\Genres.cs" />
     <Compile Include="UnitOfWorkFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,5 +62,6 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

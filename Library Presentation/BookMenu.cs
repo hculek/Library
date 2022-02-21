@@ -4,8 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using Library_Domain.Objects;
-using Library_DTO.Builders;
-using Library_DTO.UOW;
+using Library_Service.Builders;
+using Library_Service.UOW;
 
 namespace Library_Presentation
 {
