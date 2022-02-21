@@ -114,10 +114,6 @@
       <Project>{7e928538-38ac-40d3-b099-49f3721f84d3}</Project>
       <Name>Library Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Library Persistence\Library Persistence.csproj">
-      <Project>{dc055836-0463-4eee-a0f9-c9cf84c8801b}</Project>
-      <Name>Library Persistence</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Library_DTO\Library Service.csproj">
       <Project>{1e01d846-af04-410f-8a2f-487d1b73707d}</Project>
       <Name>Library Service</Name>
