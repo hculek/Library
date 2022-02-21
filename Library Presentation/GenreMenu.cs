@@ -19,20 +19,23 @@ namespace Library_Presentation
         {
             InitializeComponent();
             ToggleButtons(false);
-            LoadGenres();
+            DisplayGenres();
         }
 
-        void LoadGenres()
+        void LoadGenres() 
+        {
+            _listGenres = Genres.Load();
+        }
+
+        void DisplayGenres()
         {
             try
             {
-                _listGenres = Genres.Load();
-
+                LoadGenres();
                 dataGridView1.DataSource = _listGenres;
                 dataGridView1.Columns["GenreID"].Visible = false;
                 dataGridView1.Columns["Books"].Visible = false;
                 dataGridView1.Columns["GenreName"].HeaderText = "Genre Name";
-
             }
             catch (Exception ex)
             {
@@ -72,7 +75,7 @@ namespace Library_Presentation
                 MessageBox.Show(ex.ToString());
             }
             Clear();
-            LoadGenres();
+            DisplayGenres();
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -91,7 +94,7 @@ namespace Library_Presentation
             }
             ToggleButtons(false);
             Clear();
-            LoadGenres();
+            DisplayGenres();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -109,20 +112,19 @@ namespace Library_Presentation
             }
             ToggleButtons(false);
             Clear();
-            LoadGenres();
+            DisplayGenres();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
             Clear();
-            LoadGenres();
+            DisplayGenres();
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(textBoxSearch.Text.ToString()))
             {
-                //_searchedList = _searchedList.Where(item => item.GenreName.ToLower().Contains(textBoxSearch.Text.ToLower().ToString()));
 
                 var result = from genre in _listGenres
                              where genre.GenreName.ToLower().Contains(textBoxSearch.Text.ToLower())
@@ -132,7 +134,7 @@ namespace Library_Presentation
             else
             {
                 Clear();
-                LoadGenres();
+                DisplayGenres();
             }
         }
 
