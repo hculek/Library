@@ -121,29 +121,30 @@ namespace Library_Service.dbAccess
                     //save with same context
                     using (var uow = UnitOfWorkFactory.Create())
                     {
-                        var reloadBook = uow.Books.GetById((int)book.BookID);
-                        reloadBook.BookTitle = book.BookTitle;
-                        reloadBook.BookTotalPages = book.BookTotalPages;
+                        var removeBook = uow.Books.GetById((int)book.BookID);
 
                         List<Author> authors = new List<Author>();
-                        foreach (var author in book.Authors)
+                        foreach (var bookAuthor in book.Authors)
                         {
-                            var reloadAuthor = uow.Authors.GetById((int)author.AuthorID);
+                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
 
-                            book.Authors.Add(reloadAuthor);
+                            removeBook.Authors.Add(author);
                         }
 
                         List<Genre> genres = new List<Genre>();
-                        foreach (var genre in book.Genres)
+                        foreach (var bookGenre in book.Genres)
                         {
-                            var reloadGenre = uow.Genres.GetById((int)genre.GenreID);
+                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
 
-                            book.Genres.Add(reloadGenre);
+                            removeBook.Genres.Add(genre);
                         }
 
-                        uow.Books.Remove(reloadBook);
+                        uow.Books.Remove(removeBook);
                         uow.Save();
                     }
+
+
+
                 }
                 else
                 {

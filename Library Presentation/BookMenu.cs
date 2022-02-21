@@ -315,40 +315,7 @@ namespace Library_Presentation
             {
                 var book = FindBook();
 
-                if (book.BookID.HasValue)
-                {
-                    Books.Remove(book);
-
-                    //using (var uow = UnitOfWorkFactory.Create())
-                    //{
-
-                    //    var book = uow.Books.GetById((int)book.BookID);
-
-                    //    List<Author> authors = new List<Author>();
-                    //    foreach (var bookAuthor in book.Authors)
-                    //    {
-                    //        var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
-
-                    //        book.Authors.Add(author);
-                    //    }
-
-                    //    List<Genre> genres = new List<Genre>();
-                    //    foreach (var bookGenre in book.Genres)
-                    //    {
-                    //        var genre = uow.Genres.GetById((int)bookGenre.GenreID);
-
-                    //        book.Genres.Add(genre);
-                    //    }
-
-                    //    uow.Books.Remove(book);
-                    //    uow.Save();
-                    //}
-                }
-                else
-                {
-                    MessageBox.Show("Please add missing book title or total page number.");
-                }
-
+                Books.Remove(book);
             }
             catch (Exception ex)
             {
