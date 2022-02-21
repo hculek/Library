@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Library_Domain.Objects;
 using Library_Service.Builders;
-using Library_Service.UOW;
 using Library_Service.dbAccess;
 
 namespace Library_Presentation
@@ -64,10 +63,12 @@ namespace Library_Presentation
         {
             try
             {
-                using (var uow = UnitOfWorkFactory.Create())
-                {
-                    _listGenres = uow.Genres.Get().OrderBy(g => g.GenreName).ToList();
-                }
+                //using (var uow = UnitOfWorkFactory.Create())
+                //{
+                //    _listGenres = uow.Genres.Get().OrderBy(g => g.GenreName).ToList();
+                //}
+
+                _listGenres = Genres.Load();
 
                 dataGridViewGenreList.DataSource = null;
                 dataGridViewGenreList.DataSource = _listGenres;
@@ -96,10 +97,13 @@ namespace Library_Presentation
         {
             try
             {
-                using (var uow = UnitOfWorkFactory.Create())
-                {
-                    _listAuthors = uow.Authors.Get().OrderBy(a => a.LastName).ToList();
-                }
+                //using (var uow = UnitOfWorkFactory.Create())
+                //{
+                //    _listAuthors = uow.Authors.Get().OrderBy(a => a.LastName).ToList();
+                //}
+                _listAuthors = Authors.Load();
+
+
                 dataGridViewAuthorsList.DataSource = null;
                 dataGridViewAuthorsList.DataSource = _listAuthors;
                 dataGridViewAuthorsList.Columns["AuthorID"].Visible = false;
