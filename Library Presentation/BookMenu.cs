@@ -34,14 +34,15 @@ namespace Library_Presentation
         {
             try
             {
-                using (var uow = UnitOfWorkFactory.Create())
-                {
+                //using (var uow = UnitOfWorkFactory.Create())
+                //{
 
 
-                    //_listBooks = uow.Books.Get().OrderBy(a => a.BookTitle).ToList();
-                    //_listBooks = uow.Books.GetAll(b => b.Authors.ToList(), b => b.Genres.ToList()).OrderBy(b => b.BookTitle).ToList();
-                    _listBooks = uow.Books.GetAll(b => b.Authors, b => b.Genres).OrderBy(b => b.BookTitle).ToList();
-                }
+                //    //_listBooks = uow.Books.Get().OrderBy(a => a.BookTitle).ToList();
+                //    //_listBooks = uow.Books.GetAll(b => b.Authors.ToList(), b => b.Genres.ToList()).OrderBy(b => b.BookTitle).ToList();
+                //    _listBooks = uow.Books.GetAll(b => b.Authors, b => b.Genres).OrderBy(b => b.BookTitle).ToList();
+                //}
+                _listBooks = Books.Load();
 
                 dataGridViewBooks.DataSource = _listBooks;
                 dataGridViewBooks.Columns["BookID"].Visible = false;
