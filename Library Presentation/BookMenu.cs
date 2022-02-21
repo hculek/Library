@@ -113,6 +113,9 @@ namespace Library_Presentation
                 dataGridViewAuthorsList.Columns["FirstName"].HeaderText = "First Name";
                 dataGridViewAuthorsList.Columns["MiddleName"].HeaderText = "Middle Name";
                 dataGridViewAuthorsList.Columns["LastName"].HeaderText = "Last Name";
+                //dataGridViewAuthorsList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                //dataGridViewAuthorsList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.Fill);
+
                 dataGridViewAuthorsList.ClearSelection();
             }
             catch (Exception ex)

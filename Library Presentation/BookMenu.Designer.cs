@@ -278,11 +278,14 @@
             // 
             this.dataGridViewAuthorsList.AllowUserToAddRows = false;
             this.dataGridViewAuthorsList.AllowUserToDeleteRows = false;
+            this.dataGridViewAuthorsList.AllowUserToResizeColumns = false;
+            this.dataGridViewAuthorsList.AllowUserToResizeRows = false;
             this.dataGridViewAuthorsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAuthorsList.Location = new System.Drawing.Point(22, 504);
             this.dataGridViewAuthorsList.MultiSelect = false;
             this.dataGridViewAuthorsList.Name = "dataGridViewAuthorsList";
             this.dataGridViewAuthorsList.ReadOnly = true;
+            this.dataGridViewAuthorsList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewAuthorsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAuthorsList.Size = new System.Drawing.Size(399, 136);
             this.dataGridViewAuthorsList.TabIndex = 34;
