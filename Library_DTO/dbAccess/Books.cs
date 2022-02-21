@@ -1,0 +1,173 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Library_Domain.Objects;
+using Library_Service.UOW;
+
+namespace Library_Service.dbAccess
+{
+    public class Books
+    {
+        public static List<Book> Load()
+        {
+            try
+            {
+                using (var uow = UnitOfWorkFactory.Create())
+                {
+                    var list = uow.Books.Get().OrderBy(g => g.BookTitle).ToList();
+                    return list;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void Add(Book book)
+        {
+            try
+            {
+
+                if (!CheckExistingBook(book) == true)
+                {
+                    using (var uow = UnitOfWorkFactory.Create())
+                    {
+                        List<Author> authors = new List<Author>();
+                        foreach (var bookAuthor in book.Authors)
+                        {
+                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
+                            authors.Add(author);
+                        }
+
+                        List<Genre> genres = new List<Genre>();
+                        foreach (var bookGenre in book.Genres)
+                        {
+                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
+                            genres.Add(genre);
+                        }
+
+                        book.Authors = authors;
+                        book.Genres = genres;
+
+                        uow.Books.Add(book);
+                        uow.Save();
+                    }
+                }
+                else
+                {
+                    throw new Exception("Error. Record already exists.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void Update(Book book)
+        {
+            try
+            {
+                if (book.BookID.HasValue)
+                {
+
+                    //load book from context using edited book ID
+                    //insert book details from edited book
+                    //save with same context
+                    using (var uow = UnitOfWorkFactory.Create())
+                    {
+                        var reloadBook = uow.Books.GetById((int)book.BookID);
+                        reloadBook.BookTitle = book.BookTitle;
+                        reloadBook.BookTotalPages = book.BookTotalPages;
+
+                        List<Author> authors = new List<Author>();
+                        foreach (var author in book.Authors)
+                        {
+                            var reloadAuthor = uow.Authors.GetById((int)author.AuthorID);
+
+                            book.Authors.Add(reloadAuthor);
+                        }
+
+                        List<Genre> genres = new List<Genre>();
+                        foreach (var genre in book.Genres)
+                        {
+                            var reloadGenre = uow.Genres.GetById((int)genre.GenreID);
+
+                            book.Genres.Add(reloadGenre);
+                        }
+
+                        uow.Books.Update(reloadBook);
+                        uow.Save();
+                    }
+                }
+                else
+                {
+                    throw new Exception("Error. Record does not exist.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void Remove(Book book)
+        {
+            try
+            {
+                if (book.BookID.HasValue)
+                {
+
+                    //load book from context using edited book ID
+                    //insert book details from edited book
+                    //save with same context
+                    using (var uow = UnitOfWorkFactory.Create())
+                    {
+                        var reloadBook = uow.Books.GetById((int)book.BookID);
+                        reloadBook.BookTitle = book.BookTitle;
+                        reloadBook.BookTotalPages = book.BookTotalPages;
+
+                        List<Author> authors = new List<Author>();
+                        foreach (var author in book.Authors)
+                        {
+                            var reloadAuthor = uow.Authors.GetById((int)author.AuthorID);
+
+                            book.Authors.Add(reloadAuthor);
+                        }
+
+                        List<Genre> genres = new List<Genre>();
+                        foreach (var genre in book.Genres)
+                        {
+                            var reloadGenre = uow.Genres.GetById((int)genre.GenreID);
+
+                            book.Genres.Add(reloadGenre);
+                        }
+
+                        uow.Books.Remove(reloadBook);
+                        uow.Save();
+                    }
+                }
+                else
+                {
+                    throw new Exception("Error. Record does not exist.");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private static bool CheckExistingBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
