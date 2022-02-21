@@ -64,10 +64,12 @@ namespace Library_Presentation
         {
             try
             {
-                _genre.GenreName(textBoxGenreLabel.Text.Trim());
-                var genre = _genre.Build();
+                //_genre.GenreName(textBoxGenreLabel.Text.Trim());
+                //var genre = _genre.Build();
 
-                Genres.Add(genre);
+                //Genres.Add(genre);
+
+                Genres.Add(BuildGenre());
 
             }
             catch (Exception ex)
@@ -82,10 +84,12 @@ namespace Library_Presentation
         {
             try
             {
-                _genre.GenreName(textBoxGenreLabel.Text.Trim());
-                var genre = _genre.Build();
+                //_genre.GenreName(textBoxGenreLabel.Text.Trim());
+                //var genre = _genre.Build();
 
-                Genres.Update(genre);
+                //Genres.Update(genre);
+
+                Genres.Update(BuildGenre());
 
             }
             catch (Exception ex)
@@ -102,9 +106,11 @@ namespace Library_Presentation
             
             try
             {
-                var genre = _genre.Build();
+                //var genre = _genre.Build();
 
-                Genres.Remove(genre);
+                //Genres.Remove(genre);
+
+                Genres.Remove(BuildGenre());
             }
             catch (Exception ex)
             {
@@ -154,6 +160,13 @@ namespace Library_Presentation
         {
             Clear();
             ToggleButtons(false);
+        }
+
+        Genre BuildGenre() 
+        {
+            _genre.GenreName(textBoxGenreLabel.Text.Trim());
+            var genre = _genre.Build();
+            return genre;
         }
     }
 }
