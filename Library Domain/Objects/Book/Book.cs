@@ -19,9 +19,11 @@ namespace Library_Domain.Objects
         public long? BookID { get; set; }
 
         [Column("book_title"), Display(Name = "Book Title")]
+        [Required(ErrorMessage = "Book title is required.")]
         public string BookTitle { get; set; }
 
         [Column("book_total_pages"), Display(Name = "Total Pages")]
+        [Required(ErrorMessage = "Book total page number is required.")]
         public int BookTotalPages { get; set; }
 
         public virtual ICollection<Author> Authors { get; set; }

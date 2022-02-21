@@ -19,6 +19,7 @@ namespace Library_Domain.Objects
         public long GenreID { get; set; }
 
         [Column("genre_name"), Display(Name = "Genre Name")]
+        [Required(ErrorMessage = "Genre label is required.")]
         public string GenreName { get; set; }
 
 

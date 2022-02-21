@@ -18,6 +18,7 @@ namespace Library_Domain.Objects
         public long AuthorID { get; set; }
 
         [Column("first_name"), Display(Name = "First Name")]
+        [Required(ErrorMessage = "Author's first name is required.")]
         public string FirstName { get; set; }
 
         [Column("middle_name"), Display(Name = "Middle Name")]
