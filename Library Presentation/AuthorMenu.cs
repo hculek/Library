@@ -1,11 +1,13 @@
-﻿using Library_Service.Builders;
-using Library_Service.UOW;
-using Library_Domain.Objects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using Library_Domain.Objects;
+using Library_Service.Builders;
+using Library_Service.UOW;
+using Library_Service.dbAccess;
+
 
 namespace Library_Presentation
 {
@@ -27,17 +29,16 @@ namespace Library_Presentation
         {
             try
             {
-                using (var uow = UnitOfWorkFactory.Create())
-                {
-                    _listAuthors = uow.Authors.GetAll().OrderBy(a => a.LastName).ToList();
-                    dataGridView1.DataSource = _listAuthors;
-                    dataGridView1.Columns["AuthorID"].Visible = false;
-                    dataGridView1.Columns["Books"].Visible = false;
-                    dataGridView1.Columns["FirstName"].HeaderText = "First Name";
-                    dataGridView1.Columns["MiddleName"].HeaderText = "Middle Name";
-                    dataGridView1.Columns["LastName"].HeaderText = "Last Name";
-                    dataGridView1.ClearSelection();
-                }
+
+                _listAuthors = Authors.Load();
+
+                dataGridView1.DataSource = _listAuthors;
+                dataGridView1.Columns["AuthorID"].Visible = false;
+                dataGridView1.Columns["Books"].Visible = false;
+                dataGridView1.Columns["FirstName"].HeaderText = "First Name";
+                dataGridView1.Columns["MiddleName"].HeaderText = "Middle Name";
+                dataGridView1.Columns["LastName"].HeaderText = "Last Name";
+                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -72,23 +73,8 @@ namespace Library_Presentation
                 _author.LastName(textBoxLastName.Text.Trim());
                 var author = _author.Build();
 
-                if  (!(
-                    _listAuthors.Exists(a => a.FirstName == author.FirstName) 
-                    && _listAuthors.Exists(a => a.MiddleName == author.MiddleName) 
-                    && _listAuthors.Exists(a => a.LastName == author.LastName)))
-                {
-                    using (var uow = UnitOfWorkFactory.Create())
-                    {
-                        uow.Authors.Add(author);
-                        uow.Save();
-                    }
-                    Clear();
-                }
-                else
-                {
-                    MessageBox.Show("Error!" +
-                        "\n Author with that name exists.");
-                }
+                Authors.Add(author);
+                Clear();
 
             }
             catch (Exception ex)
@@ -107,18 +93,15 @@ namespace Library_Presentation
                 _author.LastName(textBoxLastName.Text.Trim());
                 var author = _author.Build();
 
-                using (var uow = UnitOfWorkFactory.Create())
-                {
-                    uow.Authors.Update(author);
-                    uow.Save();
-                }
+                Authors.Update(author);
+                Clear();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
             ToggleButtons(false);
-            Clear();
             LoadAuthors();
 
         }
@@ -130,20 +113,17 @@ namespace Library_Presentation
                 _author.FirstName(textBoxFirstName.Text.Trim());
                 _author.MiddleName(textBoxMiddleName.Text.Trim());
                 _author.LastName(textBoxLastName.Text.Trim());
+                var author = _author.Build();
 
-                using (var uow = UnitOfWorkFactory.Create())
-                {
-                    var author = _author.Build();
-                    uow.Authors.Remove(author);
-                    uow.Save();
-                }
+                Authors.Remove(author);
+                Clear();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
             ToggleButtons(false);
-            Clear();
             LoadAuthors();
 
         }

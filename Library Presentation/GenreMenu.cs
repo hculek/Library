@@ -1,12 +1,11 @@
-﻿using Library_Domain.Objects;
-using Library_Service.Builders;
-using Library_Service.UOW;
-using Library_DTO.dbAccess;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using Library_Domain.Objects;
+using Library_Service.Builders;
+using Library_Service.dbAccess;
 
 namespace Library_Presentation
 {
@@ -27,12 +26,6 @@ namespace Library_Presentation
         {
             try
             {
-                //using (var uow = UnitOfWorkFactory.Create())
-                //{
-                //    _listGenres = uow.Genres.Get().OrderBy(g => g.GenreName).ToList();
-
-                //}
-
                 _listGenres = Genres.Load();
 
                 dataGridView1.DataSource = _listGenres;
@@ -73,19 +66,6 @@ namespace Library_Presentation
 
                 Genres.Add(genre);
 
-                //if(!_listGenres.Any(g => g.GenreName == genre.GenreName))
-                //{
-                //    using (var uow = UnitOfWorkFactory.Create())
-                //    {
-                //        uow.Genres.Add(genre);
-                //        uow.Save();
-                //    }
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Error!" +
-                //        "\nGenre with that name exists.");
-                //}
             }
             catch (Exception ex)
             {
@@ -104,11 +84,6 @@ namespace Library_Presentation
 
                 Genres.Update(genre);
 
-                //using (var uow = UnitOfWorkFactory.Create())
-                //{
-                //    uow.Genres.Update(genre);
-                //    uow.Save();
-                //}
             }
             catch (Exception ex)
             {
@@ -127,13 +102,6 @@ namespace Library_Presentation
                 var genre = _genre.Build();
 
                 Genres.Remove(genre);
-
-                //using (var uow = UnitOfWorkFactory.Create())
-                //{
-
-                //    uow.Genres.Remove(genre);
-                //    uow.Save();
-                //}
             }
             catch (Exception ex)
             {
