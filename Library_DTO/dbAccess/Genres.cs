@@ -35,7 +35,7 @@ namespace Library_Service.dbAccess
             {
 
                 //settle different, check string in class
-                if (String.IsNullOrWhiteSpace(genre.GenreName))
+                //if (String.IsNullOrWhiteSpace(genre.GenreName))
 
 
                 if (!CheckExistingName(genre) == true)
