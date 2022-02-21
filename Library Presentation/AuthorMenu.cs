@@ -21,17 +21,19 @@ namespace Library_Presentation
         {
             InitializeComponent();
             ToggleButtons(false);
-            LoadAuthors();
+            DisplayAuthors();
         }
 
+        void LoadAuthors() 
+        {
+            _listAuthors = Authors.Load();
+        }
 
-        void LoadAuthors()
+        void DisplayAuthors()
         {
             try
             {
-
-                _listAuthors = Authors.Load();
-
+                LoadAuthors();
                 dataGridView1.DataSource = _listAuthors;
                 dataGridView1.Columns["AuthorID"].Visible = false;
                 dataGridView1.Columns["Books"].Visible = false;
@@ -68,12 +70,7 @@ namespace Library_Presentation
         {
             try
             {
-                _author.FirstName(textBoxFirstName.Text.Trim());
-                _author.MiddleName(textBoxMiddleName.Text.Trim());
-                _author.LastName(textBoxLastName.Text.Trim());
-                var author = _author.Build();
-
-                Authors.Add(author);
+                Authors.Add(BuildAuthor());
                 Clear();
 
             }
@@ -81,19 +78,14 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
-            LoadAuthors();
+            DisplayAuthors();
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             try
             {
-                _author.FirstName(textBoxFirstName.Text.Trim());
-                _author.MiddleName(textBoxMiddleName.Text.Trim());
-                _author.LastName(textBoxLastName.Text.Trim());
-                var author = _author.Build();
-
-                Authors.Update(author);
+                Authors.Update(BuildAuthor());
                 Clear();
 
             }
@@ -102,7 +94,7 @@ namespace Library_Presentation
                 MessageBox.Show(ex.ToString());
             }
             ToggleButtons(false);
-            LoadAuthors();
+            DisplayAuthors();
 
         }
 
@@ -110,12 +102,7 @@ namespace Library_Presentation
         {
             try
             {
-                _author.FirstName(textBoxFirstName.Text.Trim());
-                _author.MiddleName(textBoxMiddleName.Text.Trim());
-                _author.LastName(textBoxLastName.Text.Trim());
-                var author = _author.Build();
-
-                Authors.Remove(author);
+                Authors.Remove(BuildAuthor());
                 Clear();
 
             }
@@ -124,14 +111,14 @@ namespace Library_Presentation
                 MessageBox.Show(ex.ToString());
             }
             ToggleButtons(false);
-            LoadAuthors();
+            DisplayAuthors();
 
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
             Clear();
-            LoadAuthors();
+            DisplayAuthors();
         }
 
         private void SearchTextBox_TextChanged(object sender, EventArgs e)
@@ -148,7 +135,7 @@ namespace Library_Presentation
             else
             {
                 Clear();
-                LoadAuthors();
+                DisplayAuthors();
             }
 
         }
@@ -179,7 +166,16 @@ namespace Library_Presentation
                 textBoxLastName.Text = dataGridView1.Rows[a].Cells["LastName"].Value.ToString();
                 ToggleButtons(true);
             }
-            LoadAuthors();
+            DisplayAuthors();
+        }
+
+        Author BuildAuthor() 
+        {
+            _author.FirstName(textBoxFirstName.Text.Trim());
+            _author.MiddleName(textBoxMiddleName.Text.Trim());
+            _author.LastName(textBoxLastName.Text.Trim());
+            var author = _author.Build();
+            return author;
         }
     }
 }
