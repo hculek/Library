@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Library_Domain.Objects;
 using Library_Service.Builders;
 using Library_Service.UOW;
+using Library_Service.dbAccess;
 
 namespace Library_Presentation
 {
@@ -263,32 +264,34 @@ namespace Library_Presentation
                 {
                     // create new book from GUI
                     var book = CreateNewBook();
-                    
+
+                    Books.Add(book);
+
 
                     // add authors and genres to new book using context
                     // save new book using same context
-                    using (var uow = UnitOfWorkFactory.Create())
-                    {
-                        List<Author> authors = new List<Author>();
-                        foreach (var bookAuthor in book.Authors)
-                        {
-                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
-                            authors.Add(author);
-                        }
+                    //using (var uow = UnitOfWorkFactory.Create())
+                    //{
+                    //    List<Author> authors = new List<Author>();
+                    //    foreach (var bookAuthor in book.Authors)
+                    //    {
+                    //        var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
+                    //        authors.Add(author);
+                    //    }
 
-                        List<Genre> genres = new List<Genre>();
-                        foreach (var bookGenre in book.Genres)
-                        {
-                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
-                            genres.Add(genre);
-                        }
+                    //    List<Genre> genres = new List<Genre>();
+                    //    foreach (var bookGenre in book.Genres)
+                    //    {
+                    //        var genre = uow.Genres.GetById((int)bookGenre.GenreID);
+                    //        genres.Add(genre);
+                    //    }
 
-                        book.Authors = authors;
-                        book.Genres = genres;
+                    //    book.Authors = authors;
+                    //    book.Genres = genres;
 
-                        uow.Books.Add(book);
-                        uow.Save();
-                    }
+                    //    uow.Books.Add(book);
+                    //    uow.Save();
+                    //}
                 }
                 else
                 {
@@ -310,40 +313,42 @@ namespace Library_Presentation
             try
             {
                 //load edited book from GUI
-                var editedBook = EditExistingBook();
+                var book = EditExistingBook();
 
                 //if (!String.IsNullOrEmpty(editedBook.BookID.ToString()))
-                if (editedBook.BookID.HasValue)
+                if (book.BookID.HasValue)
                 {
 
-                    //load book from context using edited book ID
-                    //insert book details from edited book
-                    //save with same context
-                    using (var uow = UnitOfWorkFactory.Create())
-                    {
-                        var book = uow.Books.GetById((int)editedBook.BookID);
-                        book.BookTitle = editedBook.BookTitle;
-                        book.BookTotalPages = editedBook.BookTotalPages;
+                    Books.Add(book);
 
-                        List<Author> authors = new List<Author>();
-                        foreach (var bookAuthor in editedBook.Authors)
-                        {
-                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
+                    ////load book from context using edited book ID
+                    ////insert book details from edited book
+                    ////save with same context
+                    //using (var uow = UnitOfWorkFactory.Create())
+                    //{
+                    //    var book = uow.Books.GetById((int)editedBook.BookID);
+                    //    book.BookTitle = editedBook.BookTitle;
+                    //    book.BookTotalPages = editedBook.BookTotalPages;
 
-                            book.Authors.Add(author);
-                        }
+                    //    List<Author> authors = new List<Author>();
+                    //    foreach (var bookAuthor in editedBook.Authors)
+                    //    {
+                    //        var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
 
-                        List<Genre> genres = new List<Genre>();
-                        foreach (var bookGenre in editedBook.Genres)
-                        {
-                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
-                            
-                            book.Genres.Add(genre);
-                        }
+                    //        book.Authors.Add(author);
+                    //    }
 
-                        uow.Books.Update(book);
-                        uow.Save();
-                    }
+                    //    List<Genre> genres = new List<Genre>();
+                    //    foreach (var bookGenre in editedBook.Genres)
+                    //    {
+                    //        var genre = uow.Genres.GetById((int)bookGenre.GenreID);
+
+                    //        book.Genres.Add(genre);
+                    //    }
+
+                    //    uow.Books.Update(book);
+                    //    uow.Save();
+                    //}
                 }
                 else
                 {
@@ -366,35 +371,36 @@ namespace Library_Presentation
         {
             try
             {
-                var fb = FindBook();
+                var book = FindBook();
 
-                if (fb.BookID.HasValue)
+                if (book.BookID.HasValue)
                 {
+                    Books.Remove(book);
 
-                    using (var uow = UnitOfWorkFactory.Create())
-                    {
+                    //using (var uow = UnitOfWorkFactory.Create())
+                    //{
 
-                        var book = uow.Books.GetById((int)fb.BookID);
+                    //    var book = uow.Books.GetById((int)book.BookID);
 
-                        List<Author> authors = new List<Author>();
-                        foreach (var bookAuthor in fb.Authors)
-                        {
-                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
+                    //    List<Author> authors = new List<Author>();
+                    //    foreach (var bookAuthor in book.Authors)
+                    //    {
+                    //        var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
 
-                            book.Authors.Add(author);
-                        }
+                    //        book.Authors.Add(author);
+                    //    }
 
-                        List<Genre> genres = new List<Genre>();
-                        foreach (var bookGenre in fb.Genres)
-                        {
-                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
+                    //    List<Genre> genres = new List<Genre>();
+                    //    foreach (var bookGenre in book.Genres)
+                    //    {
+                    //        var genre = uow.Genres.GetById((int)bookGenre.GenreID);
 
-                            book.Genres.Add(genre);
-                        }
+                    //        book.Genres.Add(genre);
+                    //    }
 
-                        uow.Books.Remove(book);
-                        uow.Save();
-                    }
+                    //    uow.Books.Remove(book);
+                    //    uow.Save();
+                    //}
                 }
                 else
                 {
