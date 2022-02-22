@@ -7,11 +7,14 @@
            [ TABLESPACE [=] tablespace ]
            [ CONNECTION LIMIT [=] connlimit ] ] <-//
 
-CREATE TABLE genres (genre_id int NOT NULL SERIAL, genre_name text NOT NULL, PRIMARY KEY (genre_id));
+CREATE TABLE genres (genre_id int NOT NULL, genre_name text NOT NULL, PRIMARY KEY (genre_id));
 
 CREATE TABLE authors (author_id serial NOT NULL, first_name text NOT NULL, PRIMARY KEY (author_id));
 
 CREATE TABLE authors (book_id serial NOT NULL, book_title text NOT NULL, book_total_pages int NOT NULL, PRIMARY KEY (book_id));
+
+CREATE TABLE libmembers(member_id int NOT NULL, first_name text NOT NULL, middle_name text, last_name text NOT NULL, adress text, email text, phone_number text, membership_start_date date, membership_renewal_date date, membership_expiry_date date, membership_active_status bool, PRIMARY KEY (member_id));
+
 
 
 CREATE TABLE books_genres
