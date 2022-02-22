@@ -36,12 +36,7 @@ namespace Library_Presentation
             {
                 _listBooks = Books.Load();
 
-                dataGridViewBooks.DataSource = _listBooks;
-                dataGridViewBooks.Columns["BookID"].Visible = false;
-                dataGridViewBooks.Columns["BookTitle"].HeaderText = "Book Title";
-                dataGridViewBooks.Columns["BookTotalPages"].HeaderText = "Total Pages";
-            
-                dataGridViewBooks.ClearSelection();
+                BooksGridFormat();
 
                 //https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-bind-objects-to-windows-forms-datagridview-controls?view=netframeworkdesktop-4.8
             }
@@ -49,8 +44,55 @@ namespace Library_Presentation
             {
                 MessageBox.Show(ex.ToString());
             }
-
         }
+
+        private DataTable formatBookData() 
+        {
+
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[5] 
+            { 
+                new DataColumn("BookID"), 
+                new DataColumn("BookTitle"),
+                new DataColumn("BookTotalPages"), 
+                new DataColumn("Authors"), 
+                new DataColumn("Genres")  });
+
+            foreach (var book in _listBooks)
+            {
+                string authors = "";
+                foreach (var author in book.Authors)
+                {
+                    authors += String.Format("{0} {1} {2} ,", author.FirstName, author.MiddleName, author.LastName);
+                }
+
+                string genres = "";
+                foreach (var genre in book.Genres)
+                {
+                    genres += String.Format("{0}", genre.GenreName);
+                }
+
+                //dt.Rows.Add(new{book.BookID, book.BookTitle, book.BookTotalPages, authors, genres});
+                
+                dt.Rows.Add(new Object[]{ book.BookID, book.BookTitle, book.BookTotalPages, authors, genres });
+            }
+            return dt;
+        
+        }
+
+        private void BooksGridFormat() 
+        {
+            //dataGridViewBooks.DataSource = _listBooks;
+            dataGridViewBooks.DataSource = formatBookData();
+            dataGridViewBooks.AutoGenerateColumns = true;
+            dataGridViewBooks.Columns["BookID"].Visible = false;
+            dataGridViewBooks.Columns["BookTitle"].HeaderText = "Book Title";
+            dataGridViewBooks.Columns["BookTotalPages"].HeaderText = "Total Pages";
+            dataGridViewBooks.Columns["Authors"].HeaderText = "Authors";
+            dataGridViewBooks.Columns["Genres"].HeaderText = "Genres";
+            dataGridViewBooks.ClearSelection();
+        }
+
 
 
         void LoadGenres()
