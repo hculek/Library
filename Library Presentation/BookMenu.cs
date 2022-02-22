@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using Library_Domain.Objects;
 using Library_Service.Builders;
 using Library_Service.dbAccess;
-using Library_Service.UOW;
 
 namespace Library_Presentation
 {
@@ -60,17 +60,36 @@ namespace Library_Presentation
 
             foreach (var book in _listBooks)
             {
-                string authors = "";
+
+                StringBuilder authors = new StringBuilder();
+
+                authors.Clear();
                 foreach (var author in book.Authors)
                 {
-                    authors += String.Format("{0} {1} {2} ,", author.FirstName, author.MiddleName, author.LastName);
+                    //authors += String.Format("{0} {1} {2}, ", author.FirstName, author.MiddleName, author.LastName);
+
+                    if (!String.IsNullOrEmpty(author.FirstName))
+                    {
+                        authors.Append(author.FirstName + " ");
+                    }
+                    if (!String.IsNullOrEmpty(author.MiddleName))
+                    {
+                        authors.Append(author.MiddleName + " ");
+                    }
+                    if (!String.IsNullOrEmpty(author.LastName))
+                    {
+                        authors.Append(author.LastName);
+                    } 
+                    authors.Append(", ");
                 }
+                authors = authors.Remove(authors.Length - 2 ,2);
 
                 string genres = "";
                 foreach (var genre in book.Genres)
                 {
-                    genres += String.Format("{0}", genre.GenreName);
+                    genres += String.Format("{0}, ", genre.GenreName);
                 }
+                genres = genres.Remove(genres.Length - 2, 2);
 
                 //dt.Rows.Add(new{book.BookID, book.BookTitle, book.BookTotalPages, authors, genres});
                 
