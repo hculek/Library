@@ -114,7 +114,7 @@
       <Project>{7e928538-38ac-40d3-b099-49f3721f84d3}</Project>
       <Name>Library Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Library_DTO\Library Service.csproj">
+    <ProjectReference Include="..\Library Service\Library Service.csproj">
       <Project>{1e01d846-af04-410f-8a2f-487d1b73707d}</Project>
       <Name>Library Service</Name>
     </ProjectReference>
