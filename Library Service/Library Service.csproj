@@ -45,6 +45,7 @@
     <Compile Include="Builders\AuthorBuilder.cs" />
     <Compile Include="Builders\BookBuilder.cs" />
     <Compile Include="Builders\GenreBuilder.cs" />
+    <Compile Include="Builders\LibraryMemberBuilder.cs" />
     <Compile Include="dbAccess\Authors.cs" />
     <Compile Include="dbAccess\Books.cs" />
     <Compile Include="dbAccess\Genres.cs" />
