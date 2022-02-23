@@ -177,5 +177,11 @@ namespace Library_Presentation
             var author = _author.Build();
             return author;
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Clear();
+            ToggleButtons(false);
+        }
     }
 }
