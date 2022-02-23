@@ -73,6 +73,7 @@
     <Compile Include="BookMenu.Designer.cs">
       <DependentUpon>BookMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ErrorMessageBox.cs" />
     <Compile Include="GenreMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>

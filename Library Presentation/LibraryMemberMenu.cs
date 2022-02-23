@@ -41,7 +41,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
 
         }
@@ -96,7 +96,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
             Clear();
             DisplayMembers();
@@ -115,7 +115,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
             Clear();
             DisplayMembers();
@@ -130,7 +130,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
             Clear();
             DisplayMembers();
