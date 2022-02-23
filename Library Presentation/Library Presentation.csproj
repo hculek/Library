@@ -79,6 +79,12 @@
     <Compile Include="GenreMenu.Designer.cs">
       <DependentUpon>GenreMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="LibraryMemberMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LibraryMemberMenu.Designer.cs">
+      <DependentUpon>LibraryMemberMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GenreMenu.resx">
       <DependentUpon>GenreMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibraryMemberMenu.resx">
+      <DependentUpon>LibraryMemberMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
