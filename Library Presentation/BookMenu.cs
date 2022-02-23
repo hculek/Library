@@ -42,7 +42,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
         }
 
@@ -165,7 +165,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
         }
 
@@ -331,7 +331,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
             Cleanup();
             ToggleEditControls(false);
@@ -349,7 +349,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
             Cleanup();
             ToggleEditControls(false);
@@ -368,7 +368,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
             Cleanup();
             ToggleEditControls(false);

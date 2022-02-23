@@ -44,7 +44,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
 
         }
@@ -66,6 +66,7 @@ namespace Library_Presentation
             TextBoxSearch.Clear();
         }
 
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             try
@@ -76,7 +77,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
             DisplayAuthors();
         }
@@ -91,7 +92,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
             ToggleButtons(false);
             DisplayAuthors();
@@ -108,7 +109,7 @@ namespace Library_Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                ErrorMessageBox.Show(ex);
             }
             ToggleButtons(false);
             DisplayAuthors();
