@@ -3,7 +3,7 @@ using System;
 
 namespace Library_Service.Builders
 {
-    class LibraryMemberBuilder : ILibraryMember
+    public class LibraryMemberBuilder : ILibraryMember
     {
         private LibraryMember _libraryMember = new LibraryMember();
 
