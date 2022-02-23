@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Library_Domain.Objects.LibraryMember
+namespace Library_Domain.Objects
 {
     [Table("librarymembers")]
     public class LibraryMember

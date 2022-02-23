@@ -1,14 +1,23 @@
-﻿namespace Library_Domain.Objects.LibraryMember
+﻿using System;
+
+namespace Library_Domain.Objects
 {
-    interface ILibraryMember
+    public interface ILibraryMember
     {
         void LibraryMemberID(long LibraryMemberID);
         void FirstName(string FirstName);
         void MiddleName(string MiddleName);
         void LastName(string LastName);
         void Adress(string Adress);
-        void Email(string email);
-        void Telephone(string Telephone);
+        void Email(string Email);
+        void PhoneNumber(string PhoneNumber);
+
+        void MemberShipStartDate(DateTime MemberShipStartDate);
+
+        void MembershipRenewalDate(DateTime MembershipRenewalDate);
+
+        void MembershipExpiryDate(DateTime MembershipExpiryDate);
+
         //LibraryMember GetLibraryMember();
     }
 }
