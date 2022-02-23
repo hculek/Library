@@ -122,5 +122,11 @@ namespace Library_Presentation
                 this.TabControlMainWindow.TabPages.Remove(this.TabControlMainWindow.SelectedTab);
             }
         }
+
+        private void toolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            LibraryMemberMenu Member = new LibraryMemberMenu();
+            OpenControlInTab(Member);
+        }
     }
 }

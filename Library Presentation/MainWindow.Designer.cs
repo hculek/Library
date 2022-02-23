@@ -33,15 +33,15 @@ namespace Library_Presentation
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.TabControlMainWindow = new System.Windows.Forms.TabControl();
             this.CloseActiveTab = new System.Windows.Forms.Button();
+            this.membersRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,8 +49,7 @@ namespace Library_Presentation
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3});
+            this.toolStripMenuItem2});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(1904, 24);
@@ -68,24 +67,18 @@ namespace Library_Presentation
             // exitApplicationToolStripMenuItem
             // 
             this.exitApplicationToolStripMenuItem.Name = "exitApplicationToolStripMenuItem";
-            this.exitApplicationToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.exitApplicationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitApplicationToolStripMenuItem.Text = "Exit application";
             this.exitApplicationToolStripMenuItem.Click += new System.EventHandler(this.exitApplicationToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5});
+            this.toolStripMenuItem5,
+            this.membersRegisterToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(101, 20);
-            this.toolStripMenuItem2.Text = "Library Content";
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItem4.Text = "Content Register";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(105, 20);
+            this.toolStripMenuItem2.Text = "Library Registers";
             // 
             // toolStripMenuItem5
             // 
@@ -94,35 +87,29 @@ namespace Library_Presentation
             this.toolStripMenuItem7,
             this.toolStripMenuItem8});
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(198, 22);
-            this.toolStripMenuItem5.Text = "Register Administration";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem5.Text = "Books Register";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(116, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem6.Text = "Books";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(116, 22);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem7.Text = "Authors";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem7_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(116, 22);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem8.Text = "Genre";
             this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem8_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(69, 20);
-            this.toolStripMenuItem3.Text = "Members";
             // 
             // statusStrip2
             // 
@@ -152,6 +139,21 @@ namespace Library_Presentation
             this.CloseActiveTab.Text = "Close Tab";
             this.CloseActiveTab.UseVisualStyleBackColor = true;
             this.CloseActiveTab.Click += new System.EventHandler(this.CloseActiveTab_Click);
+            // 
+            // membersRegisterToolStripMenuItem
+            // 
+            this.membersRegisterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem9});
+            this.membersRegisterToolStripMenuItem.Name = "membersRegisterToolStripMenuItem";
+            this.membersRegisterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.membersRegisterToolStripMenuItem.Text = "Members Register";
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem9.Text = "Members";
+            this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem9_Click);
             // 
             // MainWindow
             // 
@@ -199,14 +201,14 @@ namespace Library_Presentation
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitApplicationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.StatusStrip statusStrip2;
         private System.Windows.Forms.TabControl TabControlMainWindow;
         private System.Windows.Forms.Button CloseActiveTab;
+        private System.Windows.Forms.ToolStripMenuItem membersRegisterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
     }
 }
