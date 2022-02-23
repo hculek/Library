@@ -28,16 +28,17 @@ namespace Library_Presentation
 
         private object LoadMembers() 
         {
-            var list = LibraryMembers.Load();
-            return list;
+            _listMembers = LibraryMembers.Load();
+            return _listMembers;
         }
 
         private void DisplayMembers() 
         {
             try
             {
-                dataGridViewLibraryMembers.DataSource = LoadMembers();
-                dataGridViewLibraryMembers.Columns["MemberID"].Visible = false;
+                LoadMembers();
+                dataGridViewLibraryMembers.DataSource = _listMembers;
+                //dataGridViewLibraryMembers.Columns[0].Visible = false;
             }
             catch (Exception ex)
             {

@@ -50,12 +50,13 @@ namespace Library_Presentation
         {
 
             DataTable dt = new DataTable();
+
             dt.Columns.AddRange(new DataColumn[5] 
-            { 
-                new DataColumn("BookID"), 
-                new DataColumn("BookTitle"),
-                new DataColumn("BookTotalPages"), 
-                new DataColumn("Authors"), 
+            {
+                new DataColumn("Book ID"),
+                new DataColumn("Book Title"),
+                new DataColumn("Total Pages"),
+                new DataColumn("Authors"),
                 new DataColumn("Genres")  });
 
             foreach (var book in _listBooks)
@@ -104,11 +105,7 @@ namespace Library_Presentation
             //dataGridViewBooks.DataSource = _listBooks;
             dataGridViewBooks.DataSource = formatBookData();
             dataGridViewBooks.AutoGenerateColumns = true;
-            dataGridViewBooks.Columns["BookID"].Visible = false;
-            dataGridViewBooks.Columns["BookTitle"].HeaderText = "Book Title";
-            dataGridViewBooks.Columns["BookTotalPages"].HeaderText = "Total Pages";
-            dataGridViewBooks.Columns["Authors"].HeaderText = "Authors";
-            dataGridViewBooks.Columns["Genres"].HeaderText = "Genres";
+            dataGridViewBooks.Columns[0].Visible = false;
             dataGridViewBooks.ClearSelection();
         }
 
@@ -125,7 +122,6 @@ namespace Library_Presentation
                 dataGridViewGenreList.DataSource = _listGenres;
                 dataGridViewGenreList.Columns["GenreID"].Visible = false;
                 dataGridViewGenreList.Columns["Books"].Visible = false;
-                dataGridViewGenreList.Columns["GenreName"].HeaderText = "Genre";
                 dataGridViewGenreList.ClearSelection();
             }
             catch (Exception ex)
@@ -140,7 +136,6 @@ namespace Library_Presentation
             dataGridViewBookGenres.DataSource = _selectedListGenres;
             dataGridViewBookGenres.Columns["GenreID"].Visible = false;
             dataGridViewBookGenres.Columns["Books"].Visible = false;
-            dataGridViewBookGenres.Columns["GenreName"].HeaderText = "Genre";
             dataGridViewBookGenres.ClearSelection();
         }
 
@@ -155,9 +150,7 @@ namespace Library_Presentation
                 dataGridViewAuthorsList.DataSource = _listAuthors;
                 dataGridViewAuthorsList.Columns["AuthorID"].Visible = false;
                 dataGridViewAuthorsList.Columns["Books"].Visible = false;
-                dataGridViewAuthorsList.Columns["FirstName"].HeaderText = "First Name";
-                dataGridViewAuthorsList.Columns["MiddleName"].HeaderText = "Middle Name";
-                dataGridViewAuthorsList.Columns["LastName"].HeaderText = "Last Name";
+
                 //dataGridViewAuthorsList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 //dataGridViewAuthorsList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.Fill);
 
@@ -175,9 +168,6 @@ namespace Library_Presentation
             dataGridViewBookAuthors.DataSource = _selectedListAuthors;
             dataGridViewBookAuthors.Columns["AuthorID"].Visible = false;
             dataGridViewBookAuthors.Columns["Books"].Visible = false;
-            dataGridViewBookAuthors.Columns["FirstName"].HeaderText = "First Name";
-            dataGridViewBookAuthors.Columns["MiddleName"].HeaderText = "Middle Name";
-            dataGridViewBookAuthors.Columns["LastName"].HeaderText = "Last Name";
             dataGridViewBookAuthors.ClearSelection();
         }
 

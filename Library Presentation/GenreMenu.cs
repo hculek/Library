@@ -35,7 +35,6 @@ namespace Library_Presentation
                 dataGridView1.DataSource = _listGenres;
                 dataGridView1.Columns["GenreID"].Visible = false;
                 dataGridView1.Columns["Books"].Visible = false;
-                dataGridView1.Columns["GenreName"].HeaderText = "Genre Name";
                 dataGridView1.ClearSelection();
             }
             catch (Exception ex)
