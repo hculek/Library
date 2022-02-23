@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using Library_Domain.Objects;
-using Library_Domain.Objects.LibraryMember;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library_Persistence
