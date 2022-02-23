@@ -47,9 +47,9 @@ namespace Library_Presentation
 
         void ToggleButtons(bool input) 
         {
-            DeleteButton.Enabled = input;
-            UpdateButton.Enabled = input;
-            ClearButton.Enabled = input ? false : true;
+            buttonDelete.Enabled = input;
+            buttonUpdate.Enabled = input;
+            buttonClear.Enabled = input ? false : true;
         }
 
         void Clear() 
@@ -60,7 +60,7 @@ namespace Library_Presentation
             textBoxGenreLabel.Clear();
         }
 
-        private void AddButton_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace Library_Presentation
             DisplayGenres();
         }
 
-        private void UpdateButton_Click(object sender, EventArgs e)
+        private void buttonUpdate_Click(object sender, EventArgs e)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace Library_Presentation
             DisplayGenres();
         }
 
-        private void DeleteButton_Click(object sender, EventArgs e)
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
             
             try
@@ -121,7 +121,7 @@ namespace Library_Presentation
             DisplayGenres();
         }
 
-        private void ClearButton_Click(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
             Clear();
             DisplayGenres();
@@ -144,7 +144,7 @@ namespace Library_Presentation
             }
         }
 
-        private void EditButton_Click(object sender, EventArgs e)
+        private void buttonEdit_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
@@ -156,7 +156,7 @@ namespace Library_Presentation
             }
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, EventArgs e)
         {
             Clear();
             ToggleButtons(false);
