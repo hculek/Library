@@ -61,7 +61,6 @@
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Objects\LibraryMember\ILibraryMember.cs" />
     <Compile Include="Objects\LibraryMember\LibraryMember.cs" />
-    <Compile Include="Objects\LibraryMember\LibraryMemberBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
