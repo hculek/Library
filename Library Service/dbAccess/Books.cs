@@ -23,7 +23,7 @@ namespace Library_Service.dbAccess
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error. Database connection failed. If problem persists, please contact system administrator.");
             }
         }
 
@@ -31,33 +31,38 @@ namespace Library_Service.dbAccess
         {
             try
             {
-                using (var uow = UnitOfWorkFactory.Create())
+                if (!CheckExistingBook(book)==true)
                 {
-                    List<Author> authors = new List<Author>();
-                    foreach (var bookAuthor in book.Authors)
+                    using (var uow = UnitOfWorkFactory.Create())
                     {
-                        var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
-                        authors.Add(author);
+                        List<Author> authors = new List<Author>();
+                        foreach (var bookAuthor in book.Authors)
+                        {
+                            var author = uow.Authors.GetById((int)bookAuthor.AuthorID);
+                            authors.Add(author);
+                        }
+
+                        List<Genre> genres = new List<Genre>();
+                        foreach (var bookGenre in book.Genres)
+                        {
+                            var genre = uow.Genres.GetById((int)bookGenre.GenreID);
+                            genres.Add(genre);
+                        }
+
+                        book.Authors = authors;
+                        book.Genres = genres;
+
+                        uow.Books.Add(book);
+                        uow.Save();
                     }
 
-                    List<Genre> genres = new List<Genre>();
-                    foreach (var bookGenre in book.Genres)
-                    {
-                        var genre = uow.Genres.GetById((int)bookGenre.GenreID);
-                        genres.Add(genre);
-                    }
-
-                    book.Authors = authors;
-                    book.Genres = genres;
-
-                    uow.Books.Add(book);
-                    uow.Save();
                 }
+ 
 
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error. Database connection failed. If problem persists, please contact system administrator.");
             }
         }
 
@@ -65,7 +70,7 @@ namespace Library_Service.dbAccess
         {
             try
             {
-                if (book.BookID.HasValue)
+                if (CheckBookID(book))
                 {
 
                     //load book from context using edited book ID
@@ -105,7 +110,7 @@ namespace Library_Service.dbAccess
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error. Database connection failed. If problem persists, please contact system administrator.");
             }
         }
 
@@ -113,7 +118,7 @@ namespace Library_Service.dbAccess
         {
             try
             {
-                if (book.BookID.HasValue)
+                if (CheckBookID(book))
                 {
 
                     //load book from context using edited book ID
@@ -154,13 +159,21 @@ namespace Library_Service.dbAccess
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error. Database connection failed. If problem persists, please contact system administrator.");
             }
         }
 
         private static bool CheckExistingBook(Book book)
         {
-            throw new NotImplementedException();
+            var list = Load();
+            //return list.Any(b=>b.Equals(book))? true : false;  
+            return list.Any(b => b == book) ? true : false;
+        }
+
+        private static bool CheckBookID(Book book)
+        {
+            var list = Load();
+            return list.Any(b => b.BookID == book.BookID) ? true : false;
         }
     }
 }
