@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,7 +19,7 @@ namespace Library_Domain.Objects
         [Column("genre_id")]
         public long GenreID { get; set; }
 
-        [Column("genre_name"), Display(Name = "Genre Name")]
+        [Column("genre_name"), DisplayName("Genre Name")]
         [Required(ErrorMessage = "Genre label is required.")]
         public string GenreName { get; set; }
 

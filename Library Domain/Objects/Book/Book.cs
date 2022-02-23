@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,11 +19,11 @@ namespace Library_Domain.Objects
         [Column("book_id")]
         public long? BookID { get; set; }
 
-        [Column("book_title"), Display(Name = "Book Title")]
+        [Column("book_title"), DisplayName("Book Title")]
         [Required(ErrorMessage = "Book title is required.")]
         public string BookTitle { get; set; }
 
-        [Column("book_total_pages"), Display(Name = "Total Pages")]
+        [Column("book_total_pages"), DisplayName("Total Pages")]
         [Required(ErrorMessage = "Book total page number is required.")]
         public int BookTotalPages { get; set; }
 
