@@ -268,7 +268,7 @@ namespace Library_Presentation
             if (dataGridViewBooks.SelectedRows.Count > 0)
             {
                 int a = dataGridViewBooks.SelectedRows[0].Index;
-                var bookID = long.Parse(dataGridViewBooks.Rows[a].Cells["BookID"].Value.ToString());
+                var bookID = long.Parse(dataGridViewBooks.Rows[a].Cells[0].Value.ToString());
                 book = _listBooks.Find(b => b.BookID.Equals(bookID));
             }
             return book;

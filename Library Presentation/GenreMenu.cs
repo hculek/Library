@@ -33,7 +33,7 @@ namespace Library_Presentation
             {
                 LoadGenres();
                 dataGridView1.DataSource = _listGenres;
-                dataGridView1.Columns["GenreID"].Visible = false;
+                dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns["Books"].Visible = false;
                 dataGridView1.ClearSelection();
             }
@@ -150,9 +150,9 @@ namespace Library_Presentation
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int a = dataGridView1.SelectedRows[0].Index;
-                _genre.GenreID(long.Parse(dataGridView1.Rows[a].Cells["GenreID"].Value.ToString()));
-                _genre.GenreName(dataGridView1.Rows[a].Cells["GenreName"].Value.ToString());
-                textBoxGenreLabel.Text = dataGridView1.Rows[a].Cells["GenreName"].Value.ToString();
+                _genre.GenreID(long.Parse(dataGridView1.Rows[a].Cells[0].Value.ToString()));
+                _genre.GenreName(dataGridView1.Rows[a].Cells[1].Value.ToString());
+                textBoxGenreLabel.Text = dataGridView1.Rows[a].Cells[1].Value.ToString();
                 ToggleButtons(true);
             }
         }

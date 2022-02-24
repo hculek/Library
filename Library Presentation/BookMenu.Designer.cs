@@ -304,7 +304,7 @@
             this.dataGridViewBooks.ReadOnly = true;
             this.dataGridViewBooks.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBooks.Size = new System.Drawing.Size(809, 255);
+            this.dataGridViewBooks.Size = new System.Drawing.Size(1064, 255);
             this.dataGridViewBooks.TabIndex = 35;
             // 
             // dataGridViewBookAuthors
@@ -409,7 +409,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "BookMenu";
-            this.Size = new System.Drawing.Size(902, 900);
+            this.Size = new System.Drawing.Size(1108, 900);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuthorsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBookAuthors)).EndInit();

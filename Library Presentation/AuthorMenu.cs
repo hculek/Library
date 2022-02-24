@@ -158,13 +158,13 @@ namespace Library_Presentation
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int a = dataGridView1.SelectedRows[0].Index;
-                _author.AuthorID(long.Parse(dataGridView1.Rows[a].Cells["AuthorID"].Value.ToString()));
-                _author.FirstName(dataGridView1.Rows[a].Cells["FirstName"].Value.ToString());
-                _author.MiddleName(dataGridView1.Rows[a].Cells["MiddleName"].Value.ToString());
-                _author.LastName(dataGridView1.Rows[a].Cells["MiddleName"].Value.ToString());
-                textBoxFirstName.Text = dataGridView1.Rows[a].Cells["FirstName"].Value.ToString();
-                textBoxMiddleName.Text = dataGridView1.Rows[a].Cells["MiddleName"].Value.ToString();
-                textBoxLastName.Text = dataGridView1.Rows[a].Cells["LastName"].Value.ToString();
+                _author.AuthorID(long.Parse(dataGridView1.Rows[a].Cells[0].Value.ToString()));
+                _author.FirstName(dataGridView1.Rows[a].Cells[1].Value.ToString());
+                _author.MiddleName(dataGridView1.Rows[a].Cells[2].Value.ToString());
+                _author.LastName(dataGridView1.Rows[a].Cells[3].Value.ToString());
+                textBoxFirstName.Text = dataGridView1.Rows[a].Cells[1].Value.ToString();
+                textBoxMiddleName.Text = dataGridView1.Rows[a].Cells[2].Value.ToString();
+                textBoxLastName.Text = dataGridView1.Rows[a].Cells[3].Value.ToString();
                 ToggleButtons(true);
             }
             DisplayAuthors();
