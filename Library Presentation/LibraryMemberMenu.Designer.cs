@@ -47,14 +47,14 @@
             this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBoxMembershipRenewalDate = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxMembershipStartDate = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBoxMemberShipExpiryDate = new System.Windows.Forms.TextBox();
             this.dataGridViewLibraryMembers = new System.Windows.Forms.DataGridView();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.labelMembershipStartDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLibraryMembers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,14 +223,6 @@
             this.label7.TabIndex = 32;
             this.label7.Text = "Renewal date:";
             // 
-            // comboBoxMembershipRenewalDate
-            // 
-            this.comboBoxMembershipRenewalDate.FormattingEnabled = true;
-            this.comboBoxMembershipRenewalDate.Location = new System.Drawing.Point(618, 97);
-            this.comboBoxMembershipRenewalDate.Name = "comboBoxMembershipRenewalDate";
-            this.comboBoxMembershipRenewalDate.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxMembershipRenewalDate.TabIndex = 33;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -239,13 +231,6 @@
             this.label8.Size = new System.Drawing.Size(76, 13);
             this.label8.TabIndex = 34;
             this.label8.Text = "Member since:";
-            // 
-            // textBoxMembershipStartDate
-            // 
-            this.textBoxMembershipStartDate.Location = new System.Drawing.Point(618, 71);
-            this.textBoxMembershipStartDate.Name = "textBoxMembershipStartDate";
-            this.textBoxMembershipStartDate.Size = new System.Drawing.Size(121, 20);
-            this.textBoxMembershipStartDate.TabIndex = 35;
             // 
             // label9
             // 
@@ -288,18 +273,34 @@
             this.label10.TabIndex = 40;
             this.label10.Text = "Search:";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(618, 98);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(121, 20);
+            this.dateTimePicker1.TabIndex = 41;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // labelMembershipStartDate
+            // 
+            this.labelMembershipStartDate.AutoSize = true;
+            this.labelMembershipStartDate.Location = new System.Drawing.Point(618, 76);
+            this.labelMembershipStartDate.Name = "labelMembershipStartDate";
+            this.labelMembershipStartDate.Size = new System.Drawing.Size(0, 13);
+            this.labelMembershipStartDate.TabIndex = 42;
+            // 
             // LibraryMemberMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelMembershipStartDate);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.dataGridViewLibraryMembers);
             this.Controls.Add(this.textBoxMemberShipExpiryDate);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBoxMembershipStartDate);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.comboBoxMembershipRenewalDate);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxPhoneNumber);
             this.Controls.Add(this.label6);
@@ -348,13 +349,13 @@
         private System.Windows.Forms.TextBox textBoxPhoneNumber;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBoxMembershipRenewalDate;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxMembershipStartDate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBoxMemberShipExpiryDate;
         private System.Windows.Forms.DataGridView dataGridViewLibraryMembers;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label labelMembershipStartDate;
     }
 }

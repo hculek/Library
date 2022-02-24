@@ -17,11 +17,13 @@ namespace Library_Presentation
     {
         private LibraryMemberBuilder _member = new LibraryMemberBuilder();
         private List<LibraryMember> _listMembers = new List<LibraryMember>();
+        private DateTime _dateRenewal = new DateTime();
+        private DateTime _dateStart = new DateTime();
 
         public LibraryMemberMenu()
         {
             InitializeComponent();
-            ToggleButtons(false);
+            ToggleControls(false);
             DisplayMembers();
         }
 
@@ -65,8 +67,7 @@ namespace Library_Presentation
             textBoxEmail.Clear();
             textBoxPhoneNumber.Clear();
             textBoxAddress.Clear();
-            textBoxMembershipStartDate.Clear();
-            //comboBoxMembershipRenewalDate.SelectedIndex = 0;
+            labelMembershipStartDate.Text = "";
             textBoxMemberShipExpiryDate.Clear();
             textBoxSearch.Clear();
         }
@@ -79,10 +80,9 @@ namespace Library_Presentation
             _member.Adress(textBoxAddress.Text);
             _member.Email(textBoxEmail.Text);
             _member.PhoneNumber(textBoxPhoneNumber.Text);
-            
-            //add logic for membership dates
-            //_member.MembershipRenewalDate();
-            //_member.MembershipExpiryDate();
+            _member.MemberShipStartDate(!String.IsNullOrEmpty(_dateStart.ToString()) ? _dateStart : _dateRenewal);
+            _member.MembershipRenewalDate(_dateRenewal);
+            _member.MembershipExpiryDate(_dateRenewal.AddDays(365));
 
             var member = _member.Build();
             return member;
@@ -138,6 +138,11 @@ namespace Library_Presentation
             ToggleButtons(false);
         }
 
+        private void ToggleControls(bool input)
+        {
+            ToggleButtons(input);
+        }
+
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             ToggleButtons(false);
@@ -152,6 +157,11 @@ namespace Library_Presentation
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            _dateRenewal= DateTime.Parse(dateTimePicker1.Value.ToShortDateString());
         }
     }
 }
