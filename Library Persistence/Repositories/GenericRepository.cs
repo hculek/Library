@@ -28,9 +28,10 @@ namespace Library_Persistence
                 throw new DBConcurrencyException("Database connection error. If problem persists please contact IT support.");
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Database connection error. If problem persists please contact IT support.");
+                throw ex;
+                //throw new Exception("Database connection error. If problem persists please contact IT support.");
             }
 
         }
