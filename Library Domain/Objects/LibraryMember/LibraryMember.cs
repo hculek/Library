@@ -8,8 +8,7 @@ namespace Library_Domain.Objects
     [Table("libmembers")]
     public class LibraryMember
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("member_id"), DisplayName("Member ID")]
         public long LibraryMemberID { get; set; }
 
