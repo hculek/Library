@@ -36,7 +36,7 @@ CREATE TABLE books_genres
         genre_id
     ),
     FOREIGN KEY (book_id) REFERENCES books (book_id),
-    FOREIGN KEY (genre_id) REFERENCES genres (genre_id);
-)
+    FOREIGN KEY (genre_id) REFERENCES genres (genre_id)
+);
 
 CREATE TABLE books_authors (book_id int NOT NULL, author_id int NOT NULL, CONSTRAINT PK_books_authors PRIMARY KEY(book_id, author_id), FOREIGN KEY (book_id) REFERENCES books (book_id), FOREIGN KEY (author_id) REFERENCES authors (author_id));
