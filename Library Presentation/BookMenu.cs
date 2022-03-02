@@ -25,7 +25,7 @@ namespace Library_Presentation
         public BookMenu()
         {
             InitializeComponent();
-            ToggleCreateButtons(false);
+            ToggleCreateControls(false);
             ToggleEditControls(false);
             LoadBooks();
         }
@@ -177,7 +177,7 @@ namespace Library_Presentation
             buttonEdit.Enabled = input;
         }
 
-        private void ToggleCreateButtons(bool input)
+        private void ToggleCreateControls(bool input)
         {
             buttonAdd.Enabled = input;
             buttonCancel.Enabled = input;
@@ -240,7 +240,7 @@ namespace Library_Presentation
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            ToggleCreateButtons(true);
+            ToggleCreateControls(true);
             LoadEditingElements(true);
         }
 
@@ -307,11 +307,11 @@ namespace Library_Presentation
             {
                 if (!String.IsNullOrEmpty(textBoxBookTitle.Text.ToString()) && !String.IsNullOrEmpty(textBoxNumberPages.Text.ToString()))
                 {
-
                     var book = CreateNewBook();
 
                     Books.Add(book);
 
+                    Cleanup();
                 }
                 else
                 {
@@ -323,8 +323,7 @@ namespace Library_Presentation
             {
                 ErrorMessageBox.Show(ex);
             }
-            Cleanup();
-            ToggleEditControls(false);
+            ToggleCreateControls(false);
             LoadBooks();
         }
 
@@ -336,12 +335,15 @@ namespace Library_Presentation
 
                 Books.Update(book);
 
+                Cleanup();
+                
+
             }
             catch (Exception ex)
             {
                 ErrorMessageBox.Show(ex);
             }
-            Cleanup();
+
             ToggleEditControls(false);
             LoadBooks();
 
@@ -355,12 +357,15 @@ namespace Library_Presentation
                 var book = FindBook();
 
                 Books.Remove(book);
+
+                Cleanup();
+                
             }
             catch (Exception ex)
             {
                 ErrorMessageBox.Show(ex);
             }
-            Cleanup();
+
             ToggleEditControls(false);
             LoadBooks();
 
@@ -371,6 +376,7 @@ namespace Library_Presentation
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Cleanup();
+            ToggleCreateControls(false);
             ToggleEditControls(false);
             LoadBooks();
         }
