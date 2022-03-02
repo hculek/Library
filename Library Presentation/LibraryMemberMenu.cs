@@ -72,7 +72,7 @@ namespace Library_Presentation
             textBoxSearch.Clear();
         }
 
-        private LibraryMember BuildNewMember() 
+        private LibraryMember BuildMember() 
         {
             _member.FirstName(textBoxFirstName.Text.ToString());
             _member.MiddleName(textBoxMiddleName.Text.ToString());
@@ -88,12 +88,43 @@ namespace Library_Presentation
             return member;
         }
 
+        private void PrepareToEditMember(LibraryMember member) 
+        {
+            if (member.LibraryMemberID.HasValue)
+            {
+                _member.LibraryMemberID(member.LibraryMemberID.Value);
+                textBoxFirstName.Text = member.FirstName;
+                _member.FirstName(member.FirstName);
+                textBoxMiddleName.Text = member.MiddleName;
+                _member.MiddleName(member.MiddleName);
+                textBoxLastName.Text = member.Lastname;
+                _member.LastName(member.Lastname);
+                textBoxEmail.Text = member.Email;
+                _member.Email(member.Email);
+                textBoxPhoneNumber.Text = member.PhoneNumber;
+                _member.PhoneNumber(member.PhoneNumber);
+                textBoxAddress.Text = member.Adress;
+                _member.Adress(member.Adress);
+                labelMembershipStartDate.Text = member.MembershipStartDate.ToString();
+            }
+        
+        }
+
+
+        private LibraryMember FindMember()
+        {
+            LibraryMember member = new LibraryMember();
+            int a = dataGridViewLibraryMembers.SelectedRows[0].Index;
+            var memberID = long.Parse(dataGridViewLibraryMembers.Rows[a].Cells[0].Value.ToString());
+            member = _listMembers.Find(b => b.LibraryMemberID.Equals(memberID));
+            return member;
+        }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                LibraryMembers.Add(BuildNewMember());
+                LibraryMembers.Add(BuildMember());
                 Clear();
             }
             catch (Exception ex)
@@ -105,29 +136,35 @@ namespace Library_Presentation
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            ToggleButtons(true);
+            if (dataGridViewLibraryMembers.SelectedRows.Count > 0)
+            {
+                PrepareToEditMember(FindMember());
+                ToggleButtons(true);
+            }
+
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-                LibraryMembers.Update(BuildNewMember());
+                LibraryMembers.Update(BuildMember());
+                Clear();
+                DisplayMembers();
+                ToggleButtons(false);
             }
             catch (Exception ex)
             {
                 ErrorMessageBox.Show(ex);
             }
-            Clear();
-            DisplayMembers();
-            ToggleButtons(false);
+
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             try
             {
-                LibraryMembers.Remove(BuildNewMember());
+                LibraryMembers.Remove(BuildMember());
                 Clear();
                 DisplayMembers();
                 ToggleButtons(false);
