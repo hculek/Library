@@ -72,14 +72,14 @@ namespace Library_Presentation
             textBoxSearch.Clear();
         }
 
-        private LibraryMember BuildMember() 
+        private LibraryMember BuildNewMember() 
         {
-            _member.FirstName(textBoxFirstName.Text);
-            _member.MiddleName(textBoxMiddleName.Text);
-            _member.LastName(textBoxLastName.Text);
-            _member.Adress(textBoxAddress.Text);
-            _member.Email(textBoxEmail.Text);
-            _member.PhoneNumber(textBoxPhoneNumber.Text);
+            _member.FirstName(textBoxFirstName.Text.ToString());
+            _member.MiddleName(textBoxMiddleName.Text.ToString());
+            _member.LastName(textBoxLastName.Text.ToString());
+            _member.Adress(textBoxAddress.Text.ToString());
+            _member.Email(textBoxEmail.Text.ToString());
+            _member.PhoneNumber(textBoxPhoneNumber.Text.ToString());
             _member.MemberShipStartDate(!String.IsNullOrEmpty(_dateStart.ToString()) ? _dateStart : _dateRenewal);
             _member.MembershipRenewalDate(_dateRenewal);
             _member.MembershipExpiryDate(_dateRenewal.AddDays(365));
@@ -93,13 +93,13 @@ namespace Library_Presentation
         {
             try
             {
-                LibraryMembers.Add(BuildMember());
+                LibraryMembers.Add(BuildNewMember());
+                Clear();
             }
             catch (Exception ex)
             {
-                ErrorMessageBox.Show(ex);
+                ErrorMessageBox.Show(ex.InnerException);
             }
-            Clear();
             DisplayMembers();
         }
 
@@ -112,7 +112,7 @@ namespace Library_Presentation
         {
             try
             {
-                LibraryMembers.Update(BuildMember());
+                LibraryMembers.Update(BuildNewMember());
             }
             catch (Exception ex)
             {
@@ -127,15 +127,16 @@ namespace Library_Presentation
         {
             try
             {
-                LibraryMembers.Remove(BuildMember());
+                LibraryMembers.Remove(BuildNewMember());
+                Clear();
+                DisplayMembers();
+                ToggleButtons(false);
             }
             catch (Exception ex)
             {
                 ErrorMessageBox.Show(ex);
             }
-            Clear();
-            DisplayMembers();
-            ToggleButtons(false);
+            
         }
 
         private void ToggleControls(bool input)
