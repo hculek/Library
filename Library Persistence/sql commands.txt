@@ -1,4 +1,6 @@
-﻿CREATE DATABASE library
+﻿//db creation
+
+CREATE DATABASE library
     //-> [ [ WITH ] [ OWNER [=] user_name ]
            [ TEMPLATE [=] template ]
            [ ENCODING [=] encoding ]
@@ -7,19 +9,26 @@
            [ TABLESPACE [=] tablespace ]
            [ CONNECTION LIMIT [=] connlimit ] ] <-//
 
-CREATE TABLE genres (genre_id int NOT NULL, genre_name text NOT NULL, PRIMARY KEY (genre_id));
+// table for object creation
 
-CREATE TABLE authors (author_id serial NOT NULL, first_name text NOT NULL, PRIMARY KEY (author_id));
+CREATE TABLE genres 
+(
+    genre_id serial NOT NULL, 
+    genre_name text NOT NULL, 
+    PRIMARY KEY (genre_id)
+);
 
-CREATE TABLE authors (book_id serial NOT NULL, book_title text NOT NULL, book_total_pages int NOT NULL, PRIMARY KEY (book_id));
+CREATE TABLE authors (author_id serial NOT NULL, first_name text NOT NULL, middle_name text NOT NULL, last_name text NOT NULL, PRIMARY KEY (author_id));
 
-CREATE TABLE libmembers(member_id int NOT NULL, first_name text NOT NULL, middle_name text, last_name text NOT NULL, adress text, email text, phone_number text, membership_start_date date, membership_renewal_date date, membership_expiry_date date, membership_active_status bool, PRIMARY KEY (member_id));
+CREATE TABLE books (book_id serial NOT NULL, book_title text NOT NULL, book_total_pages int NOT NULL, PRIMARY KEY (book_id));
+
+CREATE TABLE libmembers (member_id serial NOT NULL, first_name text NOT NULL, middle_name text, last_name text NOT NULL, adress text, email text, phone_number text, membership_start_date date, membership_renewal_date date, membership_expiry_date date, membership_active_status bool, PRIMARY KEY (member_id));
 
 
-
+// junction tables creation
 CREATE TABLE books_genres
 (
-    book_id int NOT NULL,
+    book_id int NOT NULL, 
     genre_id int NOT NULL,
     CONSTRAINT PK_books_genres PRIMARY KEY
     (
@@ -27,18 +36,7 @@ CREATE TABLE books_genres
         genre_id
     ),
     FOREIGN KEY (book_id) REFERENCES books (book_id),
-    FOREIGN KEY (genre_id) REFERENCES genres (genre_id)
+    FOREIGN KEY (genre_id) REFERENCES genres (genre_id);
 )
 
-CREATE TABLE books_authors
-(
-    book_id int NOT NULL,
-    author_id int NOT NULL,
-    CONSTRAINT PK_books_authors PRIMARY KEY
-    (
-        book_id,
-        author_id
-    ),
-    FOREIGN KEY (book_id) REFERENCES books (book_id),
-    FOREIGN KEY (author_id) REFERENCES authors (author_id)
-)
+CREATE TABLE books_authors (book_id int NOT NULL, author_id int NOT NULL, CONSTRAINT PK_books_authors PRIMARY KEY(book_id, author_id), FOREIGN KEY (book_id) REFERENCES books (book_id), FOREIGN KEY (author_id) REFERENCES authors (author_id));
