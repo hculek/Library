@@ -21,9 +21,9 @@ namespace Library_Service.dbAccess
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                
                 throw new Exception("Error. Database connection failed. If problem persists, please contact system administrator.");
             }
         
@@ -40,10 +40,10 @@ namespace Library_Service.dbAccess
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw new Exception("Error. Database connection failed. If problem persists, please contact system administrator.");
+                throw ex;
+                //throw new Exception("Error. Database connection failed. If problem persists, please contact system administrator.");
             }
         
         }
