@@ -37,8 +37,6 @@ namespace Library_Presentation
                 _listBooks = Books.Load();
 
                 BooksGridFormat();
-
-                //https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-bind-objects-to-windows-forms-datagridview-controls?view=netframeworkdesktop-4.8
             }
             catch (Exception ex)
             {
@@ -208,6 +206,7 @@ namespace Library_Presentation
 
         private void Cleanup() 
         {
+            _book.Reset();
             dataGridViewAuthorsList.DataSource = null;
             dataGridViewGenreList.DataSource = null;
             ClearEditingElements();
@@ -240,18 +239,24 @@ namespace Library_Presentation
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
+            _book.Reset();
             ToggleCreateControls(true);
             LoadEditingElements(true);
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            PrepareToEditBook(FindBook());
-            ToggleEditControls(true);
+            if (dataGridViewBooks.SelectedRows.Count > 0)
+            {
+                _book.Reset();
+                PrepareToEditBook(FindBook());
+                ToggleEditControls(true);
+            }
+
 
         }
 
-        private Book CreateNewBook()
+        private Book CreateBook()
         {
             _book.Title(textBoxBookTitle.Text.ToString());
             _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
@@ -280,24 +285,12 @@ namespace Library_Presentation
             {
                 _book.BookID((book.BookID.Value));
                 textBoxBookTitle.Text = book.BookTitle.ToString();
-                _book.Title(book.BookTitle.ToString());
                 textBoxNumberPages.Text = book.BookTotalPages.ToString();
-                _book.TotalPages(int.Parse(book.BookTotalPages.ToString()));
                 _selectedListAuthors = book.Authors.ToList();
                 dataGridViewBookAuthors.DataSource = _selectedListAuthors;
                 _selectedListGenres = book.Genres.ToList();
                 dataGridViewBookGenres.DataSource = _selectedListGenres;
             }
-        }
-
-        private Book EditExistingBook()
-        {            
-            _book.Title(textBoxBookTitle.Text.ToString());
-            _book.TotalPages(int.Parse(textBoxNumberPages.Text.ToString()));
-            _book.Author(_selectedListAuthors);
-            _book.Genre(_selectedListGenres);
-            var book = _book.Build();
-            return book;
         }
 
 
@@ -307,7 +300,7 @@ namespace Library_Presentation
             {
                 if (!String.IsNullOrEmpty(textBoxBookTitle.Text.ToString()) && !String.IsNullOrEmpty(textBoxNumberPages.Text.ToString()))
                 {
-                    var book = CreateNewBook();
+                    var book = CreateBook();
 
                     Books.Add(book);
 
@@ -331,7 +324,7 @@ namespace Library_Presentation
         {
             try
             {
-                var book = EditExistingBook();
+                var book = CreateBook();
 
                 Books.Update(book);
 
