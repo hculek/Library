@@ -488,5 +488,21 @@ namespace Library_Presentation
             }
 
         }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(textBoxSearch.Text.ToString()))
+            {
+                var result = from book in _listBooks
+                             where book.BookTitle.ToLower().Contains(textBoxSearch.Text.ToLower())
+                             select book;
+                dataGridViewBooks.DataSource = result.ToList();
+            }
+            else 
+            {
+                Cleanup();
+                LoadBooks();
+            }
+        }
     }
 }

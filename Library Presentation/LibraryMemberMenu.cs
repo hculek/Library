@@ -49,9 +49,14 @@ namespace Library_Presentation
 
         }
 
-        private void ToggleButtons(bool input)
+        private void ToggleCreateControls(bool input)
         {
-            buttonAdd.Enabled = input ? false : true;
+            buttonAdd.Enabled = input;
+            buttonClear.Enabled = input ? false : true;
+        }
+
+        private void ToggleEditControls(bool input)
+        {
             buttonDelete.Enabled = input;
             buttonUpdate.Enabled = input;
             buttonClear.Enabled = input ? false : true;
@@ -120,11 +125,30 @@ namespace Library_Presentation
             return member;
         }
 
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            _member.Reset();
+            ToggleCreateControls(true);
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewLibraryMembers.SelectedRows.Count > 0)
+            {
+                _member.Reset();
+                PrepareToEditMember(FindMember());
+                ToggleEditControls(true);
+            }
+
+        }
+
+
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             try
             {
                 LibraryMembers.Add(BuildMember());
+                ToggleCreateControls(false);
                 Clear();
             }
             catch (Exception ex)
@@ -134,15 +158,6 @@ namespace Library_Presentation
             DisplayMembers();
         }
 
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewLibraryMembers.SelectedRows.Count > 0)
-            {
-                PrepareToEditMember(FindMember());
-                ToggleButtons(true);
-            }
-
-        }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
@@ -151,7 +166,7 @@ namespace Library_Presentation
                 LibraryMembers.Update(BuildMember());
                 Clear();
                 DisplayMembers();
-                ToggleButtons(false);
+                ToggleEditControls(false);
             }
             catch (Exception ex)
             {
@@ -167,7 +182,7 @@ namespace Library_Presentation
                 LibraryMembers.Remove(BuildMember());
                 Clear();
                 DisplayMembers();
-                ToggleButtons(false);
+                ToggleEditControls(false);
             }
             catch (Exception ex)
             {
@@ -178,12 +193,13 @@ namespace Library_Presentation
 
         private void ToggleControls(bool input)
         {
-            ToggleButtons(input);
+            ToggleCreateControls(input);
+            ToggleEditControls(input);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            ToggleButtons(false);
+            ToggleControls(false);
             Clear();
         }
 
@@ -201,5 +217,7 @@ namespace Library_Presentation
         {
             _dateRenewal= DateTime.Parse(dateTimePicker1.Value.ToShortDateString());
         }
+
+
     }
 }

@@ -55,12 +55,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.labelMembershipStartDate = new System.Windows.Forms.Label();
+            this.buttonCreate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLibraryMembers)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(342, 22);
+            this.buttonCancel.Location = new System.Drawing.Point(422, 22);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 19;
@@ -80,7 +81,7 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(422, 22);
+            this.buttonClear.Location = new System.Drawing.Point(502, 22);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 17;
@@ -90,7 +91,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(262, 22);
+            this.buttonDelete.Location = new System.Drawing.Point(342, 22);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 16;
@@ -100,7 +101,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(182, 22);
+            this.buttonUpdate.Location = new System.Drawing.Point(262, 22);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdate.TabIndex = 15;
@@ -110,7 +111,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(22, 22);
+            this.buttonAdd.Location = new System.Drawing.Point(182, 22);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 14;
@@ -260,7 +261,7 @@
             this.dataGridViewLibraryMembers.Name = "dataGridViewLibraryMembers";
             this.dataGridViewLibraryMembers.ReadOnly = true;
             this.dataGridViewLibraryMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewLibraryMembers.Size = new System.Drawing.Size(849, 340);
+            this.dataGridViewLibraryMembers.Size = new System.Drawing.Size(1078, 340);
             this.dataGridViewLibraryMembers.TabIndex = 38;
             // 
             // textBoxSearch
@@ -296,10 +297,21 @@
             this.labelMembershipStartDate.Size = new System.Drawing.Size(0, 13);
             this.labelMembershipStartDate.TabIndex = 42;
             // 
+            // buttonCreate
+            // 
+            this.buttonCreate.Location = new System.Drawing.Point(22, 22);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreate.TabIndex = 43;
+            this.buttonCreate.Text = "Create";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            // 
             // LibraryMemberMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.labelMembershipStartDate);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label10);
@@ -328,7 +340,7 @@
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonAdd);
             this.Name = "LibraryMemberMenu";
-            this.Size = new System.Drawing.Size(900, 900);
+            this.Size = new System.Drawing.Size(1123, 900);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLibraryMembers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -364,5 +376,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label labelMembershipStartDate;
+        private System.Windows.Forms.Button buttonCreate;
     }
 }

@@ -45,7 +45,7 @@
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.textBoxSearchAuthors = new System.Windows.Forms.TextBox();
@@ -224,12 +224,13 @@
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
-            // textBox3
+            // textBoxSearch
             // 
-            this.textBox3.Location = new System.Drawing.Point(252, 31);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(120, 20);
-            this.textBox3.TabIndex = 24;
+            this.textBoxSearch.Location = new System.Drawing.Point(252, 31);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(120, 20);
+            this.textBoxSearch.TabIndex = 24;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // label8
             // 
@@ -390,7 +391,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBoxSearchAuthors);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonUpdate);
@@ -439,7 +440,7 @@
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonClear;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBoxSearchAuthors;
