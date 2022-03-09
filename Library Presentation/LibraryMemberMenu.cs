@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library_Domain.Objects;
 using Library_Service.Builders;
@@ -19,6 +13,7 @@ namespace Library_Presentation
         private List<LibraryMember> _listMembers = new List<LibraryMember>();
         private DateTime _dateRenewal = new DateTime();
         private DateTime _dateStart = new DateTime();
+        private DateTime _dateExpiry = new DateTime();
 
         public LibraryMemberMenu()
         {
@@ -75,6 +70,7 @@ namespace Library_Presentation
             labelMembershipStartDate.Text = "";
             textBoxMemberShipExpiryDate.Clear();
             textBoxSearch.Clear();
+            dateTimePicker1.Value = DateTime.Today;
         }
 
         private LibraryMember BuildMember() 
@@ -85,9 +81,9 @@ namespace Library_Presentation
             _member.Adress(textBoxAddress.Text.ToString());
             _member.Email(textBoxEmail.Text.ToString());
             _member.PhoneNumber(textBoxPhoneNumber.Text.ToString());
-            _member.MemberShipStartDate(!String.IsNullOrEmpty(_dateStart.ToString()) ? _dateStart : _dateRenewal);
+            _member.MemberShipStartDate(!(_dateStart <= DateTime.Parse("01.01.1970")) ? _dateStart : _dateRenewal);
             _member.MembershipRenewalDate(_dateRenewal);
-            _member.MembershipExpiryDate(_dateRenewal.AddDays(365));
+            _member.MembershipExpiryDate(_dateExpiry);
 
             var member = _member.Build();
             return member;
@@ -99,18 +95,32 @@ namespace Library_Presentation
             {
                 _member.LibraryMemberID(member.LibraryMemberID.Value);
                 textBoxFirstName.Text = member.FirstName;
+
                 _member.FirstName(member.FirstName);
                 textBoxMiddleName.Text = member.MiddleName;
+
                 _member.MiddleName(member.MiddleName);
                 textBoxLastName.Text = member.Lastname;
+
                 _member.LastName(member.Lastname);
                 textBoxEmail.Text = member.Email;
+
                 _member.Email(member.Email);
                 textBoxPhoneNumber.Text = member.PhoneNumber;
                 _member.PhoneNumber(member.PhoneNumber);
+
                 textBoxAddress.Text = member.Adress;
                 _member.Adress(member.Adress);
-                labelMembershipStartDate.Text = member.MembershipStartDate.ToString();
+
+                _dateStart = member.MembershipStartDate;
+                labelMembershipStartDate.Text = _dateStart.ToString("d");
+                _member.MemberShipStartDate(_dateStart);
+
+                dateTimePicker1.Value = member.MembershipRenewalDate;
+                _member.MembershipRenewalDate(member.MembershipRenewalDate);
+
+                textBoxMemberShipExpiryDate.Text = member.MembershipExpiryDate.ToString("d");
+                _member.MembershipExpiryDate(member.MembershipExpiryDate);
             }
         
         }
@@ -216,8 +226,8 @@ namespace Library_Presentation
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             _dateRenewal= DateTime.Parse(dateTimePicker1.Value.ToShortDateString());
+            _dateExpiry = _dateRenewal.AddDays(365);
+            textBoxMemberShipExpiryDate.Text = _dateExpiry.ToString("d");
         }
-
-
     }
 }
